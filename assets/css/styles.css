@@ -1,0 +1,45 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Hero Section */
+.hero {
+    padding: 50px 0;
+}
+.hero img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+/* Portfolio Button */
+.container .btn-primary {
+    font-size: 20px;
+    padding: 12px 20px;
+    margin-top: 10px;
+}
+
+/* Contact Section */
+.social {
+    margin-top: 20px;
+}
+
+.contact-icons {
+    display: flex;
+    justify-content: center;
+    gap: 40px; /* Increase spacing between icons */
+    margin-top: 15px;
+}
+
+.contact-icons a {
+    font-size: 40px; /* Make icons larger */
+    color: #333; /* Default icon color */
+    text-decoration: none;
+    transition: color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.contact-icons a:hover {
+    color: #0077b5; /* Change to LinkedIn blue on hover */
+    transform: scale(1.2); /* Slightly enlarge on hover */
+}

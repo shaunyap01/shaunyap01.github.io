@@ -15,25 +15,22 @@ taxonomies:
 
 menu:
     main:
-        - name: CV
-          url: cv.pdf
-          weight: 1
 
         - name: Articles
           url: articles/
-          weight: 2
+          weight: 1
 
         - name: Projects
           url: projects/
-          weight: 3
+          weight: 2
 
         #- name: Tags
         #  url: tags/
-        #  weight: 4
+        #  weight: 3
 
         - name: Archive
           url: archive/
-          weight: 5
+          weight: 4
 
 params:
     description: "This is Shaun Yap's personal website"
@@ -61,22 +58,22 @@ params:
     profileMode:
           enabled: true
           title: Shaun Yap
-          subtitle: "'If I have seen further it is by standing on the shoulders of Giants' - Isaac Newton.
+          subtitle: "'If I have seen further it is by standing on the shoulders of Giants' - <i>Isaac Newton</i>.
             <br>
             <br>
             I have an unquenchable thirst for knowledge and a deep passion for sharing what I learn. Through my research and projects, I hope to inspire and assist other curious minds. It's a real shame that so much valuable work produced at university often goes unnoticed - this space is my small way of changing that.
             <br>
             <br>
-            <b> Programming Languages</b>: R, Python, Julia, SQL, Tableau, Node, React, CSS."
+            <h3>Education</h3>
+            <b> MSc Data Science and Statistics (Distinction) </b>, University of Exeter, UK | <i>Sep 2023 – Nov 2024</i>
+            <br>
+            <b> BSc (Hons) Data Science </b>, University of Warwick, UK | <i>Sep 2020 – Jul 2023</i>"
 
           imageUrl: "photo.png"
           imageWidth: 160
           imageHeight: 160
           imageTitle: SY
-          buttons:
-            - name: CV
-              url: cv.pdf
-              
+          buttons:             
             - name: Articles
               url: articles/
 
@@ -90,6 +87,9 @@ params:
               url: archive/
          
     socialIcons:
+        - name: CV
+          url: /cv.pdf
+
         - name: GitHub
           url: https://github.com/shaunyap01
 

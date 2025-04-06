@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Essays on Shaun Yap</title>
-    <link>http://localhost:1313/articles/</link>
+    <link>https://shaunyap01.github.io/articles/</link>
     <description>Recent content in Essays on Shaun Yap</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en</language>
     <lastBuildDate>Wed, 01 May 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/articles/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://shaunyap01.github.io/articles/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Potential Solutions for Harmful Deepfakes</title>
-      <link>http://localhost:1313/articles/potential-solutions-for-harmful-deepfakes/</link>
+      <link>https://shaunyap01.github.io/articles/potential-solutions-for-harmful-deepfakes/</link>
       <pubDate>Wed, 01 May 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/articles/potential-solutions-for-harmful-deepfakes/</guid>
+      <guid>https://shaunyap01.github.io/articles/potential-solutions-for-harmful-deepfakes/</guid>
       <description>This essay explores multifaceted solutions to mitigate the societal harms of deepfakes, balancing technological regulation, platform accountability, and public education.</description>
     </item>
     <item>
       <title>To What Extent Can Cryptocurrency Become Everyday-Use Currency?</title>
-      <link>http://localhost:1313/articles/to-what-extent-can-cryptocurrency-become-everyday-use-currency/</link>
+      <link>https://shaunyap01.github.io/articles/to-what-extent-can-cryptocurrency-become-everyday-use-currency/</link>
       <pubDate>Fri, 01 Feb 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/articles/to-what-extent-can-cryptocurrency-become-everyday-use-currency/</guid>
+      <guid>https://shaunyap01.github.io/articles/to-what-extent-can-cryptocurrency-become-everyday-use-currency/</guid>
       <description>A detailed and critical examination of Bitcoin’s potential to become an everyday-use currency, weighing its technical features, security, historical parallels, and the socio-political challenges it must overcome.</description>
     </item>
   </channel>

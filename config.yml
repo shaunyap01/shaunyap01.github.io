@@ -1,6 +1,7 @@
 baseURL: "https://shaunyap01.github.io" 
 title: Shaun Yap
-paginate: 20
+pagination:
+  pagerSize: 20
 theme: PaperMod
 
 enableInlineShortcodes: true
@@ -17,12 +18,15 @@ menu:
         - name: CV
           url: cv.pdf
           weight: 1
+
         - name: Articles
           url: articles/
           weight: 2
+
         - name: Projects
           url: projects/
           weight: 3
+          
         - name: Tags
           url: tags/
           weight: 4
@@ -78,10 +82,13 @@ params:
     socialIcons:
         - name: GitHub
           url: https://github.com/shaunyap01
+
         - name: Email
           url: mailto:shaunyap01@gmail.com
+
         - name: LinkedIn
           url: https://www.linkedin.com/in/shaunyap0122/
+
         - name: Discord
           url: https://discordapp.com/users/228868600214192128
 

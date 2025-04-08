@@ -24,13 +24,17 @@ menu:
           url: projects/
           weight: 2
 
-        #- name: Tags
-        #  url: tags/
-        #  weight: 3
+        - name: Tags
+          url: tags/
+          weight: 3
 
         - name: Archive
           url: archive/
           weight: 4
+        
+        - name: Contact
+          url: contact/
+          weight: 5
 
 params:
     description: "This is Shaun Yap's personal website"
@@ -47,7 +51,8 @@ params:
     ShowPostNavLinks: false
     ShowBreadCrumbs: false
     ShowCodeCopyButtons: true
-    ShowRssButtonInSectionTermList: false
+    ShowAllPagesInArchive: false
+    MainSections: ["articles","projects"]
     ShowToc: false
     disableScrollToTop: true
     TocOpen: true
@@ -58,7 +63,9 @@ params:
     profileMode:
           enabled: true
           title: Shaun Yap
-          subtitle: "'If I have seen further it is by standing on the shoulders of Giants' - <i>Isaac Newton</i>.
+          subtitle: "<h2> Freelance Data Scientist </h2>
+            <br>
+            'If I have seen further it is by standing on the shoulders of Giants' - <i>Isaac Newton</i>.
             <br>
             <br>
             I have an unquenchable thirst for knowledge and a deep passion for sharing what I learn. Through my research and projects, I hope to inspire and assist other curious minds. It's a real shame that so much valuable work produced at university often goes unnoticed - this space is my small way of changing that.
@@ -80,11 +87,14 @@ params:
             - name: Projects
               url: projects/
 
-            #- name: Tags
-            #  url: tags/
+            - name: Tags
+              url: tags/
 
             - name: Archive
               url: archive/
+  
+            - name: Contact
+              url: contact/
          
     socialIcons:
         - name: CV

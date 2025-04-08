@@ -2,10 +2,13 @@
 title: "To What Extent Can Cryptocurrency Become Everyday-Use Currency?" 
 date: 2019-02-01
 lastmod: 2019-02-01
-tags: []
+tags: ["##All Articles", "#In-Depth Essay", "Bitcoin", "Cryptocurrency", "Blockchain"]
 author: ["Shaun Yap"]
-description: "A detailed and critical examination of Bitcoin’s potential to become an everyday-use currency, weighing its technical features, security, historical parallels, and the socio-political challenges it must overcome."
-summary: "This essay critically explores the extent to which Bitcoin, as a representative cryptocurrency, can evolve into an everyday-use currency by benchmarking its characteristics against those of USD in both physical and electronic forms. It delves into Bitcoin's advantages - such as decentralisation, permissionless access, and cryptographic security - as well as its key limitations, including price volatility, slow transaction speed, and lack of regulatory oversight. Through detailed case studies on cyber heists and analysis of monetary policy, the essay argues that for cryptocurrency to gain mainstream acceptance, it must become more stable, secure, and centrally regulated - potentially leading to a permissioned, central-bank-issued stablecoin like a 'Crypto Dollar'. The essay also considers broader geopolitical forces, suggesting that global dissatisfaction with the USD's dominance could eventually catalyse the adoption of a supranational cryptocurrency, such as a UN-backed digital currency, to facilitate secure and equitable international trade."
+
+description: "Can Bitcoin and other cryptocurrencies replace traditional currencies like the US Dollar in everyday life? This comprehensive analysis examines the economic, technical, and political factors that influence mainstream adoption of crypto, exploring the future of digital money, stablecoins, and central bank regulation."
+
+summary: "We critically investigate whether Bitcoin - and by extension, other cryptocurrencies - can evolve into widely accepted everyday-use currencies. Using the US dollar as a benchmark, it evaluates key characteristics such as stability, divisibility, transaction efficiency, and regulatory compatibility. Drawing from real-world case studies like the Mt. Gox Heist and the Bangladesh Bank Heist, the piece highlishgts security concerns, value volatility, and the tension between decentralisation and the regulatory oversight needed for monetary policy. Ultimately, the articles proposes that for crypto to become mainstream, it must transform into a permissioned, central-bank-backed stablecoin - a 'cryptodollar' - that offers speed, trust, and compliance without sacrificing the innovation at the heart of digital money."
+
 cover:
     image: "article1-cover.jpg"
     alt: "Bitcoin Riches?"

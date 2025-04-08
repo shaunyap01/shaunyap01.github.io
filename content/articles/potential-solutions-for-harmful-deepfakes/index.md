@@ -2,10 +2,13 @@
 title: "Potential Solutions for Harmful Deepfakes" 
 date: 2024-05-01
 lastmod: 2024-05-01
-tags: []
+tags: ["##All Articles", "#In-depth Essay", "AI Ethics", "Platform Regulation"]
 author: ["Shaun Yap"]
-description: "This essay explores multifaceted solutions to mitigate the societal harms of deepfakes, balancing technological regulation, platform accountability, and public education."
-summary: "This essay explores the growing threat of harmful deepfakes and presents a range of potential solutions to mitigate their impact. From regulatory frameworks and technological safeguards to platform accountability and public education, it highlights how society can respond to this emerging challenge. With real-world examples and ethical reflections, the piece argues for a balanced approach that protects both security and freedom in the age of synthetic media."
+
+description: "Explore the growing threat of deepfakes and the ethical, legal, and societal challenges they pose. This in-depth article outlines practical solutions including AI regulation, platform accountability, detection tools, and media literacy to combat malicious synthetic media and misinformation online."
+
+summary: "As deepfake technology becomes increasingly realistic and accessible, the risks it poses to individuals, institutions, and democratic society are growing exponentially. This essay offers a multifaceted response to the challenge, arguing that no single solution is sufficient. It explores the need for regulation of AI tools, automatic self-certification of synthetic media, and the role of governments and platforms in detecting and labelling harmful content. It also emphasises the importance of public education in fostering a 'zero-trust' mindset, particularly in political and official contexts where authenticity is critical. Balancing freedom of expression with public safety, the essay calls for swift, coordinated action to protect digital integrity in the face of rapidly advancing synthetic media."
+
 cover:
     image: "article2-cover"
     alt: "Digital Defender"

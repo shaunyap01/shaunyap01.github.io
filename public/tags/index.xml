@@ -2,11 +2,67 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Tags on Shaun Yap</title>
-    <link>https://shaunyap01.github.io/tags/</link>
+    <link>http://localhost:1313/tags/</link>
     <description>Recent content in Tags on Shaun Yap</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en</language>
-    <lastBuildDate></lastBuildDate>
-    <atom:link href="https://shaunyap01.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 05 Apr 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>#</title>
+      <link>http://localhost:1313/tags/%23/</link>
+      <pubDate>Sat, 05 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%23/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>##All Articles</title>
+      <link>http://localhost:1313/tags/%23%23all-articles/</link>
+      <pubDate>Sat, 05 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%23%23all-articles/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>#In-Depth Essay</title>
+      <link>http://localhost:1313/tags/%23in-depth-essay/</link>
+      <pubDate>Wed, 01 May 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%23in-depth-essay/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>AI Ethics</title>
+      <link>http://localhost:1313/tags/ai-ethics/</link>
+      <pubDate>Wed, 01 May 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/ai-ethics/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Platform Regulation</title>
+      <link>http://localhost:1313/tags/platform-regulation/</link>
+      <pubDate>Wed, 01 May 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/platform-regulation/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Bitcoin</title>
+      <link>http://localhost:1313/tags/bitcoin/</link>
+      <pubDate>Fri, 01 Feb 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/bitcoin/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Blockchain</title>
+      <link>http://localhost:1313/tags/blockchain/</link>
+      <pubDate>Fri, 01 Feb 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/blockchain/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Cryptocurrency</title>
+      <link>http://localhost:1313/tags/cryptocurrency/</link>
+      <pubDate>Fri, 01 Feb 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/cryptocurrency/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>

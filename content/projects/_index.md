@@ -1,9 +1,8 @@
 ---
 title: "Projects"
-description: "Some projects"
+description: "Some of Shaun's Projects"
 ---
 
-<!-- ---
-## Quote --> If you can meet with Triumph and Disaster and treat those two imposters just the same. 
-    - Rudyard Kipling.
----
+> It is a capital mistake to theorize before one has data. Insensibly one begins to twist facts to suit theories, instead of theories to suit facts.  
+>
+> — _Sherlock Holmes_, _"A Scandal in Bohemia"_

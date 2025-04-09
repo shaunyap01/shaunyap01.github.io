@@ -2,7 +2,7 @@
 title: "Understanding Trump's Tariff Formula" 
 date: 2025-04-05
 lastmod: 2025-04-05
-tags: ["##All Articles", "#",]
+tags: ["##All Articles", "#Brief"]
 author: ["Shaun Yap"]
 
 description: ""
@@ -79,9 +79,9 @@ Then Country A introduces a $24$% (from 0) tariff on all goods from Country B. T
 
 Tariff amount $= 24$% $\cdot 100 =$ USD $24$ 
 
-What effect does this have on price to the consumers from Country A? This depends on $\varephi$ - the passthrough from tariffs to import prices.
+What effect does this have on price to the consumers from Country A? This depends on $\varphi$ - the passthrough from tariffs to import prices.
 
-Lets say $\varephi = 0.25$. Then the portion of the speaker passed through to Country A consumers is $\Delta \tau_i \varphi = 24$% $\cdot 0.25 = 6$% $=0.06$. Hence the Country A consumers will see a $6$% increase in the price of the speaker and all other goods from Country B. 
+Lets say $\varphi = 0.25$. Then the portion of the speaker passed through to Country A consumers is $\Delta \tau_i \varphi = 24$% $\cdot 0.25 = 6$% $=0.06$. Hence the Country A consumers will see a $6$% increase in the price of the speaker and all other goods from Country B. 
 
 What effect does this 6% price increase on imported goods from Country B have on demand for the good in Country A? This depends on $\varepsilon$ - price elasticity of import demand assuming it is linear.
 

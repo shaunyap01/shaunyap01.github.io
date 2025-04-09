@@ -6,8 +6,15 @@
     <description>Recent content in #In-Depth Essay on Shaun Yap</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 01 May 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 01 Feb 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/%23in-depth-essay/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Generative AI and the Dimishing Returns of Scale: Are We Nearing the Plateau?</title>
+      <link>http://localhost:1313/articles/generative-ai-and-the-diminishing-returns-of-scale-are-we-nearing-the-plateau/</link>
+      <pubDate>Sat, 01 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/articles/generative-ai-and-the-diminishing-returns-of-scale-are-we-nearing-the-plateau/</guid>
+      <description>Dive into the world of generative AI as we explore its remarkable growth powered by massive language models, image generators, and coding assistants, and ask if the era of scale is nearing its limit. This comprehensive article examines how relentless scaling drove breakthrough capabilities in text, images, and code, while drawing on recent empirical studies to show diminishing returns. Find out how new approaches - algorithmic efficiency, retrieval-augmented generation, and multimodal models - could shape the future of AI, along with key policy and ethical dimensions.</description>
+    </item>
     <item>
       <title>Potential Solutions for Harmful Deepfakes</title>
       <link>http://localhost:1313/articles/potential-solutions-for-harmful-deepfakes/</link>

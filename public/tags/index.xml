@@ -9,13 +9,6 @@
     <lastBuildDate>Sat, 05 Apr 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>#</title>
-      <link>http://localhost:1313/tags/%23/</link>
-      <pubDate>Sat, 05 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/%23/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>##All Articles</title>
       <link>http://localhost:1313/tags/%23%23all-articles/</link>
       <pubDate>Sat, 05 Apr 2025 00:00:00 +0000</pubDate>
@@ -23,17 +16,45 @@
       <description></description>
     </item>
     <item>
+      <title>#Brief</title>
+      <link>http://localhost:1313/tags/%23brief/</link>
+      <pubDate>Sat, 05 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/%23brief/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>#In-Depth Essay</title>
       <link>http://localhost:1313/tags/%23in-depth-essay/</link>
-      <pubDate>Wed, 01 May 2024 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 01 Feb 2025 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/tags/%23in-depth-essay/</guid>
       <description></description>
     </item>
     <item>
       <title>AI Ethics</title>
       <link>http://localhost:1313/tags/ai-ethics/</link>
-      <pubDate>Wed, 01 May 2024 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 01 Feb 2025 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/tags/ai-ethics/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>AI Scaling</title>
+      <link>http://localhost:1313/tags/ai-scaling/</link>
+      <pubDate>Sat, 01 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/ai-scaling/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Generative AI</title>
+      <link>http://localhost:1313/tags/generative-ai/</link>
+      <pubDate>Sat, 01 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/generative-ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Large Language Models</title>
+      <link>http://localhost:1313/tags/large-language-models/</link>
+      <pubDate>Sat, 01 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/large-language-models/</guid>
       <description></description>
     </item>
     <item>

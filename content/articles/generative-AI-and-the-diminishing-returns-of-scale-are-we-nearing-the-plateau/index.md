@@ -27,6 +27,7 @@ Generative AI has captured the world's imagination by enabling machines to creat
 [^1]: https://research.ibm.com/blog/what-is-generative-AI
 [^2]: https://www.youngwonks.com/blog/generative-ai-:-beyond-texts-and-images
 ​
+
 But what enabled this sudden leap in AI creativity? A big part of the story is scale. Modern generative AI is powered by large neural networks (often called large language models or LLMs when they deal with language) trained on massive datasets. Developers have found that making these models **bigger** - in terms of the number of parameters (the model's internal configuration size), the volume of training data, and the amount of compute power - tends to make them better. GPT-3, for instance, had 175 billion parameters and was able to produce remarkably coherent text that smaller predecessors like GPT-2 (with 1.5 billion parameters) could not. Similarly, image generators evolved from producing blurry low-res pictures to photorealistic art as their neural networks and training image collections grew. This section explains the principle of scaling in AI and how it historically drove progress, before exploring whether this approach is now hitting a point of diminishing returns.
 
 ## The Scaling Revolution in AI: Bigger Models, Better Results

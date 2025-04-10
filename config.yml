@@ -40,7 +40,7 @@ params:
     description: "This is Shaun Yap's personal website"
     author: Shaun Yap
     # googleAnalyticsID: "G-XXXXX"
-    DateFormat: "January 2006"
+    DateFormat: "02 January 2006"
     defaultTheme: light
     hideFooter: true
     disableThemeToggle: true

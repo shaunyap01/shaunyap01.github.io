@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>$$All Projects on Shaun Yap</title>
+    <link>http://localhost:1313/tags/all-projects/</link>
+    <description>Recent content in $$All Projects on Shaun Yap</description>
+    <generator>Hugo -- 0.145.0</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 01 Jul 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/all-projects/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Bayesian Inference</title>
+      <link>http://localhost:1313/projects/bayesian-inference/</link>
+      <pubDate>Mon, 01 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/projects/bayesian-inference/</guid>
+      <description>&lt;h2 id=&#34;section-a-bayesian-inference&#34;&gt;Section A. Bayesian Inference&lt;/h2&gt;
+&lt;h3 id=&#34;a1&#34;&gt;A.1)&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;US_cancer &amp;lt;- &lt;span style=&#34;color:#0a0&#34;&gt;read.csv&lt;/span&gt;(&lt;span style=&#34;color:#a50&#34;&gt;&amp;#34;~/University of Exeter/MTHM017 - Advanced Topics in Statistics/Assignment/US_cancer.csv&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#0a0&#34;&gt;load&lt;/span&gt;(&lt;span style=&#34;color:#a50&#34;&gt;&amp;#39;USMap.RData&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;US Cancer - dc [kidney cancer death counts from 1980 to 1984] - pop
+[average population for counties from 1980 to 1984]&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;US_cancer$cmr &amp;lt;- (US_cancer$dc) / (US_cancer$pop*&lt;span style=&#34;color:#099&#34;&gt;5&lt;/span&gt;) * &lt;span style=&#34;color:#099&#34;&gt;10000&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#0a0&#34;&gt;summary&lt;/span&gt;(US_cancer$cmr)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;pre&gt;&lt;code&gt;##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+## 0.00000 0.09134 0.18676 0.22737 0.30620 2.62467
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Maximum Crude Mortality rate value is 2.62467&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

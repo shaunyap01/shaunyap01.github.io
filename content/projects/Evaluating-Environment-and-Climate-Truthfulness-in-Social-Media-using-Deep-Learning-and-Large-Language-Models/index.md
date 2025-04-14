@@ -2,7 +2,7 @@
 title: "Evaluating Environment & Climate Truthfulness in Social Media using Deep Learning & Large Language Models (LLMs)"
 date: 2024-09-01
 lastmod: 2024-09-01
-tags: ["`Python", "$$All Projects", "Natural Language Processing (NLP)", "Feature Engineering", "Deep Learning", "Large Language Models (LLM)", "Environmental Misinformation"]
+tags: ["`Python", "$$All Projects", "Natural Language Processing (NLP)", "Feature Engineering", "Web scrape", "Deep Learning", "Large Language Models (LLM)", "Environmental Misinformation"]
 author: "Shaun Yap"
 description: "" 
 summary: "Awarded Best Dissertation in Cohort, this MSc project explores the detection of climate and environmental misinformation on social media using a comparative framework of traditional natural language processing techniques, deep learning, and Large Language Models (LLMs). Leveraging a web-scraped dataset from PolitiFact, the study highlights the superiority of CNNs trained on ordinal truthfulness data, with accuracy boosted from 80.1% to 84.0% through GPT-4o-driven feature augmentation. While LLMs enhanced contextual understanding and sentiment analysis, their time complexity posed practical limitations. The project contributes novel insights into model performance trade-offs, evaluation metrics tailored to ordinal classification, and the practical integration of LLMs for misinformation mitigation in climate discourse." 

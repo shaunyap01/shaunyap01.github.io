@@ -53,7 +53,7 @@ Maximum Crude Mortality rate value is 2.62467
 USMap(US_cancer$cmr, ncol=12, figmain="US Cancer Crude Mortality Rates", lower=0, upper=3.0)
 ```
 
-![](unnamed-chunk-6-1.png)<!-- -->
+![png](bayesian_inference_files/unnamed-chunk-6-1.png)<!-- -->
 
 ### A.2)
 
@@ -68,13 +68,13 @@ US_cancer$high <- ifelse(US_cancer$cmr >= testq[2], 1, 0)
 USMap(US_cancer$low, ncol=2, figmain="US Counties with lowest 10% raw crude mortality rates of kidney cancer", lower=0, upper=1)
 ```
 
-![](unnamed-chunk-8-1.png)<!-- -->
+![png](bayesian_inference_files/unnamed-chunk-8-1.png)<!-- -->
 
 ``` r
 USMap(US_cancer$high, ncol=2, figmain="US Counties with highest 10% raw crude mortality rates of kidney cancer", lower=0, upper=1)
 ```
 
-![](unnamed-chunk-9-1.png)<!-- -->
+![png](bayesian_inference_files/unnamed-chunk-9-1.png)<!-- -->
 
 Upon examination, there’s a notable pattern where many of the counties
 with the lowest and highest mortality rates seem to be sparsely
@@ -267,19 +267,19 @@ Traceplots
 MCMCtrace(cmr_est_rhat_samples,type = 'trace',ind = TRUE, pdf = FALSE)
 ```
 
-![](unnamed-chunk-16-1.png)<!-- -->
+![png](bayesian_inference_files/unnamed-chunk-16-1.png)<!-- -->
 
 ``` r
 MCMCtrace(mu_rhat_samples,type = 'trace',ind = TRUE, pdf = FALSE)
 ```
 
-![](unnamed-chunk-16-2.png)<!-- -->
+![png](bayesian_inference_files/unnamed-chunk-16-2.png)<!-- -->
 
 ``` r
 MCMCtrace(theta_rhat_samples,type = 'trace',ind = TRUE, pdf = FALSE)
 ```
 
-![](unnamed-chunk-16-3.png)<!-- -->
+![png](bayesian_inference_files/unnamed-chunk-16-3.png)<!-- -->
 
 The traceplots presented here for the five counties with the highest
 R-hat values offer an initial qualitative assessment of convergence in a
@@ -373,19 +373,19 @@ hierarchical models where parameters may be correlated.
 gelman.plot(cmr_est_rhat_samples)
 ```
 
-![](unnamed-chunk-18-1.png)<!-- -->
+![png](bayesian_inference_files/unnamed-chunk-18-1.png)<!-- -->
 
 ``` r
 gelman.plot(mu_rhat_samples)
 ```
 
-![](unnamed-chunk-18-2.png)<!-- -->
+![png](bayesian_inference_files/unnamed-chunk-18-2.png)<!-- -->
 
 ``` r
 gelman.plot(theta_rhat_samples)
 ```
 
-![](unnamed-chunk-18-3.png)<!-- -->
+![png](bayesian_inference_files/unnamed-chunk-18-3.png)<!-- -->
 The Gelman-Rubin plots for the five counties with the highest R-hat
 values illustrate the convergence diagnostic over the last five thousand
 iterations of the MCMC process. Each plot shows two lines: the solid
@@ -411,19 +411,19 @@ determining convergence.
 autocorr.plot(cmr_est_rhat_samples)
 ```
 
-![](unnamed-chunk-19-1.png)<!-- -->![](unnamed-chunk-19-2.png)<!-- -->![](unnamed-chunk-19-3.png)<!-- -->
+![png](bayesian_inference_files/unnamed-chunk-19-1.png)<!-- -->![png](bayesian_inference_files/unnamed-chunk-19-2.png)<!-- -->![png](bayesian_inference_files/unnamed-chunk-19-3.png)<!-- -->
 
 ``` r
 autocorr.plot(mu_rhat_samples)
 ```
 
-![](unnamed-chunk-19-4.png)<!-- -->![](unnamed-chunk-19-5.png)<!-- -->![](unnamed-chunk-19-6.png)<!-- -->
+![png](bayesian_inference_files/unnamed-chunk-19-4.png)<!-- -->![png](bayesian_inference_files/unnamed-chunk-19-5.png)<!-- -->![png](bayesian_inference_files/unnamed-chunk-19-6.png)<!-- -->
 
 ``` r
 autocorr.plot(theta_rhat_samples)
 ```
 
-![](unnamed-chunk-19-7.png)<!-- -->![](unnamed-chunk-19-8.png)<!-- -->![](unnamed-chunk-19-9.png)<!-- -->
+![png](bayesian_inference_files/unnamed-chunk-19-7.png)<!-- -->![png](bayesian_inference_files/unnamed-chunk-19-8.png)<!-- -->![png](bayesian_inference_files/unnamed-chunk-19-9.png)<!-- -->
 
 The autocorrelation plots for the five counties with the highest R-hat
 values indicate excellent characteristics of the MCMC chains. For each
@@ -513,7 +513,7 @@ with confidence for inference and decision-making.
 hist(US_cancer$cmr_est, breaks = 30)
 ```
 
-![](unnamed-chunk-22-1.png)<!-- -->
+![png](bayesian_inference_files/unnamed-chunk-22-1.png)<!-- -->
 
 ``` r
 summary(US_cancer$cmr_est)
@@ -563,7 +563,7 @@ warrant further investigation.
 hist(US_cancer$mu_est, breaks = 50)
 ```
 
-![](unnamed-chunk-23-1.png)<!-- -->
+![png](bayesian_inference_files/unnamed-chunk-23-1.png)<!-- -->
 
 ``` r
 summary(US_cancer$mu_est)
@@ -611,7 +611,7 @@ contributing to these high expected counts in certain counties.
 hist(US_cancer$theta_est, breaks = 30)
 ```
 
-![](unnamed-chunk-24-1.png)<!-- -->
+![png](bayesian_inference_files/unnamed-chunk-24-1.png)<!-- -->
 
 ``` r
 summary(US_cancer$theta_est)
@@ -708,13 +708,13 @@ The mean of the prior crude rate is 0.4651163
 hist(subset(US_cancer, pop_small == 1)$cmr_est)
 ```
 
-![](unnamed-chunk-29-1.png)<!-- -->
+![png](bayesian_inference_files/unnamed-chunk-29-1.png)<!-- -->
 
 ``` r
 hist(subset(US_cancer, pop_small == 1)$cmr)
 ```
 
-![](unnamed-chunk-30-1.png)<!-- -->
+![png](bayesian_inference_files/unnamed-chunk-30-1.png)<!-- -->
 
 **Conclusions** The mean posterior estimate is much higher than the mean
 of the raw crude rates for these same counties, which is 0.0847. The raw
@@ -797,13 +797,13 @@ The mean of the prior crude rate is 0.4651163
 hist(subset(US_cancer, pop_large == 1)$cmr_est)
 ```
 
-![](unnamed-chunk-35-1.png)<!-- -->
+![png](bayesian_inference_files/unnamed-chunk-35-1.png)<!-- -->
 
 ``` r
 hist(subset(US_cancer, pop_large == 1)$cmr)
 ```
 
-![](unnamed-chunk-36-1.png)<!-- -->
+![png](bayesian_inference_files/unnamed-chunk-36-1.png)<!-- -->
 
 **Conclusions**
 
@@ -1041,7 +1041,7 @@ abline(v = mean(mu_fairfield), col = "red", lwd = 2)
 legend("topright", legend = paste("Mean =", round(mean(mu_fairfield), 2)), col = "red", lwd = 2)
 ```
 
-![](unnamed-chunk-39-1.png)<!-- -->
+![png](bayesian_inference_files/unnamed-chunk-39-1.png)<!-- -->
 
 ``` r
 # Display numerical summaries

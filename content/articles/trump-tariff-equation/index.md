@@ -2,7 +2,7 @@
 title: "Understanding Trump's Tariff Formula" 
 date: 2025-04-05
 lastmod: 2025-04-05
-tags: ["##All Articles", "#Brief", "`Python", "Web-scrape", "Economics", "Trade Policy", "Tariffs", "Trump Administration"]
+tags: ["##All Articles", "#Brief", "`Python", "Web scrape", "Economics", "Trade Policy", "Tariffs", "Trump Administration"]
 author: ["Shaun Yap"]
 
 description: "On April 2, 2025, President Donald Trump declared 'Liberation Day', unveiling aggressive new tariffs designed to correct trade imbalances via a controversial formula from the U.S. Trade Representative (USTR). This tariff equation, which aims to achieve a bilateral trade balance of zero, adjusts rates based on export-import disparities, elasticity of demand, and tariff passthrough. This article focuses on explaining the Trump Tariff formula to all with worked examples and offering Python tools to replicate and validate the data."

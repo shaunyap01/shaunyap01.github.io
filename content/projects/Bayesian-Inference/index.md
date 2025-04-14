@@ -1,25 +1,31 @@
 ---
 title: "Bayesian Inference"
-date: 2024-07-01
-lastmod: 2024-07-01
-tags: ["`R", "$$All Projects"]
+date: 2024-02-05
+lastmod: 2024-02-05
+tags: ["`R", "$$All Projects", "Bayesian Inference", "Bayesian Statistics", "Gibbs Sampling", "Markov Chain Monte Carlo (MCMC)"]
 author: "Shaun Yap"
 description: "" 
-summary: "" 
+summary: "This project demonstrates advanced skills in Bayesian hierarchical modelling, data visualisation, and statistical inference using R and JAGS. It showcases the ability to preprocess real-world epidemiological data, implement and diagnose MCMC simulations using Gibbs sampling, and interpret convergence diagnostics (e.g., traceplots, Gelman-Rubin statistics, and autocorrelation). The work highlights proficiency in quantifying uncertainty, leveraging shrinkage effects, and adapting models for updated demographic data. It also reflects strong analytical thinking in comparing posterior estimates across population strata, critically evaluating prior influence, and effectively communicating results through both code and narrative-skills essential for rigorous, reproducible, and insightful statistical analysis." 
 cover:
     image: ""
     alt: ""
     relative: false
-editPost:
+#editPost:
+#    URL:
 #    Text:
 showToc: true
 disableAnchoredHeadings: false
 
 ---
+### Description
+
+This project demonstrates advanced skills in Bayesian hierarchical modelling, data visualisation, and statistical inference using R and `JAGS` ('Just Another Gibb Sampler'). It showcases the ability to preprocess real-world epidemiological data, implement and diagnose MCMC simulations using Gibbs sampling, and interpret convergence diagnostics (e.g., traceplots, Gelman-Rubin statistics, and autocorrelation). The work highlights proficiency in quantifying uncertainty, leveraging shrinkage effects, and adapting models for updated demographic data. It also reflects strong analytical thinking in comparing posterior estimates across population strata, critically evaluating prior influence, and effectively communicating results through both code and narrative-skills essential for rigorous, reproducible, and insightful statistical analysis.
+
+---
 
 ## Section A. Bayesian Inference
 
-### A.1)
+### A.1) 
 
 ``` r
 US_cancer <- read.csv("~/University of Exeter/MTHM017 - Advanced Topics in Statistics/Assignment/US_cancer.csv")
@@ -47,7 +53,7 @@ Maximum Crude Mortality rate value is 2.62467
 USMap(US_cancer$cmr, ncol=12, figmain="US Cancer Crude Mortality Rates", lower=0, upper=3.0)
 ```
 
-![](files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
+![](unnamed-chunk-6-1.png)<!-- -->
 
 ### A.2)
 
@@ -62,13 +68,13 @@ US_cancer$high <- ifelse(US_cancer$cmr >= testq[2], 1, 0)
 USMap(US_cancer$low, ncol=2, figmain="US Counties with lowest 10% raw crude mortality rates of kidney cancer", lower=0, upper=1)
 ```
 
-![](files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
+![](unnamed-chunk-8-1.png)<!-- -->
 
 ``` r
 USMap(US_cancer$high, ncol=2, figmain="US Counties with highest 10% raw crude mortality rates of kidney cancer", lower=0, upper=1)
 ```
 
-![](files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
+![](unnamed-chunk-9-1.png)<!-- -->
 
 Upon examination, there’s a notable pattern where many of the counties
 with the lowest and highest mortality rates seem to be sparsely
@@ -261,19 +267,19 @@ Traceplots
 MCMCtrace(cmr_est_rhat_samples,type = 'trace',ind = TRUE, pdf = FALSE)
 ```
 
-![](files/figure-gfm/unnamed-chunk-16-1.png)<!-- -->
+![](unnamed-chunk-16-1.png)<!-- -->
 
 ``` r
 MCMCtrace(mu_rhat_samples,type = 'trace',ind = TRUE, pdf = FALSE)
 ```
 
-![](files/figure-gfm/unnamed-chunk-16-2.png)<!-- -->
+![](unnamed-chunk-16-2.png)<!-- -->
 
 ``` r
 MCMCtrace(theta_rhat_samples,type = 'trace',ind = TRUE, pdf = FALSE)
 ```
 
-![](files/figure-gfm/unnamed-chunk-16-3.png)<!-- -->
+![](unnamed-chunk-16-3.png)<!-- -->
 
 The traceplots presented here for the five counties with the highest
 R-hat values offer an initial qualitative assessment of convergence in a
@@ -367,19 +373,19 @@ hierarchical models where parameters may be correlated.
 gelman.plot(cmr_est_rhat_samples)
 ```
 
-![](files/figure-gfm/unnamed-chunk-18-1.png)<!-- -->
+![](unnamed-chunk-18-1.png)<!-- -->
 
 ``` r
 gelman.plot(mu_rhat_samples)
 ```
 
-![](files/figure-gfm/unnamed-chunk-18-2.png)<!-- -->
+![](unnamed-chunk-18-2.png)<!-- -->
 
 ``` r
 gelman.plot(theta_rhat_samples)
 ```
 
-![](files/figure-gfm/unnamed-chunk-18-3.png)<!-- -->
+![](unnamed-chunk-18-3.png)<!-- -->
 The Gelman-Rubin plots for the five counties with the highest R-hat
 values illustrate the convergence diagnostic over the last five thousand
 iterations of the MCMC process. Each plot shows two lines: the solid
@@ -405,19 +411,19 @@ determining convergence.
 autocorr.plot(cmr_est_rhat_samples)
 ```
 
-![](files/figure-gfm/unnamed-chunk-19-1.png)<!-- -->![](files/figure-gfm/unnamed-chunk-19-2.png)<!-- -->![](files/figure-gfm/unnamed-chunk-19-3.png)<!-- -->
+![](unnamed-chunk-19-1.png)<!-- -->![](unnamed-chunk-19-2.png)<!-- -->![](unnamed-chunk-19-3.png)<!-- -->
 
 ``` r
 autocorr.plot(mu_rhat_samples)
 ```
 
-![](files/figure-gfm/unnamed-chunk-19-4.png)<!-- -->![](files/figure-gfm/unnamed-chunk-19-5.png)<!-- -->![](files/figure-gfm/unnamed-chunk-19-6.png)<!-- -->
+![](unnamed-chunk-19-4.png)<!-- -->![](unnamed-chunk-19-5.png)<!-- -->![](unnamed-chunk-19-6.png)<!-- -->
 
 ``` r
 autocorr.plot(theta_rhat_samples)
 ```
 
-![](files/figure-gfm/unnamed-chunk-19-7.png)<!-- -->![](files/figure-gfm/unnamed-chunk-19-8.png)<!-- -->![](files/figure-gfm/unnamed-chunk-19-9.png)<!-- -->
+![](unnamed-chunk-19-7.png)<!-- -->![](unnamed-chunk-19-8.png)<!-- -->![](unnamed-chunk-19-9.png)<!-- -->
 
 The autocorrelation plots for the five counties with the highest R-hat
 values indicate excellent characteristics of the MCMC chains. For each
@@ -507,7 +513,7 @@ with confidence for inference and decision-making.
 hist(US_cancer$cmr_est, breaks = 30)
 ```
 
-![](files/figure-gfm/unnamed-chunk-22-1.png)<!-- -->
+![](unnamed-chunk-22-1.png)<!-- -->
 
 ``` r
 summary(US_cancer$cmr_est)
@@ -557,7 +563,7 @@ warrant further investigation.
 hist(US_cancer$mu_est, breaks = 50)
 ```
 
-![](files/figure-gfm/unnamed-chunk-23-1.png)<!-- -->
+![](unnamed-chunk-23-1.png)<!-- -->
 
 ``` r
 summary(US_cancer$mu_est)
@@ -605,7 +611,7 @@ contributing to these high expected counts in certain counties.
 hist(US_cancer$theta_est, breaks = 30)
 ```
 
-![](files/figure-gfm/unnamed-chunk-24-1.png)<!-- -->
+![](unnamed-chunk-24-1.png)<!-- -->
 
 ``` r
 summary(US_cancer$theta_est)
@@ -702,13 +708,13 @@ The mean of the prior crude rate is 0.4651163
 hist(subset(US_cancer, pop_small == 1)$cmr_est)
 ```
 
-![](files/figure-gfm/unnamed-chunk-29-1.png)<!-- -->
+![](unnamed-chunk-29-1.png)<!-- -->
 
 ``` r
 hist(subset(US_cancer, pop_small == 1)$cmr)
 ```
 
-![](files/figure-gfm/unnamed-chunk-30-1.png)<!-- -->
+![](unnamed-chunk-30-1.png)<!-- -->
 
 **Conclusions** The mean posterior estimate is much higher than the mean
 of the raw crude rates for these same counties, which is 0.0847. The raw
@@ -745,7 +751,7 @@ important to recognise that if the prior is not well-chosen, it could
 also lead to biased results. Therefore, the choice of prior should be
 given careful consideration in such analyses.
 
-### A.5ii)
+#### A.5ii)
 
 largest 1% average population
 
@@ -791,13 +797,13 @@ The mean of the prior crude rate is 0.4651163
 hist(subset(US_cancer, pop_large == 1)$cmr_est)
 ```
 
-![](files/figure-gfm/unnamed-chunk-35-1.png)<!-- -->
+![](unnamed-chunk-35-1.png)<!-- -->
 
 ``` r
 hist(subset(US_cancer, pop_large == 1)$cmr)
 ```
 
-![](files/figure-gfm/unnamed-chunk-36-1.png)<!-- -->
+![](unnamed-chunk-36-1.png)<!-- -->
 
 **Conclusions**
 
@@ -1035,7 +1041,7 @@ abline(v = mean(mu_fairfield), col = "red", lwd = 2)
 legend("topright", legend = paste("Mean =", round(mean(mu_fairfield), 2)), col = "red", lwd = 2)
 ```
 
-![](files/figure-gfm/unnamed-chunk-39-1.png)<!-- -->
+![](unnamed-chunk-39-1.png)<!-- -->
 
 ``` r
 # Display numerical summaries
@@ -1145,7 +1151,7 @@ SC—were chosen to represent small, large, and medium-sized populations
 respectively. The predictions provide insight into the expected number
 of deaths due to kidney cancer in these areas.
 
-### Introduction
+#### Introduction
 
 Disparities in health outcomes can be influenced by demographic shifts
 over time. With changes in populations, the crude mortality rates for
@@ -1154,7 +1160,7 @@ accurate public health assessments. This utilises a hierarchical Poisson
 regression model to estimate the expected kidney cancer deaths in three
 different counties, accounting for updated population sizes.
 
-### Methods
+#### Methods
 
 Using the US_Cancer dataset and recent population data for the years
 2021, we fit a hierarchical Poisson model. The model assumes kidney
@@ -1163,7 +1169,7 @@ value $\mu_i$, which is the product of the county population, $n_i$, the
 rate $\theta_i$, and the time period of 5 years. A Gamma(20, 430000)
 distribution is used as the prior for each $\theta_i$.
 
-### Results
+#### Results
 
 The model predicts the following mean number of kidney cancer deaths for
 the year 2021:
@@ -1235,9 +1241,11 @@ Fairfield County, there’s a 100% (or certain) chance. To interpret these
 probabilities, let’s consider the provided population and death count
 information alongside possible factors:
 
-**Potter County, SD:** - **1980-1984 Population:** 3,190 - **2021
-Population:** 2,475 - **1980-1984 Deaths:** 2 - **Predicted
-Probability:** 0%
+**Potter County, SD:** 
+- **1980-1984 Population:** 3,190 
+- **2021 Population:** 2,475 
+- **1980-1984 Deaths:** 2 
+- **Predicted Probability:** 0%
 
 The probability that the predicted deaths in 2021 exceed those from
 1980-1984 is 0. This finding corresponds to a decrease in population
@@ -1248,9 +1256,11 @@ given the smaller population size of the time, which could indicate an
 anomalous spike in the 1980s data. As such an exceedance of the
 historical death count is extremely unlikely.
 
-**Polk County, IA:** - **1980-1984 Population:** 327,140 - **2021
-Population:** 496,844 - **1980-1984 Deaths:** 45 - **Predicted
-Probability:** 94%
+**Polk County, IA:** 
+- **1980-1984 Population:** 327,140 
+- **2021 Population:** 496,844 
+- **1980-1984 Deaths:** 45 
+- **Predicted Probability:** 94%
 
 The probability is 0.94, which is substantial. This may be largely
 attributable to a significant increase in population from 327,140 to
@@ -1258,9 +1268,10 @@ attributable to a significant increase in population from 327,140 to
 of individuals at risk, contributing to a greater probability of
 exceeding the historical number of deaths.
 
-**Fairfield County, SC:** - **1980-1984 Population:** 22,295 - **2021
-Population:** 20,690 - **1980-1984 Deaths:** 1 - **Predicted
-Probability:** 100%
+**Fairfield County, SC:** 
+- **1980-1984 Population:** 22,295 
+- **2021 Population:** 20,690 
+- **1980-1984 Deaths:** 1 - **Predicted Probability:** 100%
 
 Fairfield county experienced a slight decrease in population from 22,295
 to 20,690, yet the model predicts with 100% probability that the number

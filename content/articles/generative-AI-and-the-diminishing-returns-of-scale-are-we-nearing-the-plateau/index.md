@@ -22,6 +22,9 @@ showToc: true
 disableAnchoredHeadings: false
 
 ---
+
+---
+
 Generative AI has captured the world's imagination by enabling machines to create - from composing text to painting images and even writing code. Unlike traditional AI systems that might classify photos or predict numbers, generative models produce original content based on patterns learned from training data. For example, text-based AI like OpenAI's GPT series (ChatGPT) can draft essays or have conversations, image models such as DALL-E or Stable Diffusion render artwork from a simple prompt, and coding assistants like GitHub Copilot or Amazon's CodeWhisperer suggest software code as you type. In short, generative AI refers to deep learning models that generate high-quality text, images, and other content (including computer code) by learning the structure of training data and then creating new examples in similar style [^1] [^2]. This technology has rapidly advanced over the past few years, finding applications in writing, design, entertainment, and software development.
 
 [^1]: https://research.ibm.com/blog/what-is-generative-AI

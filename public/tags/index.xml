@@ -2,101 +2,206 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Tags on Shaun Yap</title>
-    <link>http://localhost:1313/tags/</link>
+    <link>http://localhost:57259/tags/</link>
     <description>Recent content in Tags on Shaun Yap</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en</language>
     <lastBuildDate>Sat, 05 Apr 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:57259/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>##All Articles</title>
-      <link>http://localhost:1313/tags/%23%23all-articles/</link>
+      <link>http://localhost:57259/tags/%23%23all-articles/</link>
       <pubDate>Sat, 05 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/%23%23all-articles/</guid>
+      <guid>http://localhost:57259/tags/%23%23all-articles/</guid>
       <description></description>
     </item>
     <item>
       <title>#Brief</title>
-      <link>http://localhost:1313/tags/%23brief/</link>
+      <link>http://localhost:57259/tags/%23brief/</link>
       <pubDate>Sat, 05 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/%23brief/</guid>
+      <guid>http://localhost:57259/tags/%23brief/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>`Python</title>
+      <link>http://localhost:57259/tags/python/</link>
+      <pubDate>Sat, 05 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:57259/tags/python/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Economics</title>
+      <link>http://localhost:57259/tags/economics/</link>
+      <pubDate>Sat, 05 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:57259/tags/economics/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Tariffs</title>
+      <link>http://localhost:57259/tags/tariffs/</link>
+      <pubDate>Sat, 05 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:57259/tags/tariffs/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Trade Policy</title>
+      <link>http://localhost:57259/tags/trade-policy/</link>
+      <pubDate>Sat, 05 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:57259/tags/trade-policy/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Trump Administration</title>
+      <link>http://localhost:57259/tags/trump-administration/</link>
+      <pubDate>Sat, 05 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:57259/tags/trump-administration/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Web-Scrape</title>
+      <link>http://localhost:57259/tags/web-scrape/</link>
+      <pubDate>Sat, 05 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:57259/tags/web-scrape/</guid>
       <description></description>
     </item>
     <item>
       <title>#In-Depth Essay</title>
-      <link>http://localhost:1313/tags/%23in-depth-essay/</link>
+      <link>http://localhost:57259/tags/%23in-depth-essay/</link>
       <pubDate>Sat, 01 Feb 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/%23in-depth-essay/</guid>
+      <guid>http://localhost:57259/tags/%23in-depth-essay/</guid>
       <description></description>
     </item>
     <item>
       <title>AI Ethics</title>
-      <link>http://localhost:1313/tags/ai-ethics/</link>
+      <link>http://localhost:57259/tags/ai-ethics/</link>
       <pubDate>Sat, 01 Feb 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/ai-ethics/</guid>
+      <guid>http://localhost:57259/tags/ai-ethics/</guid>
       <description></description>
     </item>
     <item>
       <title>AI Scaling</title>
-      <link>http://localhost:1313/tags/ai-scaling/</link>
+      <link>http://localhost:57259/tags/ai-scaling/</link>
       <pubDate>Sat, 01 Feb 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/ai-scaling/</guid>
+      <guid>http://localhost:57259/tags/ai-scaling/</guid>
       <description></description>
     </item>
     <item>
       <title>Generative AI</title>
-      <link>http://localhost:1313/tags/generative-ai/</link>
+      <link>http://localhost:57259/tags/generative-ai/</link>
       <pubDate>Sat, 01 Feb 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/generative-ai/</guid>
+      <guid>http://localhost:57259/tags/generative-ai/</guid>
       <description></description>
     </item>
     <item>
       <title>Large Language Models</title>
-      <link>http://localhost:1313/tags/large-language-models/</link>
+      <link>http://localhost:57259/tags/large-language-models/</link>
       <pubDate>Sat, 01 Feb 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/large-language-models/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>`R</title>
-      <link>http://localhost:1313/tags/r/</link>
-      <pubDate>Mon, 01 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/r/</guid>
+      <guid>http://localhost:57259/tags/large-language-models/</guid>
       <description></description>
     </item>
     <item>
       <title>$$All Projects</title>
-      <link>http://localhost:1313/tags/all-projects/</link>
-      <pubDate>Mon, 01 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/all-projects/</guid>
+      <link>http://localhost:57259/tags/all-projects/</link>
+      <pubDate>Sun, 01 Sep 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:57259/tags/all-projects/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Deep Learning</title>
+      <link>http://localhost:57259/tags/deep-learning/</link>
+      <pubDate>Sun, 01 Sep 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:57259/tags/deep-learning/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Environmental Misinformation</title>
+      <link>http://localhost:57259/tags/environmental-misinformation/</link>
+      <pubDate>Sun, 01 Sep 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:57259/tags/environmental-misinformation/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Feature Engineering</title>
+      <link>http://localhost:57259/tags/feature-engineering/</link>
+      <pubDate>Sun, 01 Sep 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:57259/tags/feature-engineering/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Large Language Models (LLM)</title>
+      <link>http://localhost:57259/tags/large-language-models-llm/</link>
+      <pubDate>Sun, 01 Sep 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:57259/tags/large-language-models-llm/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Natural Language Processing (NLP)</title>
+      <link>http://localhost:57259/tags/natural-language-processing-nlp/</link>
+      <pubDate>Sun, 01 Sep 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:57259/tags/natural-language-processing-nlp/</guid>
       <description></description>
     </item>
     <item>
       <title>Platform Regulation</title>
-      <link>http://localhost:1313/tags/platform-regulation/</link>
+      <link>http://localhost:57259/tags/platform-regulation/</link>
       <pubDate>Wed, 01 May 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/platform-regulation/</guid>
+      <guid>http://localhost:57259/tags/platform-regulation/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>`R</title>
+      <link>http://localhost:57259/tags/r/</link>
+      <pubDate>Mon, 05 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:57259/tags/r/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Bayesian Inference</title>
+      <link>http://localhost:57259/tags/bayesian-inference/</link>
+      <pubDate>Mon, 05 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:57259/tags/bayesian-inference/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Bayesian Statistics</title>
+      <link>http://localhost:57259/tags/bayesian-statistics/</link>
+      <pubDate>Mon, 05 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:57259/tags/bayesian-statistics/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Gibbs Sampling</title>
+      <link>http://localhost:57259/tags/gibbs-sampling/</link>
+      <pubDate>Mon, 05 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:57259/tags/gibbs-sampling/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Markov Chain Monte Carlo (MCMC)</title>
+      <link>http://localhost:57259/tags/markov-chain-monte-carlo-mcmc/</link>
+      <pubDate>Mon, 05 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:57259/tags/markov-chain-monte-carlo-mcmc/</guid>
       <description></description>
     </item>
     <item>
       <title>Bitcoin</title>
-      <link>http://localhost:1313/tags/bitcoin/</link>
+      <link>http://localhost:57259/tags/bitcoin/</link>
       <pubDate>Fri, 01 Feb 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/bitcoin/</guid>
+      <guid>http://localhost:57259/tags/bitcoin/</guid>
       <description></description>
     </item>
     <item>
       <title>Blockchain</title>
-      <link>http://localhost:1313/tags/blockchain/</link>
+      <link>http://localhost:57259/tags/blockchain/</link>
       <pubDate>Fri, 01 Feb 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/blockchain/</guid>
+      <guid>http://localhost:57259/tags/blockchain/</guid>
       <description></description>
     </item>
     <item>
       <title>Cryptocurrency</title>
-      <link>http://localhost:1313/tags/cryptocurrency/</link>
+      <link>http://localhost:57259/tags/cryptocurrency/</link>
       <pubDate>Fri, 01 Feb 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/cryptocurrency/</guid>
+      <guid>http://localhost:57259/tags/cryptocurrency/</guid>
       <description></description>
     </item>
   </channel>

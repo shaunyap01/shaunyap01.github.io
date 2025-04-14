@@ -31,12 +31,6 @@ The essay goes further to explore the economic and political implications of wid
 
 ---
 
-### Update
-
-> I have since written an update on this essay.
-
----
-
 # Literature Review
 
 ## 1. Introduction

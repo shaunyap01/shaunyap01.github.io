@@ -31,12 +31,6 @@ Rather than offering a single solution, the essay proposes a multifaceted respon
 
 ---
 
-### Update
-
-> I have since written an update on this essay.
-
----
-
 ## Introduction
 Today's generative artificial intelligence (AI) technology, using real image and sound data, can create synthetic media - 'deepfakes' - which are intentionally used to deceive others in order to cause harm or to gain an advantage. This essay seeks to answer the question, '__What are potential solutions for harmful deepfakes?__'
 

@@ -2,12 +2,12 @@
 title: "Understanding Trump's Tariff Formula" 
 date: 2025-04-05
 lastmod: 2025-04-05
-tags: ["##All Articles", "#Brief"]
+tags: ["##All Articles", "#Brief", "`Python", "Web-scrape", "Economics", "Trade Policy", "Tariffs", "Trump Administration"]
 author: ["Shaun Yap"]
 
 description: "On April 2, 2025, President Donald Trump declared 'Liberation Day', unveiling aggressive new tariffs designed to correct trade imbalances via a controversial formula from the U.S. Trade Representative (USTR). This tariff equation, which aims to achieve a bilateral trade balance of zero, adjusts rates based on export-import disparities, elasticity of demand, and tariff passthrough. This article focuses on explaining the Trump Tariff formula to all with worked examples and offering Python tools to replicate and validate the data."
 
-summary: ""
+summary: "On April 2, 2025, President Donald Trump declared 'Liberation Day', unveiling aggressive new tariffs designed to correct trade imbalances via a controversial formula from the U.S. Trade Representative (USTR). This tariff equation, which aims to achieve a bilateral trade balance of zero, adjusts rates based on export-import disparities, elasticity of demand, and tariff passthrough. This article focuses on explaining the Trump Tariff formula to all with worked examples and offering Python tools to replicate and validate the data."
 
 cover:
     image: "article-trump-tariff-formula.jpg"
@@ -320,3 +320,9 @@ $$\max\left(10, \left\lceil \frac{\text{Tariffs Charged to the U.S.A}}{2} \right
 
 In the expression, the ceiling function (denoted by '$\left\lceil \right \rceil$') rounds a number up to the nearest whole number. This ensures that when the 'Tariffs Charged to the U.S.A.' are divided by 2, any fractional result is rounded up to avoid underestimating the reciprocal tariff. The formula also ensures a minimum reciprocal tariff of 10, regardless of the outcome of the division.
 
+# Conclusion: A Politicised Equation in Disguise
+While cloaked in economic jargon and mathematical veneer, the Trump administration's tariff formula operates less as a rigorous policy tool and more as a rhetorical device. On its surface, the formula provides a seemingly objective mechanism to rebalance trade by adjusting tariffs based on bilateral deficits. But a closer examination reveals inconsistencies in application, arbitrary thresholding, and the deliberate use of minimum tariff floors - choices that reflect political priorities rather than economic precision.
+
+The use of a uniform elasticity and passthrough rate across diverse economies flattens the complex landscape of global trade. Worse still, the selective enforcement of the formula-favouring floor values or ignoring negative outcomes - undermines its internal logic and casts doubt on its legitimacy as a basis for policy. Rather than guiding evidence-based decision-making, the formula becomes a convenient scaffold to justify predetermined outcomes.
+
+In the end, what's dressed up as a data-driven recalibration of trade is, in many respects, a manually tuned equation engineered to serve a political narrative. Understanding the math behind it doesn't just expose technical oversights - it reveals the intent.

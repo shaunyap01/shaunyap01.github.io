@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Projects on Shaun Yap</title>
-    <link>http://localhost:1313/projects/</link>
+    <link>https://shaunyap01.github.io/projects/</link>
     <description>Recent content in Projects on Shaun Yap</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en</language>
     <lastBuildDate>Sun, 01 Sep 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/projects/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://shaunyap01.github.io/projects/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Evaluating Environment &amp; Climate Truthfulness in Social Media using Deep Learning &amp; Large Language Models (LLMs)</title>
-      <link>http://localhost:1313/projects/evaluating-environment-and-climate-truthfulness-in-social-media-using-deep-learning-and-large-language-models/</link>
+      <link>https://shaunyap01.github.io/projects/evaluating-environment-and-climate-truthfulness-in-social-media-using-deep-learning-and-large-language-models/</link>
       <pubDate>Sun, 01 Sep 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/projects/evaluating-environment-and-climate-truthfulness-in-social-media-using-deep-learning-and-large-language-models/</guid>
+      <guid>https://shaunyap01.github.io/projects/evaluating-environment-and-climate-truthfulness-in-social-media-using-deep-learning-and-large-language-models/</guid>
       <description></description>
     </item>
   </channel>

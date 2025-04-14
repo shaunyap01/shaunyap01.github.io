@@ -2,52 +2,71 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Shaun Yap</title>
-    <link>https://shaunyap01.github.io/</link>
+    <link>http://localhost:1313/</link>
     <description>Recent content on Shaun Yap</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en</language>
     <lastBuildDate>Sat, 05 Apr 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://shaunyap01.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Understanding Trump&#39;s Tariff Formula</title>
-      <link>https://shaunyap01.github.io/articles/trump-tariff-equation/</link>
+      <link>http://localhost:1313/articles/trump-tariff-equation/</link>
       <pubDate>Sat, 05 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://shaunyap01.github.io/articles/trump-tariff-equation/</guid>
+      <guid>http://localhost:1313/articles/trump-tariff-equation/</guid>
       <description>On April 2, 2025, President Donald Trump declared &amp;#39;Liberation Day&amp;#39;, unveiling aggressive new tariffs designed to correct trade imbalances via a controversial formula from the U.S. Trade Representative (USTR). This tariff equation, which aims to achieve a bilateral trade balance of zero, adjusts rates based on export-import disparities, elasticity of demand, and tariff passthrough. This article focuses on explaining the Trump Tariff formula to all with worked examples and offering Python tools to replicate and validate the data.</description>
     </item>
     <item>
       <title>Generative AI and the Dimishing Returns of Scale: Are We Nearing the Plateau?</title>
-      <link>https://shaunyap01.github.io/articles/generative-ai-and-the-diminishing-returns-of-scale-are-we-nearing-the-plateau/</link>
+      <link>http://localhost:1313/articles/generative-ai-and-the-diminishing-returns-of-scale-are-we-nearing-the-plateau/</link>
       <pubDate>Sat, 01 Feb 2025 00:00:00 +0000</pubDate>
-      <guid>https://shaunyap01.github.io/articles/generative-ai-and-the-diminishing-returns-of-scale-are-we-nearing-the-plateau/</guid>
+      <guid>http://localhost:1313/articles/generative-ai-and-the-diminishing-returns-of-scale-are-we-nearing-the-plateau/</guid>
       <description>Dive into the world of generative AI as we explore its remarkable growth powered by massive language models, image generators, and coding assistants, and ask if the era of scale is nearing its limit. This comprehensive article examines how relentless scaling drove breakthrough capabilities in text, images, and code, while drawing on recent empirical studies to show diminishing returns. Find out how new approaches - algorithmic efficiency, retrieval-augmented generation, and multimodal models - could shape the future of AI, along with key policy and ethical dimensions.</description>
     </item>
     <item>
       <title>Evaluating Environment &amp; Climate Truthfulness in Social Media using Deep Learning &amp; Large Language Models (LLMs)</title>
-      <link>https://shaunyap01.github.io/projects/evaluating-environment-and-climate-truthfulness-in-social-media-using-deep-learning-and-large-language-models/</link>
+      <link>http://localhost:1313/projects/evaluating-environment-and-climate-truthfulness-in-social-media-using-deep-learning-and-large-language-models/</link>
       <pubDate>Sun, 01 Sep 2024 00:00:00 +0000</pubDate>
-      <guid>https://shaunyap01.github.io/projects/evaluating-environment-and-climate-truthfulness-in-social-media-using-deep-learning-and-large-language-models/</guid>
+      <guid>http://localhost:1313/projects/evaluating-environment-and-climate-truthfulness-in-social-media-using-deep-learning-and-large-language-models/</guid>
       <description></description>
     </item>
     <item>
+      <title>Bayesian Inference</title>
+      <link>http://localhost:1313/projects/bayesian-inference/</link>
+      <pubDate>Mon, 01 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/projects/bayesian-inference/</guid>
+      <description>&lt;h2 id=&#34;section-a-bayesian-inference&#34;&gt;Section A. Bayesian Inference&lt;/h2&gt;
+&lt;h3 id=&#34;a1&#34;&gt;A.1)&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;US_cancer &amp;lt;- &lt;span style=&#34;color:#0a0&#34;&gt;read.csv&lt;/span&gt;(&lt;span style=&#34;color:#a50&#34;&gt;&amp;#34;~/University of Exeter/MTHM017 - Advanced Topics in Statistics/Assignment/US_cancer.csv&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#0a0&#34;&gt;load&lt;/span&gt;(&lt;span style=&#34;color:#a50&#34;&gt;&amp;#39;USMap.RData&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;US Cancer - dc [kidney cancer death counts from 1980 to 1984] - pop
+[average population for counties from 1980 to 1984]&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;US_cancer$cmr &amp;lt;- (US_cancer$dc) / (US_cancer$pop*&lt;span style=&#34;color:#099&#34;&gt;5&lt;/span&gt;) * &lt;span style=&#34;color:#099&#34;&gt;10000&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#0a0&#34;&gt;summary&lt;/span&gt;(US_cancer$cmr)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;pre&gt;&lt;code&gt;##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+## 0.00000 0.09134 0.18676 0.22737 0.30620 2.62467
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Maximum Crude Mortality rate value is 2.62467&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>Potential Solutions for Harmful Deepfakes</title>
-      <link>https://shaunyap01.github.io/articles/potential-solutions-for-harmful-deepfakes/</link>
+      <link>http://localhost:1313/articles/potential-solutions-for-harmful-deepfakes/</link>
       <pubDate>Wed, 01 May 2024 00:00:00 +0000</pubDate>
-      <guid>https://shaunyap01.github.io/articles/potential-solutions-for-harmful-deepfakes/</guid>
+      <guid>http://localhost:1313/articles/potential-solutions-for-harmful-deepfakes/</guid>
       <description>Explore the growing threat of deepfakes and the ethical, legal, and societal challenges they pose. This in-depth article outlines practical solutions including AI regulation, platform accountability, detection tools, and media literacy to combat malicious synthetic media and misinformation online.</description>
     </item>
     <item>
       <title>To What Extent Can Cryptocurrency Become Everyday-Use Currency?</title>
-      <link>https://shaunyap01.github.io/articles/to-what-extent-can-cryptocurrency-become-everyday-use-currency/</link>
+      <link>http://localhost:1313/articles/to-what-extent-can-cryptocurrency-become-everyday-use-currency/</link>
       <pubDate>Fri, 01 Feb 2019 00:00:00 +0000</pubDate>
-      <guid>https://shaunyap01.github.io/articles/to-what-extent-can-cryptocurrency-become-everyday-use-currency/</guid>
+      <guid>http://localhost:1313/articles/to-what-extent-can-cryptocurrency-become-everyday-use-currency/</guid>
       <description>Can Bitcoin and other cryptocurrencies replace traditional currencies like the US Dollar in everyday life? This comprehensive analysis examines the economic, technical, and political factors that influence mainstream adoption of crypto, exploring the future of digital money, stablecoins, and central bank regulation.</description>
     </item>
     <item>
       <title>Contact</title>
-      <link>https://shaunyap01.github.io/contact/</link>
+      <link>http://localhost:1313/contact/</link>
       <pubDate>Mon, 22 Oct 2001 00:00:00 +0000</pubDate>
-      <guid>https://shaunyap01.github.io/contact/</guid>
+      <guid>http://localhost:1313/contact/</guid>
       <description>Shaun Yap&amp;#39;s contact information.</description>
     </item>
   </channel>

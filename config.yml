@@ -1,0 +1,140 @@
+baseURL: "https://shaunyap01.github.io" 
+title: Shaun Yap
+pagination:
+  pagerSize: 20
+theme: PaperMod
+
+enableInlineShortcodes: true
+enableRobotsTXT: true
+
+disableKinds:
+  - sitemap
+
+taxonomies:
+    tag: tags
+
+menu:
+    main:
+
+        - name: Articles
+          url: articles/
+          weight: 1
+
+        - name: Projects
+          url: projects/
+          weight: 2
+
+        - name: Tags
+          url: tags/
+          weight: 3
+
+        - name: Archive
+          url: archive/
+          weight: 4
+        
+        - name: Contact
+          url: contact/
+          weight: 5
+
+params:
+    description: "This is Shaun Yap's personal website"
+    author: Shaun Yap
+    # googleAnalyticsID: "G-XXXXX"
+    DateFormat: "02 January 2006"
+    defaultTheme: light
+    hideFooter: true
+    disableThemeToggle: true
+    ShowShareButtons: false
+    ShowReadingTime: false
+    disableSpecial1stPost: true
+    disableAnchoredHeadings: true
+    ShowPostNavLinks: false
+    ShowBreadCrumbs: false
+    ShowCodeCopyButtons: true
+    ShowAllPagesInArchive: false
+    MainSections: ["articles","projects"]
+    ShowToc: false
+    disableScrollToTop: true
+    TocOpen: true
+    ShowWordCount: false
+    UseHugoToc: true
+    comments: false
+    math: true
+    profileMode:
+          enabled: true
+          title: Shaun Yap
+          subtitle: "<h2> Freelance Data Scientist | Researcher</h2>
+            <blockquote>
+            'If I have seen further it is by standing on the shoulders of Giants' - <i>Isaac Newton</i>.
+            </blockquote>
+            With an unquenchable thirst for knowledge and a deep respect for scientific rigour, I created this space to share ideas, research, and experiments that I hope will spark curiosity and offer clarity to others exploring similar paths.
+            <br>
+            <br>
+            <h3>Education</h3>
+            <b> MSc Data Science and Statistics (Distinction) </b>, University of Exeter, UK | <i>Sep 2023 – Dec 2024</i>
+            <br>
+            <b> BSc (Hons) Data Science </b>, University of Warwick, UK | <i>Sep 2020 – Jul 2023</i>"
+
+          imageUrl: "photo.png"
+          imageWidth: 160
+          imageHeight: 160
+          imageTitle: SY
+          buttons:             
+            - name: Articles
+              url: articles/
+
+            - name: Projects
+              url: projects/
+
+            - name: Tags
+              url: tags/
+
+            - name: Archive
+              url: archive/
+  
+            - name: Contact
+              url: contact/
+         
+    socialIcons:
+        - name: CV
+          url: /cv.pdf
+
+        - name: GitHub
+          url: https://github.com/shaunyap01
+
+        - name: Email
+          url: mailto:shaunyap01@gmail.com
+
+        - name: LinkedIn
+          url: https://www.linkedin.com/in/shaunyap0122/
+
+        - name: Discord
+          url: https://discordapp.com/users/shaunyap01
+
+    assets:
+        disableHLJS: true
+        disableScrollBarStyle: true
+        favicon: "/favicon.ico"
+        favicon16x16: "/favicon-16x16.png"
+        favicon32x32: "/favicon-32x32.png"
+        apple_touch_icon: "/apple-touch-icon.png"
+        mask_icon: "/safari-pinned-tab.svg"
+    cover:
+        hiddenInList: false
+        hiddenInSingle: true
+    label:
+      text: "Shaun Yap"
+      icon: /favicon.ico
+      iconHeight: 18
+
+markup:
+    goldmark:
+        renderer:
+            unsafe: true
+    highlight:
+        guessSyntax: true
+        style: autumn 
+    tableOfContents:
+        endLevel: 3
+        ordered: false
+        startLevel: 1

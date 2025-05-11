@@ -74,7 +74,7 @@ It enables flexible, large-scale data collection without needing manual interven
   * **Python script (CLI)**
   * **Jupyter Notebook (interactive)**
 
-In addition, the **GitHub repository includes fully pre-scraped data** covering **01/01/2004 – 01/04/2025**, so you can start exploring immediately - no scraping required.
+In addition, the **GitHub repository includes fully pre-scraped data** covering **01/01/2004 – 10/05/2025**, so you can start exploring immediately - no scraping required.
 
 ---
 

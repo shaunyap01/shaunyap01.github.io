@@ -64,7 +64,7 @@ It enables flexible, large-scale data collection without needing manual interven
 
 * Scrape across **any date range or season between 2004 and present**
 * Select specific metrics using the **Stat Code Reference List**
-  *e.g. `205` = Strokes Gained: Putting*
+  *e.g. `02564` = Strokes Gained: Putting*
 * Export clean `.csv` files, organised by:
 
   * **Stat category**

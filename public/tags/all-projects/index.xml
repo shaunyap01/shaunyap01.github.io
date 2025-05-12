@@ -10,9 +10,9 @@
     <atom:link href="https://shaunyap01.github.io/tags/all-projects/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>PGA Tour Stats Scraper</title>
-      <link>https://shaunyap01.github.io/projects/pga-tour-stats-scrape/</link>
+      <link>https://shaunyap01.github.io/projects/pga-tour-stats-scraper/</link>
       <pubDate>Sun, 11 May 2025 00:00:00 +0000</pubDate>
-      <guid>https://shaunyap01.github.io/projects/pga-tour-stats-scrape/</guid>
+      <guid>https://shaunyap01.github.io/projects/pga-tour-stats-scraper/</guid>
       <description>Automate PGA Tour data collection with a Python scraper that extracts tournament-level stats from 2004 to present. Includes full dataset and Jupyter Notebook for analysis.</description>
     </item>
     <item>

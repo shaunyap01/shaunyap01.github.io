@@ -1,5 +1,5 @@
 ---
-title: "Generative AI and the Dimishing Returns of Scale: Are We Nearing the Plateau?" 
+title: "Generative AI and the Diminishing Returns of Scale: Are We Nearing the Plateau?" 
 date: 2025-02-01
 lastmod: 2025-02-01
 tags: ["##All Articles", "#In-Depth Essay", "Generative AI", "AI Scaling", "Large Language Models", "AI Ethics"]

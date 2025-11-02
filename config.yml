@@ -16,25 +16,29 @@ taxonomies:
 menu:
     main:
 
+        - name: Research
+          url: research/
+          weight: 1
+          
         - name: Articles
           url: articles/
-          weight: 1
+          weight: 2
 
         - name: Projects
           url: projects/
-          weight: 2
+          weight: 3
 
         - name: Tags
           url: tags/
-          weight: 3
+          weight: 4
 
         - name: Archive
           url: archive/
-          weight: 4
+          weight: 5
         
         - name: Contact
           url: contact/
-          weight: 5
+          weight: 6
 
 params:
     description: "This is Shaun Yap's personal website"
@@ -63,23 +67,27 @@ params:
     profileMode:
           enabled: true
           title: Shaun Yap
-          subtitle: "<h2> Data Scientist | Statistician | Bayesian Enjoyer </h2>
-            <blockquote>
-            'If I have seen further it is by standing on the shoulders of Giants' - <i>Isaac Newton</i>.
-            </blockquote>
-            Driven by a deep respect for scientific rigour and an endless curiosity, I created this space to share ideas, research, and experiments - hoping to ignite thinking, support open exploration, and make complex topics clearer for anyone on a similar journey.
-            <br>
-            <br>
-            <h3>Education</h3>
-            <b> MSc Data Science and Statistics (Distinction)</b>, University of Exeter, UK | <i>Sep 2023 - Dec 2024</i>
-            <br>
-            <b> BSc (Hons) Data Science</b>, University of Warwick, UK | <i>Sep 2020 - Jul 2023</i>"
+          subtitle: "
+            ## PhD Researcher @ University College London (UCL) | Data Scientist
+
+            #### Neuroscience x Data Science x Digital Health
+            
+            > 'If I have seen further it is by standing on the shoulders of Giants' - <i>Isaac Newton</i>.
+            
+            ### About me 
+
+            I'm a fully funded international **PhD researcher** at [**<u>University College London (UCL)</u>**](https://www.ucl.ac.uk) part of the [**<u>Tech4Health Centre for Doctoral Training (Tech4Health CDT)</u>**](https://www.tech4health.co.uk). Supported by a 4-year studentship co-funded by [**<u>UKRI Engineering and Physical Sciences Research Council (EPSRC)</u>**](https://www.ukri.org/councils/epsrc) and [**<u>The National Brain Appeal</u>**](https://www.nationalbrainappeal.org), my work sits at the intersection of **neuroscience**, **data science** and **digital health** - focusing on visual system vulnerability in dementia.
+            "
+            
 
           imageUrl: "photo.png"
           imageWidth: 160
           imageHeight: 160
           imageTitle: SY
-          buttons:             
+          buttons: 
+            - name: Research
+              url: research/
+
             - name: Articles
               url: articles/
 
@@ -99,14 +107,14 @@ params:
         - name: CV
           url: /cv.pdf
 
+        - name: LinkedIn
+          url: https://www.linkedin.com/in/shaunyap0122/
+
         - name: GitHub
           url: https://github.com/shaunyap01
 
         - name: Email
           url: mailto:shaunyap01@gmail.com
-
-        - name: LinkedIn
-          url: https://www.linkedin.com/in/shaunyap0122/
 
         - name: Discord
           url: https://discordapp.com/users/shaunyap01
@@ -135,6 +143,6 @@ markup:
         guessSyntax: true
         style: autumn 
     tableOfContents:
-        endLevel: 3
+        endLevel: 4
         ordered: false
         startLevel: 1

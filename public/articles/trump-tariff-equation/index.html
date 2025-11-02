@@ -1,33 +1,33 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto">
 
-<head><meta charset="utf-8">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="index, follow">
+<meta name="robots" content="noindex, nofollow">
 <title>Understanding Trump&#39;s Tariff Formula | Shaun Yap</title>
 <meta name="keywords" content="##All Articles, #Brief, `Python, Web scrape, Economics, Trade Policy, Tariffs, Trump Administration">
 <meta name="description" content="On April 2, 2025, President Donald Trump declared &#39;Liberation Day&#39;, unveiling aggressive new tariffs designed to correct trade imbalances via a controversial formula from the U.S. Trade Representative (USTR). This tariff equation, which aims to achieve a bilateral trade balance of zero, adjusts rates based on export-import disparities, elasticity of demand, and tariff passthrough. This article focuses on explaining the Trump Tariff formula to all with worked examples and offering Python tools to replicate and validate the data.">
 <meta name="author" content="Shaun Yap">
-<link rel="canonical" href="https://shaunyap01.github.io/articles/trump-tariff-equation/">
+<link rel="canonical" href="http://localhost:1313/articles/trump-tariff-equation/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.36d52b074909f5ed06bfe1e273446dfd250966271f086b116f65b4adefaca78a.css" integrity="sha256-NtUrB0kJ9e0Gv&#43;Hic0Rt/SUJZicfCGsRb2W0re&#43;sp4o=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://shaunyap01.github.io/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://shaunyap01.github.io/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://shaunyap01.github.io/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://shaunyap01.github.io/apple-touch-icon.png">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="https://shaunyap01.github.io/articles/trump-tariff-equation/">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/articles/trump-tariff-equation/">
 <meta property="og:title" content="Understanding Trump&#39;s Tariff Formula" />
 <meta property="og:description" content="On April 2, 2025, President Donald Trump declared &#39;Liberation Day&#39;, unveiling aggressive new tariffs designed to correct trade imbalances via a controversial formula from the U.S. Trade Representative (USTR). This tariff equation, which aims to achieve a bilateral trade balance of zero, adjusts rates based on export-import disparities, elasticity of demand, and tariff passthrough. This article focuses on explaining the Trump Tariff formula to all with worked examples and offering Python tools to replicate and validate the data." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://shaunyap01.github.io/articles/trump-tariff-equation/" />
-<meta property="og:image" content="https://shaunyap01.github.io/article-trump-tariff-formula.jpg" /><meta property="article:section" content="articles" />
+<meta property="og:url" content="http://localhost:1313/articles/trump-tariff-equation/" />
+<meta property="og:image" content="http://localhost:1313/article-trump-tariff-formula.jpg" /><meta property="article:section" content="articles" />
 <meta property="article:published_time" content="2025-04-05T00:00:00+00:00" />
 <meta property="article:modified_time" content="2025-04-05T00:00:00+00:00" />
 
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="https://shaunyap01.github.io/article-trump-tariff-formula.jpg" />
+<meta name="twitter:image" content="http://localhost:1313/article-trump-tariff-formula.jpg" />
 <meta name="twitter:title" content="Understanding Trump&#39;s Tariff Formula"/>
 <meta name="twitter:description" content="On April 2, 2025, President Donald Trump declared &#39;Liberation Day&#39;, unveiling aggressive new tariffs designed to correct trade imbalances via a controversial formula from the U.S. Trade Representative (USTR). This tariff equation, which aims to achieve a bilateral trade balance of zero, adjusts rates based on export-import disparities, elasticity of demand, and tariff passthrough. This article focuses on explaining the Trump Tariff formula to all with worked examples and offering Python tools to replicate and validate the data."/>
 
@@ -41,13 +41,13 @@
       "@type": "ListItem",
       "position":  1 ,
       "name": "Articles",
-      "item": "https://shaunyap01.github.io/articles/"
+      "item": "http://localhost:1313/articles/"
     }, 
     {
       "@type": "ListItem",
       "position":  2 ,
       "name": "Understanding Trump's Tariff Formula",
-      "item": "https://shaunyap01.github.io/articles/trump-tariff-equation/"
+      "item": "http://localhost:1313/articles/trump-tariff-equation/"
     }
   ]
 }
@@ -65,7 +65,7 @@
   "articleBody": "​On April 2, 2025, President Donald Trump proclaimed “Liberation Day,” announcing a series of sweeping tariffs aimed at recalibrating the United States’ trade relationships.\nView this post on Instagram A post shared by The White House (@whitehouse)\nTariff Formula The formula introduced by the Office of the United States Trade Representative (USTR) 1 aims to determine the change in tariff rate ($\\Delta \\tau_i$) that would be required to achieve a bilateral trade balance of zero between the United States and a specific country ‘i’. This means adjusting tariffs so that the value of imports from country ‘i’ equals the value of exports to country ‘i’. The formula looks big and scary with mathsy symbols but it is really quite simple. Let’s break it down.\nUnderstanding the Formula Components: Left side of the formula:\n$\\Delta$ (Delta) represents the amount of change\n$\\tau$ (Tau) represents tariff\n$_i$ just means for one specific country, country ‘i’\n$\\Delta \\tau_i$ represents the percent change in the tariff rate applied by the U.S. to imports from country ‘i’.\nRight side of the formula:\n$x_i$ represents the total exports to country ‘i’ from the U.S.\n$m_i$ represents the total imports from country ‘i’ from the U.S.\n$\\varepsilon$ (Epsilon) represents the price elasticity of import demand, indicating how sensitive the quantity of imports is to changes in price. A negative value suggests that as prices increase due to tariffs, the quantity of imports decreases. This also assumes the price elasticity of import demand is linear (not nearly as simple in reality).\n$\\varphi$ (Phi) represents the passthrough from tariffs to import prices, reflecting the extent to which tariff changes affect the prices of imported goods.\nInterpreting the Formula The formula is expressed as:\n$$\\Delta \\tau_i = \\frac{x_i - m_i}{\\varepsilon \\cdot \\varphi \\cdot m_i}$$\nThis equation calculates the necessary change in the tariff rate ($\\Delta \\tau_i$) to eliminate the trade imbalance with country ‘i’. Here’s how each component interacts:\nTrade Balance ($x_i - m_i$): The numerator represents the trade imbalance. If $x_i \u003e m_i$, the U.S. has a trade surplus with country ‘i’; if $x_i \u003c m_i$, there’s a trade deficit.\nElasticity and Pass-Through ($\\varepsilon \\cdot \\varphi \\cdot m_i$): The denominator adjusts this imbalance by considering how responsive import quantities are to price changes ($\\varepsilon$), how much of the tariff is reflected in import prices ($\\varphi$), and the total import value ($m_i$).\nBy dividing the trade imbalance by this adjusted import value, the formula estimates the tariff rate change needed to equalise imports and exports with country ‘i’.\nElasticity and Pass-Through Considerations The price elasticity of import demand ($\\varepsilon$) and the tariff pass-through rate ($\\varphi$) are critical factors in this calculation. Different types of goods exhibit varying elasticities due to factors such as necessity, availability of substitutes, and consumer preferences. For example:​\nNecessities: Goods like essential medicines tend to have inelastic demand; consumers will purchase them regardless of price changes.​ Luxury Items: Products such as high-end electronics often have elastic demand; consumers may forego purchases if prices rise.​ The Trump administration set the price elasticity of import demand ($\\varepsilon$) at 4 and the elasticity of import prices with respect to tariffs ($\\varphi$) at 0.25. $\\varepsilon$ and $\\varphi$ actually cancel out in the denomenator of the equation [$\\varepsilon \\times \\varphi = 4 \\times 0.25 = 1$]. This means the ‘Tariffs Charged to the U.S.A.’ column is really just the trade deficit as a percentage of imports. In addition, the uniform values set for $\\varepsilon$ and $\\varphi$ across all goods and countries oversimplifies the complexities inherent in global trade, where elasticities can vary significantly across products and markets. Such a one-size-fits-all approach lacks the granularity needed for precise tariff adjustments and may not effectively address specific trade imbalances.​\nTariff Example Scenario To illustrate how changes in tariffs affect consumer prices, consider a hypothetical situation where Country A imports a USD 100 speaker from Country B.\nInitial Price: Before any tariff changes, the speaker costs USD $100$ in Country A.\nTariff Introduction: Country A introduces a $24$% tariff on all goods from Country B.\nTariff Amount: USD $100 \\times 24$% = USD $24$ Price Impact on Consumers: The effect on consumer prices depends on $\\varphi$, the passthrough rate. Assuming $\\varphi = 0.25 $, the portion of the tariff passed through to consumers is: $\\Delta \\tau_i \\times \\varphi = 24$% $\\times 0.25 = 6$% $= 0.06$ Thus, consumers in Country A will see a 6% increase in the price of the speaker: USD $100 \\times (1 + 0.06) =$ USD $100 \\times (1.06) =$ USD $106$ Effect on Demand: The impact on demand depends on $\\varepsilon$, the price elasticity of import demand.​ Assuming $\\varepsilon = 4$, the percentage decrease in demand is: ​$\\Delta \\tau_i \\times \\varphi \\times \\varepsilon = 6$% $\\times 4 = 24$% This means demand decreases to $(100$%$ - 24$%$) = 76$% of the original level.​ Deriving the Formula To understand the origin of the USTR formula:\nTrade Deficit: $m_i - x_i$ represents the trade deficit. Deficit as a Percentage of Imports: $\\frac{m_i - x_i}{m_i}$ indicates the percentage imports have to go down to balance trade.​ Demand Reduction Relation: This reduction is also expressed as $\\Delta \\tau_i \\times \\varphi \\times \\varepsilon$. Equating the two expressions: $$\\Delta \\tau_i \\times \\varphi \\times \\varepsilon = \\frac{m_i - x_i}{m_i}$$​\nSolving for $\\Delta \\tau_i$:\n$$\\Delta \\tau_i = \\frac{m_i - x_i}{\\varphi \\times \\varepsilon \\times m_i}$$\nSo, is this essentially the approach employed by the Trump administration? Albeit they subtract imports from exports ($x_i - m_i$), rather than the conventional method of subtracting exports from imports ($m_i - x_i$), effectively multiplying the result by $-1$. Checking Formula Application Consistency Unfortunately the woes do not stop here since the formula is not applied consistently to all countries.\nOn the USTR website they have exact import and export figures for most countries in the chart.\nFeel free to use my Python script to web scrape trade summaries for 105 out of 123 regions listed on the USTR website.\nYou can view the code by expanding the toggle below labelled “Show Python Code”.\nA list of countries that were not retrieved during the scrape is also available in the “Show Missing Countries” section below.\nShow Python Code\rimport requests\rfrom bs4 import BeautifulSoup\rimport re\rimport pandas as pd\rfrom tqdm import tqdm\rheaders = {\r\"User-Agent\": \"Mozilla/5.0\"\r}\rbase_url = \"https://ustr.gov\"\rregion_urls = [\r\"/countries-regions/africa\",\r\"/countries-regions/americas\",\r\"/countries-regions/southeast-asia-pacific\",\r\"/countries-regions/europe-middle-east/europe\",\r\"/countries-regions/europe-middle-east/middle-east/north-africa\",\r\"/countries-regions/europe-middle-east/russia-and-eurasia\",\r\"/countries-regions/south-central-asia\",\r\"/countries-regions/china-mongolia-taiwan\",\r\"/countries-regions/japan-korea-apec\"\r]\rdef get_country_links(region_url):\rtry:\rres = requests.get(base_url + region_url, headers=headers, timeout=10)\rsoup = BeautifulSoup(res.content, \"html.parser\")\rcountry_links = []\rfor a in soup.select(\"a[href^='/countries-regions']\"):\rhref = a.get(\"href\")\rif href and href != region_url and href.startswith(region_url):\rcountry_links.append(href)\rreturn list(set(country_links))\rexcept Exception as e:\rprint(f\"Failed to fetch country links from {region_url}: {e}\")\rreturn []\rdef get_trade_summary(country_url):\rfull_url = base_url + country_url\rtry:\rres = requests.get(full_url, headers=headers, timeout=10)\rsoup = BeautifulSoup(res.content, \"html.parser\")\rparagraphs = soup.find_all(\"p\")\rfor p in paragraphs:\rtext = p.get_text(strip=True)\rif re.search(r\"U\\.S\\. (total )?goods trade with .*? (was|were|totaled|totalled)\", text, re.IGNORECASE):\rreturn {\r\"country_url\": full_url,\r\"trade_summary\": text\r}\rprint(f\"No trade summary found in {full_url}\")\rexcept Exception as e:\rprint(f\"Failed to fetch {full_url}: {e}\")\rreturn None\rall_summaries = []\rfor region in region_urls:\rprint(f\"\\nProcessing region: {region}\")\rcountry_links = get_country_links(region)\rfor country in tqdm(country_links, desc=f\"Scraping countries in {region}\"):\rsummary = get_trade_summary(country)\rif summary:\rall_summaries.append(summary)\r# Build DataFrame\rdf = pd.DataFrame(all_summaries)\rdf = df.drop_duplicates(subset=\"country_url\").reset_index(drop=True)\rShow Missing Countries\rThe following countries are missing:\nAmericas (7):\nGuatemala\rHaiti\rHonduras\rNicaragua\rPanama\rParaguay\rPeru\rEurope → Middle East/North Africa (8):\nAlgeria\rIsrael\rJordan\rLibya\rOman\rSaudi Arabia\rTunisia\rYemen\rSouth \u0026 Central Asia (2):\nIraq\rUzbekistan\rChina, Mongolia \u0026 Taiwan (1):\nTaiwan\rAll summaries follow a similar format having been generated from their data making them somewhat easy to clean into ‘Import’ and ‘Export’.\nChecking ‘Tariffs Charged to the U.S.A.’ I will showcase the inconsistencies in the application of the tariff formula using Malaysia and Australia since they represent both cases and happen to be the countries where I grew up.\nCase 1: Malaysia (U.S. is in a trade deficit) https://ustr.gov/countries-regions/southeast-asia-pacific/malaysia\nU.S. export to Malaysia ($x_{Malaysia}$): USD $27.7$ billion $=$ USD $2.77 \\times 10^{10}$\nU.S. import from Malaysia ($m_{Malaysia}$): USD $52.5$ billion $=$ USD $5.25 \\times 10^{10}$\nPlug into their tariff formula:\n$\\Delta \\tau_{Malaysia} = \\frac{x_{Malaysia} - m_{Malaysia}}{\\varepsilon \\cdot \\varphi \\cdot m_{Malaysia}}$\n$\\Delta \\tau_{Malaysia} = \\frac{2.77 \\times 10^{10} - 5.25 \\times 10^{10}}{4 \\cdot 0.25 \\cdot 1.67 \\times 10^{10}}$\n$\\Delta \\tau_{Malaysia} = \\frac{-2.48 \\times 10^{10}}{5.25 \\times 10^{10}}$\n$\\Delta \\tau_{Malaysia} = \\frac{-2.48}{5.25}$\n$\\Delta \\tau_{Malaysia} = -0.47 = -47$%\nBehold the Malaysia $47$% ‘Tariffs Charged to the U.S.A.’ matching the figure with the $\\times (-1)$ mentioned earlier having come back.\nCase 2: Australia (U.S. is in a trade surplus) https://ustr.gov/countries-regions/southeast-asia-pacific/australia\nU.S. export to Australia ($x_{Australia}$): USD $34.6$ billion $=$ USD $3.46 \\times 10^{10}$\nU.S. import from Australia ($m_{Australia}$): USD $16.7$ billion $=$ USD $1.67 \\times 10^{10}$\nPlug into their tariff formula:\n$\\Delta \\tau_{Australia} = \\frac{x_{Australia} - m_{Australia}}{\\varepsilon \\cdot \\varphi \\cdot m_{Australia}}$\n$\\Delta \\tau_{Australia} = \\frac{3.46 \\times 10^{10} - 1.67 \\times 10^{10}}{4 \\cdot 0.25 \\cdot 1.67 \\times 10^{10}}$\n$\\Delta \\tau_{Australia} = \\frac{1.79 \\times 10^{10}}{1.67 \\times 10^{10}}$\n$\\Delta \\tau_{Australia} = \\frac{1.79}{1.67}$\n$\\Delta \\tau_{Australia} = 1.07 = 107$%\nSo according to the formula Australia should have $-107$% ‘Tariffs Charged to the U.S.A.’ and the U.S. should implement a negative tariff for goods from Australia (according to their formula) if the goal is simply to balance budget. But the figure shows ‘$10$%’? What is happening?\nSo how is the Tariffs ‘Charged to the U.S.A’ calculated? I want to emphasise that these examples haven’t been cherry-picked to fit a narrative. The same formula appears to be consistently applied to calculate the “Tariffs Charged to the U.S.A.” for each country - albeit in a rather unique way.\nFrom what I can discern, the calculation uses the following structure:\n$\\Delta \\tau_i = \\frac{m_i - x_i}{\\varepsilon \\cdot \\varphi \\cdot m_i}$\nNOTE $({m_i - x_i})$ is the conventional way around - essentially their formula $\\times -1$\nHowever, the final reported tariff values seem to apply a maximum function like so: Tariffs Charged $ = \\max(10, \\Delta \\tau_i)$\nThis formulation matches the published figures almost exactly - with only minor discrepancies of $1$% likely due to rounding.\nThe maximum function (denoted by ‘$\\max()$’) returns the greater of the two values inside the parentheses. In this context, it ensures that the tariff charged is never less than 10, even if the computed value $\\Delta \\tau_i$ is lower.\n‘U.S.A. Discounted Reciprocal Tariffs’ The U.S.A. Discounted Reciprocal Tariffs is calculated using the following formula:\n$$\\max\\left(10, \\left\\lceil \\frac{\\text{Tariffs Charged to the U.S.A}}{2} \\right\\rceil \\right)$$\nIn the expression, the ceiling function (denoted by ‘$\\left\\lceil \\right \\rceil$’) rounds a number up to the nearest whole number. This ensures that when the ‘Tariffs Charged to the U.S.A.’ are divided by 2, any fractional result is rounded up to avoid underestimating the reciprocal tariff. The formula also ensures a minimum reciprocal tariff of 10, regardless of the outcome of the division.\nConclusion: A Politicised Equation in Disguise While cloaked in economic jargon and mathematical veneer, the Trump administration’s tariff formula operates less as a rigorous policy tool and more as a rhetorical device. On its surface, the formula provides a seemingly objective mechanism to rebalance trade by adjusting tariffs based on bilateral deficits. But a closer examination reveals inconsistencies in application, arbitrary thresholding, and the deliberate use of minimum tariff floors - choices that reflect political priorities rather than economic precision.\nThe use of a uniform elasticity and passthrough rate across diverse economies flattens the complex landscape of global trade. Worse still, the selective enforcement of the formula-favouring floor values or ignoring negative outcomes - undermines its internal logic and casts doubt on its legitimacy as a basis for policy. Rather than guiding evidence-based decision-making, the formula becomes a convenient scaffold to justify predetermined outcomes.\nIn the end, what’s dressed up as a data-driven recalibration of trade is, in many respects, a manually tuned equation engineered to serve a political narrative. Understanding the math behind it doesn’t just expose technical oversights - it reveals the intent.\nhttps://ustr.gov/issue-areas/reciprocal-tariff-calculations ↩︎\n",
   "wordCount" : "1988",
   "inLanguage": "en",
-  "image":"https://shaunyap01.github.io/article-trump-tariff-formula.jpg","datePublished": "2025-04-05T00:00:00Z",
+  "image":"http://localhost:1313/article-trump-tariff-formula.jpg","datePublished": "2025-04-05T00:00:00Z",
   "dateModified": "2025-04-05T00:00:00Z",
   "author":[{
     "@type": "Person",
@@ -73,14 +73,14 @@
   }],
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://shaunyap01.github.io/articles/trump-tariff-equation/"
+    "@id": "http://localhost:1313/articles/trump-tariff-equation/"
   },
   "publisher": {
     "@type": "Organization",
     "name": "Shaun Yap",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://shaunyap01.github.io/favicon.ico"
+      "url": "http://localhost:1313/favicon.ico"
     }
   }
 }
@@ -121,8 +121,8 @@
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://shaunyap01.github.io/" accesskey="h">
-                <img src="https://shaunyap01.github.io/favicon.ico" alt="logo" aria-label="logo"
+            <a href="http://localhost:1313/" accesskey="h">
+                <img src="http://localhost:1313/favicon.ico" alt="logo" aria-label="logo"
                     height="18"
                     width="18">Shaun Yap</a>
             <div class="logo-switches">
@@ -130,27 +130,32 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="https://shaunyap01.github.io/articles/">
+                <a href="http://localhost:1313/research/">
+                    <span>Research</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/articles/">
                     <span>Articles</span>
                 </a>
             </li>
             <li>
-                <a href="https://shaunyap01.github.io/projects/">
+                <a href="http://localhost:1313/projects/">
                     <span>Projects</span>
                 </a>
             </li>
             <li>
-                <a href="https://shaunyap01.github.io/tags/">
+                <a href="http://localhost:1313/tags/">
                     <span>Tags</span>
                 </a>
             </li>
             <li>
-                <a href="https://shaunyap01.github.io/archive/">
+                <a href="http://localhost:1313/archive/">
                     <span>Archive</span>
                 </a>
             </li>
             <li>
-                <a href="https://shaunyap01.github.io/contact/">
+                <a href="http://localhost:1313/contact/">
                     <span>Contact</span>
                 </a>
             </li>
@@ -189,7 +194,13 @@
         <li><a href="#deriving-the-formula">Deriving the Formula</a></li>
         <li><a href="#checking-formula-application-consistency">Checking Formula Application Consistency</a>
           <ul>
-            <li><a href="#checking-tariffs-charged-to-the-usa">Checking &lsquo;Tariffs Charged to the U.S.A.&rsquo;</a></li>
+            <li><a href="#checking-tariffs-charged-to-the-usa">Checking &lsquo;Tariffs Charged to the U.S.A.&rsquo;</a>
+              <ul>
+                <li><a href="#case-1-malaysia-us-is-in-a-trade-deficit">Case 1: Malaysia (U.S. is in a trade deficit)</a></li>
+                <li><a href="#case-2-australia-us-is-in-a-trade-surplus">Case 2: Australia (U.S. is in a trade surplus)</a></li>
+                <li><a href="#so-how-is-the-tariffs-charged-to-the-usa-calculated">So how is the Tariffs &lsquo;Charged to the U.S.A&rsquo; calculated?</a></li>
+              </ul>
+            </li>
             <li><a href="#usa-discounted-reciprocal-tariffs">&lsquo;U.S.A. Discounted Reciprocal Tariffs&rsquo;</a></li>
           </ul>
         </li>
@@ -478,14 +489,14 @@ Tariffs Charged $ = \max(10, \Delta \tau_i)$</p>
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="https://shaunyap01.github.io/tags/%23%23all-articles/">##All Articles</a></li>
-      <li><a href="https://shaunyap01.github.io/tags/%23brief/">#Brief</a></li>
-      <li><a href="https://shaunyap01.github.io/tags/python/">`Python</a></li>
-      <li><a href="https://shaunyap01.github.io/tags/web-scrape/">Web Scrape</a></li>
-      <li><a href="https://shaunyap01.github.io/tags/economics/">Economics</a></li>
-      <li><a href="https://shaunyap01.github.io/tags/trade-policy/">Trade Policy</a></li>
-      <li><a href="https://shaunyap01.github.io/tags/tariffs/">Tariffs</a></li>
-      <li><a href="https://shaunyap01.github.io/tags/trump-administration/">Trump Administration</a></li>
+      <li><a href="http://localhost:1313/tags/%23%23all-articles/">##All Articles</a></li>
+      <li><a href="http://localhost:1313/tags/%23brief/">#Brief</a></li>
+      <li><a href="http://localhost:1313/tags/python/">`Python</a></li>
+      <li><a href="http://localhost:1313/tags/web-scrape/">Web Scrape</a></li>
+      <li><a href="http://localhost:1313/tags/economics/">Economics</a></li>
+      <li><a href="http://localhost:1313/tags/trade-policy/">Trade Policy</a></li>
+      <li><a href="http://localhost:1313/tags/tariffs/">Tariffs</a></li>
+      <li><a href="http://localhost:1313/tags/trump-administration/">Trump Administration</a></li>
     </ul>
   </footer>
 </article>

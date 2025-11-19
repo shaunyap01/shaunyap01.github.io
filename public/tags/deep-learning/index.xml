@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Deep Learning on Shaun Yap</title>
+    <link>https://shaunyap01.github.io/tags/deep-learning/</link>
+    <description>Recent content in Deep Learning on Shaun Yap</description>
+    <generator>Hugo -- 0.145.0</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 01 Sep 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://shaunyap01.github.io/tags/deep-learning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Evaluating Environment &amp; Climate Truthfulness in Social Media using Deep Learning &amp; Large Language Models (LLMs)</title>
+      <link>https://shaunyap01.github.io/projects/evaluating-environment-and-climate-truthfulness-in-social-media-using-deep-learning-and-large-language-models/</link>
+      <pubDate>Sun, 01 Sep 2024 00:00:00 +0000</pubDate>
+      <guid>https://shaunyap01.github.io/projects/evaluating-environment-and-climate-truthfulness-in-social-media-using-deep-learning-and-large-language-models/</guid>
+      <description>Awarded Best Dissertation in Cohort, this MSc project explores the detection of climate and environmental misinformation on social media using a comparative framework of traditional natural language processing techniques, deep learning, and Large Language Models (LLMs). Leveraging a web-scraped dataset from PolitiFact, the study highlights the superiority of CNNs trained on ordinal truthfulness data, with accuracy boosted from 80.1% to 84.0% through GPT-4o-driven feature augmentation. While LLMs enhanced contextual understanding and sentiment analysis, their time complexity posed practical limitations. The project contributes novel insights into model performance trade-offs, evaluation metrics tailored to ordinal classification, and the practical integration of LLMs for misinformation mitigation in climate discourse.</description>
+    </item>
+  </channel>
+</rss>

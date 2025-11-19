@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Sports Data on Shaun Yap</title>
+    <link>https://shaunyap01.github.io/tags/sports-data/</link>
+    <description>Recent content in Sports Data on Shaun Yap</description>
+    <generator>Hugo -- 0.145.0</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 11 May 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://shaunyap01.github.io/tags/sports-data/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PGA Tour Stats Scraper</title>
+      <link>https://shaunyap01.github.io/projects/pga-tour-stats-scraper/</link>
+      <pubDate>Sun, 11 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://shaunyap01.github.io/projects/pga-tour-stats-scraper/</guid>
+      <description>Automate PGA Tour data collection with a Python scraper that extracts tournament-level stats from 2004 to present. Includes full dataset and Jupyter Notebook for analysis.</description>
+    </item>
+  </channel>
+</rss>

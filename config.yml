@@ -41,7 +41,7 @@ menu:
           weight: 6
         
         - name: Curriculum Vitae (CV)
-          url: /SY_CV.pdf
+          url: /cv.pdf
           weight: 0
 
 params:

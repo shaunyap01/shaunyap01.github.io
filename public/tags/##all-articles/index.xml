@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>##All Articles on Shaun Yap</title>
+    <link>https://shaunyap01.github.io/tags/%23%23all-articles/</link>
+    <description>Recent content in ##All Articles on Shaun Yap</description>
+    <generator>Hugo -- 0.145.0</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 05 Apr 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://shaunyap01.github.io/tags/%23%23all-articles/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Understanding Trump&#39;s Tariff Formula</title>
+      <link>https://shaunyap01.github.io/articles/trump-tariff-equation/</link>
+      <pubDate>Sat, 05 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://shaunyap01.github.io/articles/trump-tariff-equation/</guid>
+      <description>On April 2, 2025, President Donald Trump declared &amp;#39;Liberation Day&amp;#39;, unveiling aggressive new tariffs designed to correct trade imbalances via a controversial formula from the U.S. Trade Representative (USTR). This tariff equation, which aims to achieve a bilateral trade balance of zero, adjusts rates based on export-import disparities, elasticity of demand, and tariff passthrough. This article focuses on explaining the Trump Tariff formula to all with worked examples and offering Python tools to replicate and validate the data.</description>
+    </item>
+    <item>
+      <title>Generative AI and the Diminishing Returns of Scale: Are We Nearing the Plateau?</title>
+      <link>https://shaunyap01.github.io/articles/generative-ai-and-the-diminishing-returns-of-scale-are-we-nearing-the-plateau/</link>
+      <pubDate>Sat, 01 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>https://shaunyap01.github.io/articles/generative-ai-and-the-diminishing-returns-of-scale-are-we-nearing-the-plateau/</guid>
+      <description>Dive into the world of generative AI as we explore its remarkable growth powered by massive language models, image generators, and coding assistants, and ask if the era of scale is nearing its limit. This comprehensive article examines how relentless scaling drove breakthrough capabilities in text, images, and code, while drawing on recent empirical studies to show diminishing returns. Find out how new approaches - algorithmic efficiency, retrieval-augmented generation, and multimodal models - could shape the future of AI, along with key policy and ethical dimensions.</description>
+    </item>
+    <item>
+      <title>Potential Solutions for Harmful Deepfakes</title>
+      <link>https://shaunyap01.github.io/articles/potential-solutions-for-harmful-deepfakes/</link>
+      <pubDate>Wed, 01 May 2024 00:00:00 +0000</pubDate>
+      <guid>https://shaunyap01.github.io/articles/potential-solutions-for-harmful-deepfakes/</guid>
+      <description>Explore the growing threat of deepfakes and the ethical, legal, and societal challenges they pose. This in-depth article outlines practical solutions including AI regulation, platform accountability, detection tools, and media literacy to combat malicious synthetic media and misinformation online.</description>
+    </item>
+    <item>
+      <title>To What Extent Can Cryptocurrency Become Everyday-Use Currency?</title>
+      <link>https://shaunyap01.github.io/articles/to-what-extent-can-cryptocurrency-become-everyday-use-currency/</link>
+      <pubDate>Fri, 01 Feb 2019 00:00:00 +0000</pubDate>
+      <guid>https://shaunyap01.github.io/articles/to-what-extent-can-cryptocurrency-become-everyday-use-currency/</guid>
+      <description>Can Bitcoin and other cryptocurrencies replace traditional currencies like the US Dollar in everyday life? This comprehensive analysis examines the economic, technical, and political factors that influence mainstream adoption of crypto, exploring the future of digital money, stablecoins, and central bank regulation.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Platform Regulation on Shaun Yap</title>
+    <link>https://shaunyap01.github.io/tags/platform-regulation/</link>
+    <description>Recent content in Platform Regulation on Shaun Yap</description>
+    <generator>Hugo -- 0.145.0</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 01 May 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://shaunyap01.github.io/tags/platform-regulation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Potential Solutions for Harmful Deepfakes</title>
+      <link>https://shaunyap01.github.io/articles/potential-solutions-for-harmful-deepfakes/</link>
+      <pubDate>Wed, 01 May 2024 00:00:00 +0000</pubDate>
+      <guid>https://shaunyap01.github.io/articles/potential-solutions-for-harmful-deepfakes/</guid>
+      <description>Explore the growing threat of deepfakes and the ethical, legal, and societal challenges they pose. This in-depth article outlines practical solutions including AI regulation, platform accountability, detection tools, and media literacy to combat malicious synthetic media and misinformation online.</description>
+    </item>
+  </channel>
+</rss>

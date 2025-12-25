@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Trump Administration on Shaun Yap</title>
+    <link>https://shaunyap01.github.io/tags/trump-administration/</link>
+    <description>Recent content in Trump Administration on Shaun Yap</description>
+    <generator>Hugo -- 0.145.0</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 05 Apr 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://shaunyap01.github.io/tags/trump-administration/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Understanding Trump&#39;s Tariff Formula</title>
+      <link>https://shaunyap01.github.io/articles/trump-tariff-equation/</link>
+      <pubDate>Sat, 05 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://shaunyap01.github.io/articles/trump-tariff-equation/</guid>
+      <description>On April 2, 2025, President Donald Trump declared &amp;#39;Liberation Day&amp;#39;, unveiling aggressive new tariffs designed to correct trade imbalances via a controversial formula from the U.S. Trade Representative (USTR). This tariff equation, which aims to achieve a bilateral trade balance of zero, adjusts rates based on export-import disparities, elasticity of demand, and tariff passthrough. This article focuses on explaining the Trump Tariff formula to all with worked examples and offering Python tools to replicate and validate the data.</description>
+    </item>
+  </channel>
+</rss>

@@ -105,10 +105,10 @@ I developed statistical computing tools for robust inference in Julia, focusing 
     <table class="conf-table">
       <colgroup>
         <col style="width: 5%" />
-        <col style="width: 20%" />
-        <col style="width: 10%" />
-        <col style="width: 20%" />
-        <col style="width: 25%" />
+        <col style="width: 15%" />
+        <col style="width: 5%" />
+        <col style="width: 15%" />
+        <col style="width: 40%" />
         <col style="width: 10%" />
         <col style="width: 10%" />
       </colgroup>
@@ -125,13 +125,14 @@ I developed statistical computing tools for robust inference in Julia, focusing 
       </thead>
       <tbody>
         <tr>
-          <td>1</td>
-          <td>Tech4Health Annual Conference 25/26</td>
-          <td>Nov 2025</td>
-          <td>Tech4Health CDT (Ulster University × UCL)</td>
-          <td>The Tech4Health Annual Conference brings together students, researchers, and industry partners for keynotes, multidisciplinary workshops, research presentations, networking and innovation-focused activities across two days.</td>
-          <td>Poster presentation</td>
-          <td><a href="/academic_events/1/SY_Poster.pdf">SY Poster PDF</a></td>
+        <tr>
+          <td>3</td>
+          <td>Public Engagement Course at Science Museum</td>
+          <td>Jan 2026</td>
+          <td>Science Museum Group</td>
+          <td>Participatory workshop that uses research and practical techniques to help you design, deliver, and evaluate engaging STEM public events by understanding audiences, setting outcomes, developing activities, and facilitating effective interactions.</td>
+          <td>Participant</td>
+          <td><a href="https://learning.sciencemuseumgroup.org.uk/academy/academy-training/public-engagement/">https://learning.sciencemuseumgroup.org.uk/academy/academy-training/public-engagement/</a></td>
         </tr>
         <tr>
           <td>2</td>
@@ -141,6 +142,15 @@ I developed statistical computing tools for robust inference in Julia, focusing 
           <td>The BNS Autumn 2025 Meeting offers two days of research talks, prize lectures, symposia, and poster sessions spanning neuropsychology, neurodegeneration, brain stimulation and clinical science.</td>
           <td>Attendee</td>
           <td><a href="https://www.the-bns.org/meetings">https://www.the-bns.org/meetings</a></td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>Tech4Health Annual Conference 25/26</td>
+          <td>Nov 2025</td>
+          <td>Tech4Health CDT (Ulster University × UCL)</td>
+          <td>The Tech4Health Annual Conference brings together students, researchers, and industry partners for keynotes, multidisciplinary workshops, research presentations, networking and innovation-focused activities across two days.</td>
+          <td>Poster presentation</td>
+          <td><a href="/academic_events/1/SY_Poster.pdf">SY Poster PDF</a></td>
         </tr>
       </tbody>
     </table>

@@ -108,9 +108,9 @@ I developed statistical computing tools for robust inference in Julia, focusing 
         <col style="width: 15%" />
         <col style="width: 5%" />
         <col style="width: 15%" />
-        <col style="width: 40%" />
-        <col style="width: 10%" />
-        <col style="width: 10%" />
+        <col style="width: 45%" />
+        <col style="width: 8%" />
+        <col style="width: 7%" />
       </colgroup>
       <thead>
         <tr>
@@ -150,7 +150,7 @@ I developed statistical computing tools for robust inference in Julia, focusing 
           <td>Tech4Health CDT (Ulster University × UCL)</td>
           <td>The Tech4Health Annual Conference brings together students, researchers, and industry partners for keynotes, multidisciplinary workshops, research presentations, networking and innovation-focused activities across two days.</td>
           <td>Poster presentation</td>
-          <td><a href="/academic_events/1/SY_Poster.pdf">SY Poster PDF</a></td>
+          <td><a href="https://www.tech4health.co.uk">https://www.tech4health.co.uk</a> <br/><a href="/academic_events/1/SY_Poster.pdf">SY Poster PDF</a><br></td>
         </tr>
       </tbody>
     </table>

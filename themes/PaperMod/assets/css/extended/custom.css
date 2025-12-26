@@ -45,7 +45,7 @@
 }
 
 .conf-table-body-scroll {
-  max-height: 380px;
+  max-height: 600px;
   overflow-y: auto;
   overflow-x: auto;
   scrollbar-gutter: stable;

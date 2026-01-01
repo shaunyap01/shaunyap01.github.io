@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Unsupervised Learning on Shaun Yap</title>
+    <link>https://shaunyap01.github.io/tags/unsupervised-learning/</link>
+    <description>Recent content in Unsupervised Learning on Shaun Yap</description>
+    <generator>Hugo -- 0.145.0</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 10 Jan 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://shaunyap01.github.io/tags/unsupervised-learning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Clustering Countries</title>
+      <link>https://shaunyap01.github.io/projects/clustering-countries/</link>
+      <pubDate>Wed, 10 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://shaunyap01.github.io/projects/clustering-countries/</guid>
+      <description>This project showcases advanced data science and statistical analysis skills through a comprehensive clustering analysis of country-level socio-economic and health data using both hierarchical and k-means clustering methods. Key skills demonstrated include robust data preprocessing, detailed exploratory data analysis with insightful visualisations, Z-score standardisation, PCA for dimensionality reduction, and effective interpretation of cluster structures. The analysis incorporates evaluation metrics such as silhouette and Calinski-Harabasz scores for optimal cluster selection, uses distance metrics (Manhattan and Euclidean), and applies cluster-based inference to identify countries in need of development aid. Additionally, the project integrates model application to new data, creating a prioritised aid strategy using PCA projections and quantitative scoring.</description>
+    </item>
+  </channel>
+</rss>

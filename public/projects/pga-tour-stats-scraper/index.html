@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>PGA Tour Stats Scraper | Shaun Yap</title>
+<meta name="keywords" content="`Python, ^^All Projects, Web scrape, PGA Tour Stats, Sports Betting, Sports Data">
+<meta name="description" content="Automate PGA Tour data collection with a Python scraper that extracts tournament-level stats from 2004 to present. Includes full dataset and Jupyter Notebook for analysis.">
+<meta name="author" content="Shaun Yap">
+<link rel="canonical" href="https://shaunyap01.github.io/projects/pga-tour-stats-scraper/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.3fc93563987a6232a5b8b3e0a25a366c767e125a9f29a8d5ff271f363f5ca833.css" integrity="sha256-P8k1Y5h6YjKluLPgolo2bHZ&#43;ElqfKajV/ycfNj9cqDM=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://shaunyap01.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://shaunyap01.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://shaunyap01.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://shaunyap01.github.io/apple-touch-icon.png">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://shaunyap01.github.io/projects/pga-tour-stats-scraper/">
+<meta property="og:title" content="PGA Tour Stats Scraper" />
+<meta property="og:description" content="Automate PGA Tour data collection with a Python scraper that extracts tournament-level stats from 2004 to present. Includes full dataset and Jupyter Notebook for analysis." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://shaunyap01.github.io/projects/pga-tour-stats-scraper/" /><meta property="article:section" content="projects" />
+<meta property="article:published_time" content="2025-05-11T00:00:00+00:00" />
+<meta property="article:modified_time" content="2025-05-11T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="PGA Tour Stats Scraper"/>
+<meta name="twitter:description" content="Automate PGA Tour data collection with a Python scraper that extracts tournament-level stats from 2004 to present. Includes full dataset and Jupyter Notebook for analysis."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Projects",
+      "item": "https://shaunyap01.github.io/projects/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "PGA Tour Stats Scraper",
+      "item": "https://shaunyap01.github.io/projects/pga-tour-stats-scraper/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "PGA Tour Stats Scraper",
+  "name": "PGA Tour Stats Scraper",
+  "description": "Automate PGA Tour data collection with a Python scraper that extracts tournament-level stats from 2004 to present. Includes full dataset and Jupyter Notebook for analysis.",
+  "keywords": [
+    "`Python", "^^All Projects", "Web scrape", "PGA Tour Stats", "Sports Betting", "Sports Data"
+  ],
+  "articleBody": "A data project driven by a love for golf, statistics, and a curiosity: can data outsmart the bookmakers?\nFrom Tee Box to Text Editor I used to play competitive golf, representing Kuala Lumpur, Malaysia’s capital, at the national level. I wasn’t the biggest hitter or the most naturally gifted - I was nearly a foot shorter than the average player in my age group (thanks to a late growth spurt and some unfortunate date cutoffs). So I leaned into what I could control: statistics-based preparation and deliberate course management.\nThat edge took me further than talent alone might have.\nThese days, I’m no longer grinding out 36-hole weekends, but my love for golf - and for data - hasn’t gone anywhere. Lately, that’s taken a new form: sports betting. Nothing serious - just small-stakes wagers with friends - but over the past year, I’ve seen a surprising 150% return.\nI’ll be the first to admit: a good portion of that was luck. But it got me wondering…\nWhat would it take to build a model that doesn’t just predict results - but consistently outperforms the bookmakers’ implied odds?\nWhere Do You Even Start? Like any data scientist, I started with the data.\nSites like DataGolf and FantasyNational, and others frequently cited on Reddit were promising - but behind paywalls. That left me with one major free alternative: the official PGA Tour statistics site.\nIt’s a goldmine, offering data back to 2004 - but also a logistical nightmare. Every CSV must be downloaded manually, one at a time, by selecting a specific stat, for a specific tournament.\nTo put this in perspective:\n~350 stats per tournament ~39 events per season That’s over 13,650 CSV files for a single year There weren’t any public scrapers available. Most users either paid for third-party access or gave up.\nSo I Built One To solve this, I built a web scraper that automates collection of all ‘Tournament Only’ statistics from the PGA Tour website - across any season from 2004 to the present.\nIt enables flexible, large-scale data collection without needing manual intervention.\nKey Features Scrape across any date range or season between 2004 and present\nSelect specific metrics using the Stat Code Reference List e.g. 02564 = Strokes Gained: Putting\nExport clean .csv files, organised by:\nStat category Season or date range Run as either:\nPython script (CLI) Jupyter Notebook (interactive) In addition, the GitHub repository includes fully pre-scraped data covering 01/01/2004 – 20/04/2025, so you can start exploring immediately - no scraping required.\nWhy This Matters There’s growing interest in using data to inform sports predictions - but too often, the data itself is locked away, incomplete, or poorly documented. By making this tool (and the data) openly available, I hope to support others who want to:\nBuild predictive models Investigate performance trends Analyse course-specific player stats Create more transparent, hands-on sports analytics projects In short, this is about lowering the barrier to entry - and encouraging exploration.\nWhat’s Next? This project lays the groundwork by solving the data access problem - but the real challenge (and excitement) lies ahead. Building predictive models using this dataset, exploring whether performance metrics can reliably anticipate outcomes - and how closely those outcomes align (or diverge) from bookmaker odds.\nExplore the GitHub Repository (Includes full codebase, setup instructions, stat references, and a complete pre-scraped dataset (from 2004-01-01 to 2025-04-20))\nSaved some money using this instead of buying data elsewhere?\nConsider supporting via Buy Me a Coffee - thank you!\n",
+  "wordCount" : "583",
+  "inLanguage": "en",
+  "datePublished": "2025-05-11T00:00:00Z",
+  "dateModified": "2025-05-11T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Shaun Yap"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://shaunyap01.github.io/projects/pga-tour-stats-scraper/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Shaun Yap",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://shaunyap01.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" integrity="sha384-wcIxkf4k558AjM3Yz3BBFQUbk/zgIYC2R0QpeeYb+TwlBVMrlgLqwRjRtGZiK7ww" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" integrity="sha384-hIoBPJpTUs74ddyc4bFZSM1TVlQDA60VBbJS0oA934VSz82sBx1X7kSx2ATBDIyd" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+            {left: "\\begin{equation}", right: "\\end{equation}", display: true},
+            {left: "\\begin{equation*}", right: "\\end{equation*}", display: true},
+            {left: "\\begin{align}", right: "\\end{align}", display: true},
+            {left: "\\begin{align*}", right: "\\end{align*}", display: true},
+            {left: "\\begin{alignat}", right: "\\end{alignat}", display: true},
+            {left: "\\begin{gather}", right: "\\end{gather}", display: true},
+            {left: "\\begin{CD}", right: "\\end{CD}", display: true},
+          ],
+          throwOnError : false
+        });
+    });
+</script>
+ 
+
+
+</head>
+
+<body class="" id="top">
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://shaunyap01.github.io/" accesskey="h">
+                <img src="https://shaunyap01.github.io/favicon.ico" alt="logo" aria-label="logo"
+                    height="18"
+                    width="18">Shaun Yap</a>
+            <div class="logo-switches">
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://shaunyap01.github.io/research/">
+                    <span>Research</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://shaunyap01.github.io/articles/">
+                    <span>Articles</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://shaunyap01.github.io/projects/">
+                    <span>Projects</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://shaunyap01.github.io/tags/">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://shaunyap01.github.io/archive/">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://shaunyap01.github.io/contact/">
+                    <span>Contact</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://shaunyap01.github.io/cv.pdf">
+                    <span>Curriculum Vitae (CV)</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+    <main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      PGA Tour Stats Scraper
+    </h1>
+    <div class="post-meta"><span title='2025-05-11 00:00:00 +0000 UTC'>11 May 2025</span>&nbsp;&middot;&nbsp;Shaun Yap&nbsp;&middot;&nbsp;<a href="https://github.com/shaunyap01/PGA-Tour-Stats-Scraper" rel="noopener noreferrer" target="_blank">PGA Tour Stats Scraper GitHub Repository</a>
+
+</div>
+  </header> <div class="toc">
+    <details  open>
+        <summary accesskey="c">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#from-tee-box-to-text-editor"><strong>From Tee Box to Text Editor</strong></a></li>
+        <li><a href="#where-do-you-even-start"><strong>Where Do You Even Start?</strong></a></li>
+        <li><a href="#so-i-built-one"><strong>So I Built One</strong></a>
+          <ul>
+            <li><a href="#key-features"><strong>Key Features</strong></a></li>
+          </ul>
+        </li>
+        <li><a href="#why-this-matters"><strong>Why This Matters</strong></a></li>
+        <li><a href="#what"><strong>What&rsquo;s Next?</strong></a></li>
+        <li><a href="#explore-the-github-repository"><a href="https://github.com/shaunyap01/PGA-Tour-Stats-Scraper">Explore the GitHub Repository</a></a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p><em>A data project driven by a love for golf, statistics, and a curiosity: can data outsmart the bookmakers?</em></p>
+<hr>
+<h2 id="from-tee-box-to-text-editor"><strong>From Tee Box to Text Editor</strong><a hidden class="anchor" aria-hidden="true" href="#from-tee-box-to-text-editor">#</a></h2>
+<p>I used to play competitive golf, representing <strong>Kuala Lumpur</strong>, Malaysia&rsquo;s capital, at the <strong>national level</strong>. I wasn&rsquo;t the biggest hitter or the most naturally gifted - I was nearly a foot shorter than the average player in my age group (thanks to a late growth spurt and some unfortunate date cutoffs). So I leaned into what I could control: <strong>statistics-based preparation and deliberate course management</strong>.</p>
+<p>That edge took me further than talent alone might have.</p>
+<p>These days, I&rsquo;m no longer grinding out 36-hole weekends, but my love for golf - and for data - hasn&rsquo;t gone anywhere. Lately, that&rsquo;s taken a new form: <strong>sports betting</strong>. Nothing serious - just small-stakes wagers with friends - but over the past year, I&rsquo;ve seen a surprising <strong>150% return</strong>.</p>
+<p>I&rsquo;ll be the first to admit: a good portion of that was luck. But it got me wondering…</p>
+<blockquote>
+<p><em>What would it take to build a model that doesn&rsquo;t just predict results - but consistently outperforms the bookmakers&rsquo; implied odds?</em></p></blockquote>
+<hr>
+<h2 id="where-do-you-even-start"><strong>Where Do You Even Start?</strong><a hidden class="anchor" aria-hidden="true" href="#where-do-you-even-start">#</a></h2>
+<p>Like any data scientist, I started with the data.</p>
+<p>Sites like <strong>DataGolf</strong> and <strong>FantasyNational</strong>, and others frequently cited on Reddit were promising - but behind paywalls. That left me with one major free alternative: the <strong>official PGA Tour statistics site</strong>.</p>
+<p>It&rsquo;s a goldmine, offering data back to <strong>2004</strong> - but also a logistical nightmare. Every CSV must be downloaded manually, one at a time, by selecting a <strong>specific stat</strong>, for a <strong>specific tournament</strong>.</p>
+<p>To put this in perspective:</p>
+<ul>
+<li>~350 stats per tournament</li>
+<li>~39 events per season</li>
+<li>That&rsquo;s <strong>over 13,650 CSV files</strong> for a single year</li>
+</ul>
+<p>There weren&rsquo;t any public scrapers available. Most users either paid for third-party access or gave up.</p>
+<hr>
+<h2 id="so-i-built-one"><strong>So I Built One</strong><a hidden class="anchor" aria-hidden="true" href="#so-i-built-one">#</a></h2>
+<p>To solve this, I built a <strong>web scraper</strong> that automates collection of all <strong>‘Tournament Only&rsquo; statistics</strong> from the PGA Tour website - across <strong>any season from 2004 to the present</strong>.</p>
+<p>It enables flexible, large-scale data collection without needing manual intervention.</p>
+<h3 id="key-features"><strong>Key Features</strong><a hidden class="anchor" aria-hidden="true" href="#key-features">#</a></h3>
+<ul>
+<li>
+<p>Scrape across <strong>any date range or season between 2004 and present</strong></p>
+</li>
+<li>
+<p>Select specific metrics using the <strong>Stat Code Reference List</strong>
+<em>e.g. <code>02564</code> = Strokes Gained: Putting</em></p>
+</li>
+<li>
+<p>Export clean <code>.csv</code> files, organised by:</p>
+<ul>
+<li><strong>Stat category</strong></li>
+<li><strong>Season or date range</strong></li>
+</ul>
+</li>
+<li>
+<p>Run as either:</p>
+<ul>
+<li><strong>Python script (CLI)</strong></li>
+<li><strong>Jupyter Notebook (interactive)</strong></li>
+</ul>
+</li>
+</ul>
+<p>In addition, the <strong>GitHub repository includes fully pre-scraped data</strong> covering <strong>01/01/2004 – 20/04/2025</strong>, so you can start exploring immediately - no scraping required.</p>
+<hr>
+<h2 id="why-this-matters"><strong>Why This Matters</strong><a hidden class="anchor" aria-hidden="true" href="#why-this-matters">#</a></h2>
+<p>There&rsquo;s growing interest in using data to inform sports predictions - but too often, the data itself is locked away, incomplete, or poorly documented. By making this tool (and the data) openly available, I hope to support others who want to:</p>
+<ul>
+<li>Build predictive models</li>
+<li>Investigate performance trends</li>
+<li>Analyse course-specific player stats</li>
+<li>Create more transparent, hands-on sports analytics projects</li>
+</ul>
+<p>In short, this is about lowering the barrier to entry - and encouraging exploration.</p>
+<hr>
+<h2 id="what"><strong>What&rsquo;s Next?</strong><a hidden class="anchor" aria-hidden="true" href="#what">#</a></h2>
+<p>This project lays the groundwork by solving the data access problem - but the real challenge (and excitement) lies ahead. Building predictive models using this dataset, exploring whether performance metrics can reliably anticipate outcomes - and how closely those outcomes align (or diverge) from bookmaker odds.</p>
+<hr>
+<h2 id="explore-the-github-repository"><a href="https://github.com/shaunyap01/PGA-Tour-Stats-Scraper" target="_blank">Explore the GitHub Repository</a><a hidden class="anchor" aria-hidden="true" href="#explore-the-github-repository">#</a></h2>
+<p><em>(Includes full codebase, setup instructions, stat references, and a complete pre-scraped dataset (from 2004-01-01 to 2025-04-20))</em></p>
+<hr>
+<p>Saved some money using this instead of buying data elsewhere?<br>
+Consider <a href="https://buymeacoffee.com/shaunyap01" target="_blank">supporting via Buy Me a Coffee</a> - thank you!</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://shaunyap01.github.io/tags/python/">`Python</a></li>
+      <li><a href="https://shaunyap01.github.io/tags/all-projects/">^^All Projects</a></li>
+      <li><a href="https://shaunyap01.github.io/tags/web-scrape/">Web Scrape</a></li>
+      <li><a href="https://shaunyap01.github.io/tags/pga-tour-stats/">PGA Tour Stats</a></li>
+      <li><a href="https://shaunyap01.github.io/tags/sports-betting/">Sports Betting</a></li>
+      <li><a href="https://shaunyap01.github.io/tags/sports-data/">Sports Data</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+</html>

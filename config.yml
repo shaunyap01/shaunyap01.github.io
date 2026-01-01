@@ -1,0 +1,155 @@
+baseURL: "https://shaunyap01.github.io" 
+title: Shaun Yap
+pagination:
+  pagerSize: 20
+theme: PaperMod
+
+enableInlineShortcodes: true
+enableRobotsTXT: true
+
+disableKinds:
+  - sitemap
+
+taxonomies:
+    tag: tags
+
+menu:
+    main:
+
+        - name: Research
+          url: research/
+          weight: 1
+          
+        - name: Articles
+          url: articles/
+          weight: 2
+
+        - name: Projects
+          url: projects/
+          weight: 3
+
+        - name: Tags
+          url: tags/
+          weight: 4
+
+        - name: Archive
+          url: archive/
+          weight: 5
+        
+        - name: Contact
+          url: contact/
+          weight: 6
+        
+        - name: Curriculum Vitae (CV)
+          url: /cv.pdf
+          weight: 7
+
+params:
+    description: "This is Shaun Yap's personal website"
+    author: Shaun Yap
+    # googleAnalyticsID: "G-XXXXX"
+    DateFormat: "02 January 2006"
+    defaultTheme: light
+    hideFooter: true
+    disableThemeToggle: true
+    ShowShareButtons: false
+    ShowReadingTime: false
+    disableSpecial1stPost: true
+    disableAnchoredHeadings: true
+    ShowPostNavLinks: false
+    ShowBreadCrumbs: false
+    ShowCodeCopyButtons: true
+    ShowAllPagesInArchive: false
+    MainSections: ["articles","projects"]
+    ShowToc: false
+    disableScrollToTop: true
+    TocOpen: true
+    ShowWordCount: false
+    UseHugoToc: true
+    comments: false
+    math: true
+    profileMode:
+          enabled: true
+          title: Shaun Yap
+          subtitle: "
+            ## PhD Researcher @ University College London (UCL) | Data Scientist
+
+            #### Neuroscience x Data Science
+            
+            > 'If I have seen further it is by standing on the shoulders of Giants' - <i>Isaac Newton</i>.
+            
+            ### About me 
+
+            I'm a **PhD researcher** at [**University College London (UCL)**](https://www.ucl.ac.uk) part of the [**Tech4Health Centre for Doctoral Training (Tech4Health CDT)**](https://www.tech4health.co.uk). Supported by a 4-year studentship co-funded by [**UKRI Engineering and Physical Sciences Research Council (EPSRC)**](https://www.ukri.org/councils/epsrc) and [**The National Brain Appeal**](https://www.nationalbrainappeal.org), my [research](/research) sits at the intersection of **neuroscience** and **data science** - focusing on visual system vulnerability in dementia.
+            "
+            
+
+          imageUrl: "SY_photo.png"
+          imageWidth: 160
+          imageHeight: 160
+          imageTitle: SY
+          buttons: 
+            - name: Research
+              url: research/
+
+            - name: Articles
+              url: articles/
+
+            - name: Projects
+              url: projects/
+
+            - name: Tags
+              url: tags/
+
+            - name: Archive
+              url: archive/
+  
+            - name: Contact
+              url: contact/
+         
+    socialIcons:
+        - name: CV
+          url: /SY_CV.pdf
+
+        - name: Email
+          url: mailto:shaunyap01@gmail.com
+
+        - name: LinkedIn
+          url: https://www.linkedin.com/in/shaunyap0122/
+
+        - name: GitHub
+          url: https://github.com/shaunyap01
+
+        - name: ORCID
+          url: https://orcid.org/0009-0005-5195-9101
+
+        - name: Discord
+          url: https://discordapp.com/users/shaunyap01
+
+    assets:
+        disableHLJS: true
+        disableScrollBarStyle: true
+        favicon: "/favicon.ico"
+        favicon16x16: "/favicon-16x16.png"
+        favicon32x32: "/favicon-32x32.png"
+        apple_touch_icon: "/apple-touch-icon.png"
+        mask_icon: "/safari-pinned-tab.svg"
+    cover:
+        hiddenInList: false
+        hiddenInSingle: true
+    label:
+      text: "Shaun Yap"
+      icon: /favicon.ico
+      iconHeight: 18
+
+markup:
+    goldmark:
+        renderer:
+            unsafe: true
+    highlight:
+        guessSyntax: true
+        style: autumn 
+    tableOfContents:
+        endLevel: 4
+        ordered: false
+        startLevel: 1

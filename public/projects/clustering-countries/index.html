@@ -1,0 +1,1685 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Clustering Countries | Shaun Yap</title>
+<meta name="keywords" content="`Python, ^^All Projects, Clustering, Hierarchical Clustering, K-Means Clustering, Unsupervised Learning, Distance Metrics">
+<meta name="description" content="This project showcases advanced data science and statistical analysis skills through a comprehensive clustering analysis of country-level socio-economic and health data using both hierarchical and k-means clustering methods. Key skills demonstrated include robust data preprocessing, detailed exploratory data analysis with insightful visualisations, Z-score standardisation, PCA for dimensionality reduction, and effective interpretation of cluster structures. The analysis incorporates evaluation metrics such as silhouette and Calinski-Harabasz scores for optimal cluster selection, uses distance metrics (Manhattan and Euclidean), and applies cluster-based inference to identify countries in need of development aid. Additionally, the project integrates model application to new data, creating a prioritised aid strategy using PCA projections and quantitative scoring.">
+<meta name="author" content="Shaun Yap">
+<link rel="canonical" href="https://shaunyap01.github.io/projects/clustering-countries/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.3fc93563987a6232a5b8b3e0a25a366c767e125a9f29a8d5ff271f363f5ca833.css" integrity="sha256-P8k1Y5h6YjKluLPgolo2bHZ&#43;ElqfKajV/ycfNj9cqDM=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://shaunyap01.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://shaunyap01.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://shaunyap01.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://shaunyap01.github.io/apple-touch-icon.png">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://shaunyap01.github.io/projects/clustering-countries/">
+<meta property="og:title" content="Clustering Countries" />
+<meta property="og:description" content="This project showcases advanced data science and statistical analysis skills through a comprehensive clustering analysis of country-level socio-economic and health data using both hierarchical and k-means clustering methods. Key skills demonstrated include robust data preprocessing, detailed exploratory data analysis with insightful visualisations, Z-score standardisation, PCA for dimensionality reduction, and effective interpretation of cluster structures. The analysis incorporates evaluation metrics such as silhouette and Calinski-Harabasz scores for optimal cluster selection, uses distance metrics (Manhattan and Euclidean), and applies cluster-based inference to identify countries in need of development aid. Additionally, the project integrates model application to new data, creating a prioritised aid strategy using PCA projections and quantitative scoring." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://shaunyap01.github.io/projects/clustering-countries/" /><meta property="article:section" content="projects" />
+<meta property="article:published_time" content="2024-01-10T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-01-10T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Clustering Countries"/>
+<meta name="twitter:description" content="This project showcases advanced data science and statistical analysis skills through a comprehensive clustering analysis of country-level socio-economic and health data using both hierarchical and k-means clustering methods. Key skills demonstrated include robust data preprocessing, detailed exploratory data analysis with insightful visualisations, Z-score standardisation, PCA for dimensionality reduction, and effective interpretation of cluster structures. The analysis incorporates evaluation metrics such as silhouette and Calinski-Harabasz scores for optimal cluster selection, uses distance metrics (Manhattan and Euclidean), and applies cluster-based inference to identify countries in need of development aid. Additionally, the project integrates model application to new data, creating a prioritised aid strategy using PCA projections and quantitative scoring."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Projects",
+      "item": "https://shaunyap01.github.io/projects/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Clustering Countries",
+      "item": "https://shaunyap01.github.io/projects/clustering-countries/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Clustering Countries",
+  "name": "Clustering Countries",
+  "description": "This project showcases advanced data science and statistical analysis skills through a comprehensive clustering analysis of country-level socio-economic and health data using both hierarchical and k-means clustering methods. Key skills demonstrated include robust data preprocessing, detailed exploratory data analysis with insightful visualisations, Z-score standardisation, PCA for dimensionality reduction, and effective interpretation of cluster structures. The analysis incorporates evaluation metrics such as silhouette and Calinski-Harabasz scores for optimal cluster selection, uses distance metrics (Manhattan and Euclidean), and applies cluster-based inference to identify countries in need of development aid. Additionally, the project integrates model application to new data, creating a prioritised aid strategy using PCA projections and quantitative scoring.",
+  "keywords": [
+    "`Python", "^^All Projects", "Clustering", "Hierarchical Clustering", "K-Means Clustering", "Unsupervised Learning", "Distance Metrics"
+  ],
+  "articleBody": "Aim The aim of this part of the assignment is to perform clustering on country-level data that determine the overall development of the country in order to see whether there are groups of countries that share common socio-economic and health indices.\nData The data within country data.csv contains the following information:\nchild_mort: the number of deaths per 1,000 live births of children under the age of five. income: net income per person in dollars. inflation: Consumer Price Index (CPI). LE: the average number of years a newborn can expect to live if current mortality rates remain constant throughout their lifetime. total_fer: the average number of children a woman would give birth to during her reproductive years if she experienced the current age-specific fertility rates throughout her reproductive life. C 1. Initial Data Analysis. C.1(i) Create a summary table for the country data.csv dataset and visualise the distributions of variables.\n# Import necessary libraries import pandas as pd import numpy as np import matplotlib.pyplot as plt import seaborn as sns # Load the data data_dir = 'C:/Users/shaun/Documents/University of Exeter/MTHM503/Assignment/Data/' data = pd.read_csv(data_dir + 'country_data.csv') data.info() ",
+  "wordCount" : "6426",
+  "inLanguage": "en",
+  "datePublished": "2024-01-10T00:00:00Z",
+  "dateModified": "2024-01-10T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Shaun Yap"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://shaunyap01.github.io/projects/clustering-countries/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Shaun Yap",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://shaunyap01.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" integrity="sha384-wcIxkf4k558AjM3Yz3BBFQUbk/zgIYC2R0QpeeYb+TwlBVMrlgLqwRjRtGZiK7ww" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" integrity="sha384-hIoBPJpTUs74ddyc4bFZSM1TVlQDA60VBbJS0oA934VSz82sBx1X7kSx2ATBDIyd" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+            {left: "\\begin{equation}", right: "\\end{equation}", display: true},
+            {left: "\\begin{equation*}", right: "\\end{equation*}", display: true},
+            {left: "\\begin{align}", right: "\\end{align}", display: true},
+            {left: "\\begin{align*}", right: "\\end{align*}", display: true},
+            {left: "\\begin{alignat}", right: "\\end{alignat}", display: true},
+            {left: "\\begin{gather}", right: "\\end{gather}", display: true},
+            {left: "\\begin{CD}", right: "\\end{CD}", display: true},
+          ],
+          throwOnError : false
+        });
+    });
+</script>
+ 
+
+
+</head>
+
+<body class="" id="top">
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://shaunyap01.github.io/" accesskey="h">
+                <img src="https://shaunyap01.github.io/favicon.ico" alt="logo" aria-label="logo"
+                    height="18"
+                    width="18">Shaun Yap</a>
+            <div class="logo-switches">
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://shaunyap01.github.io/research/">
+                    <span>Research</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://shaunyap01.github.io/articles/">
+                    <span>Articles</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://shaunyap01.github.io/projects/">
+                    <span>Projects</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://shaunyap01.github.io/tags/">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://shaunyap01.github.io/archive/">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://shaunyap01.github.io/contact/">
+                    <span>Contact</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://shaunyap01.github.io/cv.pdf">
+                    <span>Curriculum Vitae (CV)</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+    <main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Clustering Countries
+    </h1>
+    <div class="post-meta"><span title='2024-01-10 00:00:00 +0000 UTC'>10 January 2024</span>&nbsp;&middot;&nbsp;Shaun Yap
+
+</div>
+  </header> <div class="toc">
+    <details  open>
+        <summary accesskey="c">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#aim">Aim</a></li>
+        <li><a href="#data">Data</a></li>
+        <li><a href="#c-1-initial-data-analysis">C 1. Initial Data Analysis.</a>
+          <ul>
+            <li><a href="#c1i">C.1(i)</a></li>
+            <li><a href="#c1ii">C.1(ii)</a></li>
+          </ul>
+        </li>
+        <li><a href="#c-2-hierarchical-clustering">C 2. Hierarchical clustering.</a>
+          <ul>
+            <li><a href="#c2i">C.2(i)</a></li>
+            <li><a href="#c2ii">C.2(ii)</a></li>
+            <li><a href="#c2iii">C.2(iii)</a></li>
+            <li><a href="#c2iv">C.2(iv)</a></li>
+          </ul>
+        </li>
+        <li><a href="#c-3-k-means-clustering">C 3. K-means clustering</a></li>
+        <li><a href="#c-4-allocating-new-observations-to-clusters">C 4. Allocating new observations to clusters</a>
+          <ul>
+            <li><a href="#c4i">C.4(i)</a></li>
+            <li><a href="#c4ii">C.4(ii)</a></li>
+          </ul>
+        </li>
+        <li><a href="#c-5-putting-data-back-into-context">C 5. Putting data back into context</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h2 id="aim">Aim<a hidden class="anchor" aria-hidden="true" href="#aim">#</a></h2>
+<p>The aim of this part of the assignment is to perform clustering on country-level data that determine the overall development of the country in order to see whether there are groups of countries that share common socio-economic and
+health indices.</p>
+<h2 id="data">Data<a hidden class="anchor" aria-hidden="true" href="#data">#</a></h2>
+<p>The data within country data.csv contains the following information:</p>
+<ul>
+<li>child_mort: the number of deaths per 1,000 live births of children under the age of five.</li>
+<li>income: net income per person in dollars.</li>
+<li>inflation: Consumer Price Index (CPI).</li>
+<li>LE: the average number of years a newborn can expect to live if current mortality rates remain constant throughout their lifetime.</li>
+<li>total_fer: the average number of children a woman would give birth to during her reproductive years if she experienced the current age-specific fertility rates throughout her reproductive life.</li>
+</ul>
+<h2 id="c-1-initial-data-analysis">C 1. Initial Data Analysis.<a hidden class="anchor" aria-hidden="true" href="#c-1-initial-data-analysis">#</a></h2>
+<h3 id="c1i">C.1(i)<a hidden class="anchor" aria-hidden="true" href="#c1i">#</a></h3>
+<p>Create a summary table for the country data.csv dataset and visualise
+the distributions of variables.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Import necessary libraries</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a">import</span> <span style="color:#0aa;text-decoration:underline">pandas</span> <span style="color:#00a">as</span> <span style="color:#0aa;text-decoration:underline">pd</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a">import</span> <span style="color:#0aa;text-decoration:underline">numpy</span> <span style="color:#00a">as</span> <span style="color:#0aa;text-decoration:underline">np</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a">import</span> <span style="color:#0aa;text-decoration:underline">matplotlib.pyplot</span> <span style="color:#00a">as</span> <span style="color:#0aa;text-decoration:underline">plt</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a">import</span> <span style="color:#0aa;text-decoration:underline">seaborn</span> <span style="color:#00a">as</span> <span style="color:#0aa;text-decoration:underline">sns</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Load the data</span>
+</span></span><span style="display:flex;"><span>data_dir = <span style="color:#a50">&#39;C:/Users/shaun/Documents/University of Exeter/MTHM503/Assignment/Data/&#39;</span>
+</span></span><span style="display:flex;"><span>data = pd.read_csv(data_dir + <span style="color:#a50">&#39;country_data.csv&#39;</span>)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>data.info()
+</span></span></code></pre></div><pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 36 entries, 0 to 35
+Data columns (total 6 columns):
+ #   Column      Non-Null Count  Dtype  
+---  ------      --------------  -----  
+ 0   country     36 non-null     object 
+ 1   child_mort  36 non-null     float64
+ 2   income      36 non-null     int64  
+ 3   inflation   36 non-null     float64
+ 4   LE          36 non-null     float64
+ 5   total_fer   36 non-null     float64
+dtypes: float64(4), int64(1), object(1)
+memory usage: 1.8+ KB
+</code></pre>
+<p>All columns have correct datatypes, hence type casting is not required.</p>
+<ul>
+<li>Categorical Features : country</li>
+<li>Numerical Features : child_mort, exports, health, imports, income, inflation, life_expec, total_fer and gdpp</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>cols = <span style="color:#0aa">list</span> (data.columns)
+</span></span><span style="display:flex;"><span>numerical_features = cols [<span style="color:#099">1</span>:]
+</span></span><span style="display:flex;"><span>categorical_features = [<span style="color:#a50">&#39;Country&#39;</span>]
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Check missing values</span>
+</span></span><span style="display:flex;"><span>isNull = data.isnull().sum().to_frame(name=<span style="color:#a50">&#39;isNull&#39;</span>).T
+</span></span><span style="display:flex;"><span>isNa = data.isna().sum().to_frame(name=<span style="color:#a50">&#39;isNa&#39;</span>).T
+</span></span><span style="display:flex;"><span>Unique = data.nunique().to_frame(name=<span style="color:#a50">&#39;Unique&#39;</span>).T
+</span></span><span style="display:flex;"><span>NA_summary = pd.concat([Unique, isNa, isNull])
+</span></span><span style="display:flex;"><span>NA_summary
+</span></span></code></pre></div><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>country</th>
+      <th>child_mort</th>
+      <th>income</th>
+      <th>inflation</th>
+      <th>LE</th>
+      <th>total_fer</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Unique</th>
+      <td>36</td>
+      <td>32</td>
+      <td>35</td>
+      <td>36</td>
+      <td>33</td>
+      <td>33</td>
+    </tr>
+    <tr>
+      <th>isNa</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>isNull</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<p>There is no missing values in the data, hence missing value handling is not required.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#0aa">print</span> (<span style="color:#a50">&#34;Shape of data: </span><span style="color:#a50">{}</span><span style="color:#a50">&#34;</span> . <span style="color:#0aa">format</span> (data.shape))
+</span></span><span style="display:flex;"><span><span style="color:#0aa">print</span> (<span style="color:#a50">&#34;Number of rows: </span><span style="color:#a50">{}</span><span style="color:#a50">&#34;</span> . <span style="color:#0aa">format</span> (data.shape [<span style="color:#099">0</span>]))
+</span></span><span style="display:flex;"><span><span style="color:#0aa">print</span> (<span style="color:#a50">&#34;Number of columns: </span><span style="color:#a50">{}</span><span style="color:#a50">&#34;</span> . <span style="color:#0aa">format</span> (data.shape [<span style="color:#099">1</span>]))
+</span></span></code></pre></div><pre><code>Shape of data: (36, 6)
+Number of rows: 36
+Number of columns: 6
+</code></pre>
+<p>Summary table for country data</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Country data summary table</span>
+</span></span><span style="display:flex;"><span>data[numerical_features].describe(percentiles= [<span style="color:#099">0.01</span>, <span style="color:#099">0.05</span>, <span style="color:#099">0.25</span>, <span style="color:#099">0.5</span>, <span style="color:#099">0.75</span>, <span style="color:#099">0.95</span>, <span style="color:#099">0.99</span>])
+</span></span></code></pre></div><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>child_mort</th>
+      <th>income</th>
+      <th>inflation</th>
+      <th>LE</th>
+      <th>total_fer</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>36.000000</td>
+      <td>36.000000</td>
+      <td>36.000000</td>
+      <td>36.000000</td>
+      <td>36.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>31.394444</td>
+      <td>22608.166667</td>
+      <td>6.482556</td>
+      <td>72.911111</td>
+      <td>2.799444</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>36.878743</td>
+      <td>17492.338400</td>
+      <td>6.524248</td>
+      <td>9.447230</td>
+      <td>1.673050</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>3.000000</td>
+      <td>814.000000</td>
+      <td>-1.900000</td>
+      <td>52.000000</td>
+      <td>1.230000</td>
+    </tr>
+    <tr>
+      <th>1%</th>
+      <td>3.000000</td>
+      <td>1026.100000</td>
+      <td>-1.123350</td>
+      <td>52.805000</td>
+      <td>1.286000</td>
+    </tr>
+    <tr>
+      <th>5%</th>
+      <td>3.150000</td>
+      <td>1510.000000</td>
+      <td>0.343000</td>
+      <td>55.725000</td>
+      <td>1.390000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>4.500000</td>
+      <td>5545.000000</td>
+      <td>1.205000</td>
+      <td>67.175000</td>
+      <td>1.797500</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>12.250000</td>
+      <td>19900.000000</td>
+      <td>5.015000</td>
+      <td>76.200000</td>
+      <td>2.090000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>54.075000</td>
+      <td>37625.000000</td>
+      <td>9.095000</td>
+      <td>80.750000</td>
+      <td>2.707500</td>
+    </tr>
+    <tr>
+      <th>95%</th>
+      <td>113.000000</td>
+      <td>46475.000000</td>
+      <td>21.275000</td>
+      <td>81.775000</td>
+      <td>6.152500</td>
+    </tr>
+    <tr>
+      <th>99%</th>
+      <td>121.600000</td>
+      <td>57785.000000</td>
+      <td>23.180000</td>
+      <td>82.520000</td>
+      <td>7.024500</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>123.000000</td>
+      <td>62300.000000</td>
+      <td>23.600000</td>
+      <td>82.800000</td>
+      <td>7.490000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<p>Visualisation for distribution of variables</p>
+<p>The following performs univariate analysis for the numerical features in the dataset. The analysis employs two types of plots: a histogram with a kernel density estimate (KDE) on the left and a box plot on the right.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Univariate analysis</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a">for</span> i <span style="color:#00a">in</span> <span style="color:#0aa">range</span>(<span style="color:#099">0</span>, <span style="color:#099">5</span>):
+</span></span><span style="display:flex;"><span>    fig, ax = plt.subplots(<span style="color:#099">1</span>, <span style="color:#099">2</span>, figsize=(<span style="color:#099">15</span>, <span style="color:#099">4</span>))
+</span></span><span style="display:flex;"><span>    plt.suptitle(numerical_features[i], fontsize=<span style="color:#099">20</span>, fontweight=<span style="color:#a50">&#39;bold&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#aaa;font-style:italic"># Left Plot</span>
+</span></span><span style="display:flex;"><span>    sns.histplot(x=numerical_features[i], data=data, ax=ax[<span style="color:#099">0</span>], kde=<span style="color:#00a">True</span>, stat=<span style="color:#a50">&#39;density&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#aaa;font-style:italic"># Right Plot - Box plot</span>
+</span></span><span style="display:flex;"><span>    sns.boxplot(x=numerical_features[i], data=data, ax=ax[<span style="color:#099">1</span>])
+</span></span></code></pre></div><p><img loading="lazy" src="clustering_countries_files/clustering_countries_15_0.png" alt="png"  />
+</p>
+<p><img loading="lazy" src="clustering_countries_files/clustering_countries_15_1.png" alt="png"  />
+</p>
+<p><img loading="lazy" src="clustering_countries_files/clustering_countries_15_2.png" alt="png"  />
+</p>
+<p><img loading="lazy" src="clustering_countries_files/clustering_countries_15_3.png" alt="png"  />
+</p>
+<p><img loading="lazy" src="clustering_countries_files/clustering_countries_15_4.png" alt="png"  />
+</p>
+<p>From the above plot, we can observe:</p>
+<ul>
+<li>A small dataset.</li>
+<li>Some outliers and a skewed distribution.</li>
+<li>All distributions are positively skewed, except for &ldquo;LE,&rdquo; which is negatively skewed.</li>
+</ul>
+<p>To my surprise, there are outliers only in inflation and total_fer. This is likely due to the small sample size (only 36 countries in the dataset). However, for the purpose of this analysis, outliers should not be removed, as abnormalities in socio-economic or health indices could signify something gravely wrong in that country and which might require assistance or intervention.</p>
+<h3 id="c1ii">C.1(ii)<a hidden class="anchor" aria-hidden="true" href="#c1ii">#</a></h3>
+<p>Using this and other analyses you think appropriate, comment on the distribution of variables and describe the relationships between different socio-economic and health indices.</p>
+<p>&lsquo;child_mort&rsquo; (Child Mortality): the number of deaths per 1,000 live births of children under the age of five.</p>
+<ul>
+<li>Lower values (indicating lower child mortality rates) are better.</li>
+<li>We would expect countries with better healthcare systems to have lower child mortality rates.</li>
+<li>In turn, we would expect countries with better socio-economic conditions to have better healthcare systems.</li>
+</ul>
+<p>‘income’ (Net Income per capita): net income per person in dollars.</p>
+<ul>
+<li>Higher values are better as these should correlate well with higher standards of living.</li>
+</ul>
+<p>‘inflation’ (Inflation Rate): Consumer Price Index (CPI).</p>
+<ul>
+<li>In general, with current understanding, it is undesirable to have inflation running too high or too low.  E.g. currently, major western economies, including the UK and US, have an inflation target of about 2% per annum.</li>
+</ul>
+<p>‘LE’ (Life Expectancy): the average number of years a newborn can expect to live if current mortality rates remain constant throughout their lifetime.</p>
+<ul>
+<li>Assuming that the quality of life is acceptable, higher values are better.</li>
+<li>Longer life expectancy is often associated with better healthcare, living conditions, and overall development.  Lifestyle, not necessarily a function of income, is also an important contributor to Life Expectancy.</li>
+</ul>
+<p>&rsquo;total_fer&rsquo; (Total Fertility Rate): the average number of children a woman would give birth to during her reproductive years if she experienced the current age-specific fertility rates throughout her reproductive life.</p>
+<ul>
+<li>This is an index with many complex issues directly impacting it.  It is directly impacted by religion &amp; belief with respect to birth control; education; access to birth control or birth promotion; cost of raising children; and some form of happiness-security index that could measure how much a couple want to have, or not to have, children.</li>
+<li>Countries with low Total Fertility Rate could face declining population that, in turn, could result in negative Inflation Rate.</li>
+</ul>
+<p>Pair plot to show pairwise relationships across multiple variables. It displays the relationship between each pair of features in a multi-dimensional dataset, and allows us to spot potential patterns or correlations.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Bivariate Analysis</span>
+</span></span><span style="display:flex;"><span>plt.figure(figsize = (<span style="color:#099">25</span>,<span style="color:#099">25</span>))
+</span></span><span style="display:flex;"><span>sns.pairplot(data)
+</span></span><span style="display:flex;"><span>plt.suptitle(<span style="color:#a50">&#39;Pair Plot of Numerical Features&#39;</span>, y=<span style="color:#099">1.02</span>)
+</span></span><span style="display:flex;"><span>plt.show()
+</span></span></code></pre></div><pre><code>&lt;Figure size 2500x2500 with 0 Axes&gt;
+</code></pre>
+<p><img loading="lazy" src="clustering_countries_files/clustering_countries_20_1.png" alt="png"  />
+</p>
+<p>In the pairplot, it is evident that most features exhibit well-defined correlations with one another, displaying either positive or negative trends. One could consider log-transforming the data to possibly achieve more linear trends.</p>
+<p>Correlation heatmap to identify patterns of correlation (positive or negative) between pairs of features. The color intensity and annotation values provide insights into the strength and direction of the correlation relationships.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Correlation Heatmap</span>
+</span></span><span style="display:flex;"><span>plt.figure(figsize = (<span style="color:#099">12</span>,<span style="color:#099">8</span>))  
+</span></span><span style="display:flex;"><span>sns.heatmap(data[numerical_features].corr(method=<span style="color:#a50">&#39;pearson&#39;</span>),annot = <span style="color:#00a">True</span>, cmap=<span style="color:#a50">&#39;viridis&#39;</span>)
+</span></span><span style="display:flex;"><span>plt.title(<span style="color:#a50">&#39;Correlation Heatmap&#39;</span>)
+</span></span><span style="display:flex;"><span>plt.show()
+</span></span></code></pre></div><p><img loading="lazy" src="clustering_countries_files/clustering_countries_23_0.png" alt="png"  />
+</p>
+<p>Following feature pairs are highly correlated (positively or negatively):</p>
+<ul>
+<li>child_mort and total_fer (correlation factor = 0.92),</li>
+<li>LE and child_mort (correlation factor = -0.89)</li>
+<li>income and LE (correlation factor = 0.81)</li>
+</ul>
+<p>Indicates the potential presence of features that may be redundant due to their high correlation with other features.</p>
+<p><strong>Child Mortality</strong> appears to have a strong relationship with the Total Fertility Rate, perhaps suggesting that in countries where Child Mortality is high, there is pressure on women to have more births in order to sustain the overall country population. Conversely, there are strong inverse relationships with Life Expectancy and Net Income per Capita, likely suggesting that in richer countries, there is better healthcare, and people can live longer with fewer children dying young.</p>
+<p><strong>Net Income per Capita</strong>, besides the strong inverse relationship with Child Mortality discussed above, unsurprisingly, has a strong relationship with Life Expectancy, reinforcing the notion that richer countries likely have better healthcare and a higher standard of living where people can live longer.</p>
+<p>The <strong>Inflation</strong> Rate does not appear to have any strong relationships, inverse or otherwise, with other indices.</p>
+<p><strong>Life Expectancy</strong>, as discussed above, has a strong inverse relationship with Child Mortality and a strong relationship with Net Income per Capita. Its strong inverse relationship with Total Fertility Rate could be due to less pressure on women to have more children if the country&rsquo;s working population is adequately sustained with people living longer.</p>
+<p><strong>Total Fertility Rate</strong>: Its strong relationship with Child Mortality and its strong inverse relationship with Life Expectancy have already been discussed.</p>
+<h2 id="c-2-hierarchical-clustering">C 2. Hierarchical clustering.<a hidden class="anchor" aria-hidden="true" href="#c-2-hierarchical-clustering">#</a></h2>
+<h3 id="c2i">C.2(i)<a hidden class="anchor" aria-hidden="true" href="#c2i">#</a></h3>
+<p>Each row of the data contains information on the socio-economic and health indices of the specific country. Before performing cluster analysis, scale your variable and print the first two rows of this processed data. Explain why the data should be scaled to perform a cluster analysis.</p>
+<p><strong>Explanation of Scaling:</strong></p>
+<p>Cluster analysis aims to group similar data points together based on their features. However, if the variables in your dataset have different scales or units, it can introduce bias into the clustering process. Variables with larger magnitudes or wider ranges may disproportionately influence the clustering algorithm, leading to clusters being formed based on the variables with the highest scale rather than on the actual patterns in the data.</p>
+<p>Scaling resolves this issue by transforming the variables to a comparable scale. In this case the features have incomparable units (metrics are percentages, dollar values, whole numbers). There are two primary scaling techniques: standardization and normalization.</p>
+<hr>
+<p><strong>Standardization (Z-score normalization):</strong>
+Formula: Z=(X−μ)/σ, where X is the original value, μ is the mean, and σ is the standard deviation.</p>
+<p>Effect: Standardization transforms the data to have a mean of 0 and a standard deviation of 1.</p>
+<p>Advantage: It is particularly useful when the variables have different units or different ranges of values.</p>
+<hr>
+<p><strong>Normalization (Min-Max scaling):</strong>
+Formula: norm=(X−X_min)/ (X_max-X_min), where X_min and X_max are the minimum and maximum values of the variable, respectively.</p>
+<p>Effect: Normalization scales the data to a range between 0 and 1.</p>
+<p>Advantage: It is beneficial when the variables need to be on a similar scale, especially in cases where the algorithm used in clustering is sensitive to the absolute values of the variables.</p>
+<hr>
+<p><strong>Why Scaling is Necessary:</strong></p>
+<p>Equal Weightage: Scaling ensures that each variable contributes equally to the clustering process. Without scaling, variables with larger scales could dominate the distance calculations, leading to biased cluster formation.</p>
+<p>Algorithm Sensitivity: Many clustering algorithms, such as k-means, hierarchical clustering, or DBSCAN, rely on distance measures. Scaling prevents variables with larger ranges from disproportionately influencing the distance metrics, enabling the algorithm to focus on the inherent patterns within the data.</p>
+<p>Convergence Speed: Standardizing or normalizing the data can also improve the convergence speed and stability of some clustering algorithms, making them more robust and efficient.</p>
+<p>In this case, I have opted to employ Z-score standardization owing to its robustness in handling outliers.</p>
+<p>The scaling of variables and printing the first two rows of the processed data are as follows:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#00a">from</span> <span style="color:#0aa;text-decoration:underline">sklearn.preprocessing</span> <span style="color:#00a">import</span> StandardScaler
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Extract features for scaling (excluding &#39;country&#39; column)</span>
+</span></span><span style="display:flex;"><span>features = data[numerical_features]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Initialize the StandardScaler</span>
+</span></span><span style="display:flex;"><span>scaler = StandardScaler()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Scale the features</span>
+</span></span><span style="display:flex;"><span>scaled_data = scaler.fit_transform(features)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Print the first two rows of scaled data</span>
+</span></span><span style="display:flex;"><span><span style="color:#0aa">print</span>(pd.DataFrame(scaled_data, columns=features.columns).head(<span style="color:#099">2</span>))
+</span></span></code></pre></div><pre><code>   child_mort    income  inflation        LE  total_fer
+0    1.617184 -1.217449   0.459731 -1.793982   1.831028
+1    2.409200 -0.968720   2.474344 -1.375307   2.037133
+</code></pre>
+<h3 id="c2ii">C.2(ii)<a hidden class="anchor" aria-hidden="true" href="#c2ii">#</a></h3>
+<p>Using your preferred choice of distance function (i.e. Euclidean distance, Manhattan distance, etc.), create a distance matrix for these data and produce a visualisation of the resulting distance matrix. Are there any clusters or groups of countries that stand out in the visualisation?</p>
+<p>In this case, I have chosen to use the Manhattan/(cityblock) distance function.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#00a">from</span> <span style="color:#0aa;text-decoration:underline">scipy.spatial.distance</span> <span style="color:#00a">import</span> pdist, squareform
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Calculate Manhattan distance. squareform to convert pairwise distances into square distance matrix</span>
+</span></span><span style="display:flex;"><span>manhattan_sq_distance_matrix = squareform(pdist(scaled_data, <span style="color:#a50">&#39;cityblock&#39;</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Create a DataFrame for the distance matrix</span>
+</span></span><span style="display:flex;"><span>distance_matrix_df = pd.DataFrame(manhattan_sq_distance_matrix, index=data[<span style="color:#a50">&#39;country&#39;</span>], columns=data[<span style="color:#a50">&#39;country&#39;</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Create a heatmap for the distance matrix</span>
+</span></span><span style="display:flex;"><span>plt.figure(figsize=(<span style="color:#099">10</span>, <span style="color:#099">8</span>))
+</span></span><span style="display:flex;"><span>sns.heatmap(distance_matrix_df, cmap=<span style="color:#a50">&#39;viridis&#39;</span>, annot=<span style="color:#00a">False</span>, fmt=<span style="color:#a50">&#34;.2f&#34;</span>, cbar_kws={<span style="color:#a50">&#39;label&#39;</span>: <span style="color:#a50">&#39;Manhattan Distance&#39;</span>})
+</span></span><span style="display:flex;"><span>plt.title(<span style="color:#a50">&#39;Manhattan Distance Matrix between Countries&#39;</span>)
+</span></span><span style="display:flex;"><span>plt.show()
+</span></span></code></pre></div><p><img loading="lazy" src="clustering_countries_files/clustering_countries_32_0.png" alt="png"  />
+</p>
+<p>In the above heatmap, we can observe the calculated Manhattan distance between countries. However, no noticeable clusters stand out. This is likely attributable to the fact that countries are not ordered by numerical features but rather by alphabetical order.</p>
+<p>To assess the identification of clusters, I generated a clustermap wherein the arrangement of rows and columns is determined by their similarity, ensuring that comparable rows and columns are positioned in proximity. The resultant plot exhibits dendrograms for both rows and columns, portraying the hierarchical structure of clusters. The heatmap within illustrates dataset values, with colors indicating varying magnitudes. The reordering of rows and columns is based on their positions in the dendrograms, thereby grouping clusters with akin values.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>plt.figure(figsize=(<span style="color:#099">10</span>, <span style="color:#099">8</span>))
+</span></span><span style="display:flex;"><span>sns.clustermap(pd.DataFrame(scaled_data, index=data[<span style="color:#a50">&#39;country&#39;</span>], columns=numerical_features), metric=<span style="color:#a50">&#39;cityblock&#39;</span>, cmap=<span style="color:#a50">&#39;viridis&#39;</span>, method=<span style="color:#a50">&#39;complete&#39;</span>)
+</span></span><span style="display:flex;"><span>plt.title(<span style="color:#a50">&#39;Manhattan Distance Clustermap&#39;</span>)
+</span></span><span style="display:flex;"><span>plt.show()
+</span></span></code></pre></div><pre><code>&lt;Figure size 1000x800 with 0 Axes&gt;
+</code></pre>
+<p><img loading="lazy" src="clustering_countries_files/clustering_countries_35_1.png" alt="png"  />
+</p>
+<p>In the cluster map, distinct clusters and groups of countries are evident. Specifically, at the upper end of the cluster map, countries such as Norway, the United States, Canada, and extending to South Korea display remarkably similar Manhattan distance scores for all numerical features in the dataset. A comparable pattern is discernible in the group of countries spanning from Malaysia to Russia. However, within this group, Argentina, Indonesia, and Russia stand out as inflation outliers.</p>
+<p>A semblance of similarity persists, albeit to a lesser extent, among countries situated at the lower end of the graph.</p>
+<h3 id="c2iii">C.2(iii)<a hidden class="anchor" aria-hidden="true" href="#c2iii">#</a></h3>
+<p>Produce a dendrogram by performing hierarchical clustering. Using your dendrogram visualisation as a guide, choose an appropriate number of clusters and label each country according to its cluster membership. How many countries are in each of your clusters?</p>
+<p>Hierarchical clustering using Manhattan/(cityblock) distance</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#00a">from</span> <span style="color:#0aa;text-decoration:underline">scipy.cluster.hierarchy</span> <span style="color:#00a">import</span> linkage, dendrogram, cut_tree
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Calculate Manhattan distance and get a condensed distance matrix</span>
+</span></span><span style="display:flex;"><span>manhattan_distance_matrix = pdist(scaled_data, metric=<span style="color:#a50">&#39;cityblock&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Perform hierarchical clustering using Manhattan distance</span>
+</span></span><span style="display:flex;"><span>linkage_matrix = linkage(manhattan_distance_matrix, method=<span style="color:#a50">&#39;complete&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Create a dendrogram</span>
+</span></span><span style="display:flex;"><span>plt.figure(figsize=(<span style="color:#099">12</span>, <span style="color:#099">8</span>))
+</span></span><span style="display:flex;"><span>dendrogram(linkage_matrix, labels=data[<span style="color:#a50">&#39;country&#39;</span>].tolist(), orientation=<span style="color:#a50">&#39;top&#39;</span>, distance_sort=<span style="color:#a50">&#39;descending&#39;</span>, show_leaf_counts=<span style="color:#00a">True</span>)
+</span></span><span style="display:flex;"><span>plt.title(<span style="color:#a50">&#39;Hierarchical Clustering Dendrogram (Manhattan Distance)&#39;</span>)
+</span></span><span style="display:flex;"><span>plt.xlabel(<span style="color:#a50">&#39;Countries&#39;</span>)
+</span></span><span style="display:flex;"><span>plt.ylabel(<span style="color:#a50">&#39;Manhattan Distance&#39;</span>)
+</span></span><span style="display:flex;"><span>plt.show()
+</span></span></code></pre></div><p><img loading="lazy" src="clustering_countries_files/clustering_countries_39_0.png" alt="png"  />
+</p>
+<p>The dendrogram generated from hierarchical clustering with complete linkage suggests that the countries should be separated into 2 or 4 distinct clusters. As our aim is to achieve a meaningful separation of countries, we will divide them into 4 clusters.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Cut the tree into 4 clusters</span>
+</span></span><span style="display:flex;"><span>num_clusters_hc = <span style="color:#099">4</span>
+</span></span><span style="display:flex;"><span>cluster_hc_ids = cut_tree(linkage_matrix, n_clusters=num_clusters_hc)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Add cluster label to original data</span>
+</span></span><span style="display:flex;"><span>data[<span style="color:#a50">&#39;cluster_hc&#39;</span>] = cluster_hc_ids
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>cluster_counts_hc = data[<span style="color:#a50">&#39;cluster_hc&#39;</span>].value_counts()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Display the number of countries in each cluster</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a">for</span> cluster_hc, count <span style="color:#00a">in</span> cluster_counts_hc.items():
+</span></span><span style="display:flex;"><span>    <span style="color:#0aa">print</span>(<span style="color:#a50">f</span><span style="color:#a50">&#39;Cluster </span><span style="color:#a50">{</span>cluster_hc<span style="color:#a50">}</span><span style="color:#a50">: </span><span style="color:#a50">{</span>count<span style="color:#a50">}</span><span style="color:#a50"> countries&#39;</span>)
+</span></span></code></pre></div><pre><code>Cluster 2: 16 countries
+Cluster 1: 8 countries
+Cluster 0: 6 countries
+Cluster 3: 6 countries
+</code></pre>
+<p>As seen above each cluster contains 6 to 16 countries.</p>
+<h3 id="c2iv">C.2(iv)<a hidden class="anchor" aria-hidden="true" href="#c2iv">#</a></h3>
+<p>Compare socio-economic and health indices for each of your clusters. Using this information, choose names for your clusters and give a potential explanation for the level of development of these countries.</p>
+<p>Comparing clusters</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#0aa">print</span>(<span style="color:#a50">&#34;Cluster 0 of Hierarchical Clustering model&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#0aa">print</span>(data[data[<span style="color:#a50">&#39;cluster_hc&#39;</span>] == <span style="color:#099">0</span>].country.unique())
+</span></span><span style="display:flex;"><span><span style="color:#0aa">print</span>(<span style="color:#a50">&#39;--------------------------------------------&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#0aa">print</span>(<span style="color:#a50">&#34;Cluster 1 of Hierarchical Clustering model&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#0aa">print</span>(data[data[<span style="color:#a50">&#39;cluster_hc&#39;</span>] == <span style="color:#099">1</span>].country.unique())
+</span></span><span style="display:flex;"><span><span style="color:#0aa">print</span>(<span style="color:#a50">&#39;--------------------------------------------&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#0aa">print</span>(<span style="color:#a50">&#34;Cluster 2 of Hierarchical Clustering model&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#0aa">print</span>(data[data[<span style="color:#a50">&#39;cluster_hc&#39;</span>] == <span style="color:#099">2</span>].country.unique())
+</span></span><span style="display:flex;"><span><span style="color:#0aa">print</span>(<span style="color:#a50">&#39;--------------------------------------------&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#0aa">print</span>(<span style="color:#a50">&#34;Cluster 3 of Hierarchical Clustering model&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#0aa">print</span>(data[data[<span style="color:#a50">&#39;cluster_hc&#39;</span>] == <span style="color:#099">3</span>].country.unique())
+</span></span></code></pre></div><pre><code>Cluster 0 of Hierarchical Clustering model
+['Afghanistan' 'Angola' 'Benin' 'Niger' 'Uganda' 'Zambia']
+--------------------------------------------
+Cluster 1 of Hierarchical Clustering model
+['Argentina' 'Brazil' 'China' 'Indonesia' 'Malaysia' 'Russia' 'Thailand'
+ 'Turkey']
+--------------------------------------------
+Cluster 2 of Hierarchical Clustering model
+['Australia' 'Belgium' 'Canada' 'Finland' 'France' 'Germany' 'Israel'
+ 'Italy' 'Japan' 'Netherlands' 'New Zealand' 'Norway' 'South Korea'
+ 'Sweden' 'United Kingdom' 'United States']
+--------------------------------------------
+Cluster 3 of Hierarchical Clustering model
+['Bangladesh' 'Bhutan' 'Eritrea' 'India' 'South Africa' 'Yemen']
+</code></pre>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>cluster_hc_means = data.groupby(<span style="color:#a50">&#39;cluster_hc&#39;</span>)[numerical_features].mean()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Print the mean values for each cluster</span>
+</span></span><span style="display:flex;"><span><span style="color:#0aa">print</span>(cluster_hc_means)
+</span></span></code></pre></div><pre><code>            child_mort    income  inflation         LE  total_fer
+cluster_hc                                                       
+0           101.216667   2494.00   9.979167  57.616667   6.063333
+1            16.900000  15857.50  10.513750  74.125000   1.957500
+2             4.475000  40056.25   1.607938  80.868750   1.847500
+3            52.683333   5195.00  10.610000  65.366667   3.196667
+</code></pre>
+<p>In the analysis of various indices, income emerges as a predominant driver and influencer. Thus, my initial focus is directed towards this pivotal index. As a gauge of a reasonable standard of living, I subsequently turn my attention to Life Expectancy (LE) and Child Mortality for further refinement.</p>
+<p>Net Income per Capita (income) notably distinguishes cluster2, implying that the countries within this cluster exhibit high-income characteristics. Consequently, one would anticipate robust healthcare systems, reflected in a prolonged Life Expectancy and diminished Child Mortality. Indeed, the mean Life Expectancy and low Child Mortality rates in this cluster substantiate this notion. I propose the nomenclature &ldquo;Developed Countries&rdquo; for cluster2.</p>
+<p>Conversely, cluster0 has the lowest Net Income per Capita, signifying economic adversity. If their cost-of-living is not abnormally low (which would offset their low income), then I would expect that with their low income, these countries would suffer poorer healthcare and hence have higher Child Mortality and lower Life Expectancy.  Indeed, this cluster has the highest Child Mortality and lowest Life Expectancy.  I would label this cluster “Underdeveloped Countries&quot;.</p>
+<p>The two remaining clusters, cluster1 and cluster3, exhibit socio-economic and health indices positioned between the extremes of cluster2 and cluster0. Relying primarily on Income and Life Expectancy, I propose &ldquo;Upper Developing Countries&rdquo; for cluster1 and &ldquo;Lower Developing Countries&rdquo; for cluster3.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>sns.pairplot(data, hue=<span style="color:#a50">&#39;cluster_hc&#39;</span>, palette=<span style="color:#a50">&#39;viridis&#39;</span>, diag_kind=<span style="color:#a50">&#39;kde&#39;</span>)
+</span></span><span style="display:flex;"><span>plt.suptitle(<span style="color:#a50">&#39;Pair Plot of Numerical Features Colored by Hierarchical Clustering model&#39;</span>, y=<span style="color:#099">1.02</span>)
+</span></span><span style="display:flex;"><span>plt.show()
+</span></span></code></pre></div><p><img loading="lazy" src="clustering_countries_files/clustering_countries_48_0.png" alt="png"  />
+</p>
+<p>In the pairplot above, colored by hierarchical clustering groupings, it is evident that most clusters are well-separated. However, there is a noticeable degree of intermingling among clusters in the pairplot.</p>
+<p>Upon examining the kernel density estimates, it becomes evident that all countries in group 2 share similar values for most features, with income exhibiting the highest degree of dispersion. Cluster 0 consistently displays the highest degree of dispersion among all features, except for income, where all values appear somewhat similar. The level of development for each cluster, as theorized above by their names, can be further observed and confirmed in the pairplot.</p>
+<p>In the following, I conduct Principal Component Analysis (PCA) on Health Indicators and separately on Socio-economic Indicators. The aim is to identify the first principal components for both Health Indicators and Socio-economic Indicators, capturing the maximum variance in each category. These principal components will be used to represent the essential information for plotting countries based on their Health and Socio-economic profiles.</p>
+<p>Health indicators:</p>
+<ul>
+<li>&lsquo;child_mort&rsquo;: Child mortality rate is a health indicator, reflecting the number of children who die before reaching the age of one per 1,000 live births.</li>
+<li>&lsquo;LE&rsquo; (Life Expectancy): Life Expectancy is a health indicator, representing the average number of years a person can expect to live.</li>
+</ul>
+<p>Socio-economic indicators:</p>
+<ul>
+<li>&lsquo;income&rsquo;: Income is a key socio-economic indicator, reflecting the financial well-being of individuals or a nation.</li>
+<li>&lsquo;inflation&rsquo;: Inflation is also a socio-economic indicator, representing the rate at which the general level of prices for goods and services is rising.</li>
+<li>&rsquo;total_fer&rsquo;: While fertility rates can indirectly influence certain health outcomes, such as maternal and child health, the total fertility rate itself is more closely linked to socio-economic factors. Factors such as education, income, employment opportunities, access to family planning services, and cultural norms play significant roles in shaping fertility patterns within a population.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#00a">from</span> <span style="color:#0aa;text-decoration:underline">sklearn.decomposition</span> <span style="color:#00a">import</span> PCA
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Selected columns for Health Indicators</span>
+</span></span><span style="display:flex;"><span>health_cols = [<span style="color:#a50">&#39;child_mort&#39;</span>, <span style="color:#a50">&#39;LE&#39;</span>]
+</span></span><span style="display:flex;"><span>health_data = data[health_cols]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Selected columns for Socio-economic Indicators</span>
+</span></span><span style="display:flex;"><span>socio_economic_cols = [<span style="color:#a50">&#39;income&#39;</span>, <span style="color:#a50">&#39;inflation&#39;</span>, <span style="color:#a50">&#39;total_fer&#39;</span>]
+</span></span><span style="display:flex;"><span>socio_economic_data = data[socio_economic_cols]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Standardize the data before applying PCA</span>
+</span></span><span style="display:flex;"><span>scaler2 = StandardScaler()
+</span></span><span style="display:flex;"><span>health_data_standardized = scaler2.fit_transform(health_data)
+</span></span><span style="display:flex;"><span>socio_economic_data_standardized = scaler2.fit_transform(socio_economic_data)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Apply PCA for Health Indicators</span>
+</span></span><span style="display:flex;"><span>health_pca = PCA(n_components=<span style="color:#099">1</span>, random_state=<span style="color:#099">42</span>)
+</span></span><span style="display:flex;"><span>health_pca_result = health_pca.fit_transform(health_data_standardized)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Apply PCA for Socio-economic Indicators</span>
+</span></span><span style="display:flex;"><span>socio_economic_pca = PCA(n_components=<span style="color:#099">1</span>, random_state=<span style="color:#099">42</span>)
+</span></span><span style="display:flex;"><span>socio_economic_pca_result = socio_economic_pca.fit_transform(socio_economic_data_standardized)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Combine PCA results</span>
+</span></span><span style="display:flex;"><span>combined_pca_result = np.concatenate((health_pca_result, socio_economic_pca_result), axis=<span style="color:#099">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Selecting countries for plot</span>
+</span></span><span style="display:flex;"><span>countries = data[<span style="color:#a50">&#39;country&#39;</span>].tolist()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Scatter plot of health against socio-economic PCA</span>
+</span></span><span style="display:flex;"><span>plt.figure(figsize=(<span style="color:#099">10</span>, <span style="color:#099">6</span>))
+</span></span><span style="display:flex;"><span>plt.scatter(combined_pca_result[:, <span style="color:#099">0</span>], combined_pca_result[:, <span style="color:#099">1</span>], c=<span style="color:#a50">&#39;blue&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Label each point with the corresponding country name</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a">for</span> i, country <span style="color:#00a">in</span> <span style="color:#0aa">enumerate</span>(countries):
+</span></span><span style="display:flex;"><span>    plt.annotate(country, (combined_pca_result[i, <span style="color:#099">0</span>], combined_pca_result[i, <span style="color:#099">1</span>]))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Set plot labels and title</span>
+</span></span><span style="display:flex;"><span>plt.xlabel(<span style="color:#a50">&#39;Health Indicators PC1&#39;</span>)
+</span></span><span style="display:flex;"><span>plt.ylabel(<span style="color:#a50">&#39;Socio-Economic Indicators PC1&#39;</span>)
+</span></span><span style="display:flex;"><span>plt.title(<span style="color:#a50">&#39;Socio-Economic PC1 vs Health Indicators PC1&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Show the plot</span>
+</span></span><span style="display:flex;"><span>plt.show()
+</span></span></code></pre></div><p><img loading="lazy" src="clustering_countries_files/clustering_countries_52_0.png" alt="png"  />
+</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>health_loadings_df = pd.DataFrame(
+</span></span><span style="display:flex;"><span>    health_pca.components_, <span style="color:#aaa;font-style:italic"># This attribute holds the loadings of variables</span>
+</span></span><span style="display:flex;"><span>    columns=health_cols,
+</span></span><span style="display:flex;"><span>    index=[<span style="color:#a50">&#39;PC1&#39;</span>]
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>socio_economic_loadings_df = pd.DataFrame(
+</span></span><span style="display:flex;"><span>    socio_economic_pca.components_, <span style="color:#aaa;font-style:italic"># This attribute holds the loadings of variables</span>
+</span></span><span style="display:flex;"><span>    columns=socio_economic_cols,
+</span></span><span style="display:flex;"><span>    index=[<span style="color:#a50">&#39;PC1&#39;</span>]
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>health_loadings_df
+</span></span></code></pre></div><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>child_mort</th>
+      <th>LE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>PC1</th>
+      <td>0.707107</td>
+      <td>-0.707107</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<ul>
+<li>
+<p>Child Mortality Rate (child_mort):
+The positive loading of 0.707107 suggests a positive relationship between the variable &ldquo;child_mort&rdquo; and the first principal component (PC1) of health indicators.
+Higher values of &ldquo;child_mort&rdquo; contribute positively to the first principal component.</p>
+</li>
+<li>
+<p>Life Expectancy (LE):
+The negative loading of -0.707107 indicates a negative relationship between the variable &ldquo;LE&rdquo; and the first principal component (PC1) of health indicators.
+Higher values of &ldquo;LE&rdquo; contribute negatively to the first principal component.</p>
+</li>
+</ul>
+<p>In summary, the first principal component (PC1) of health indicators is influenced positively by higher values of Child Mortality Rate and negatively by higher values of Life Expectancy. This information can be useful in understanding the underlying patterns or relationships in your data captured by the first principal component of health indicators.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>socio_economic_loadings_df
+</span></span></code></pre></div><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>income</th>
+      <th>inflation</th>
+      <th>total_fer</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>PC1</th>
+      <td>-0.618173</td>
+      <td>0.539257</td>
+      <td>0.571895</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<ul>
+<li>
+<p>Income:
+The negative loading of -0.618173 implies a negative relationship between the variable &ldquo;income&rdquo; and the first principal component (PC1) of socio-economic indicators. Higher values of &ldquo;income&rdquo; contribute negatively to the first principal component.</p>
+</li>
+<li>
+<p>Inflation:
+The positive loading of 0.539257 indicates a positive relationship between the variable &ldquo;inflation&rdquo; and the first principal component (PC1) socio-economic indicators.
+Higher values of &ldquo;inflation&rdquo; contribute positively to the first principal component.</p>
+</li>
+<li>
+<p>Total Fertility Rate (total_fer):
+The positive loading of 0.571895 suggests a positive relationship between the variable &ldquo;total_fer&rdquo; and the first principal component (PC1) of socio-economic indicators.
+Higher values of &ldquo;total_fer&rdquo; contribute positively to the first principal component.</p>
+</li>
+</ul>
+<p>In summary, the first principal component (PC1) of socio-economic indicators is influenced negatively by higher values of income and positively by higher values of inflation and total fertility rate. This information can be valuable in understanding the underlying patterns or relationships in your data captured by the first principal component of socio-economic indicators. Unfortunately, PCA does not fully preserve interpretability as it combines all socio-economic columns, each of which may not have a clearly defined desirable value. However, it can be inferred that lower values are generally considered more desirable.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Assuming &#39;cluster_hc&#39; is the cluster labels column in your original DataFrame</span>
+</span></span><span style="display:flex;"><span>cluster_hc_labels = data[<span style="color:#a50">&#39;cluster_hc&#39;</span>].tolist()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Add &#39;cluster_hc&#39; column to combined_pca_result</span>
+</span></span><span style="display:flex;"><span>combined_pca_result_hclabels = np.column_stack((combined_pca_result, cluster_hc_labels))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Create pandas data frame</span>
+</span></span><span style="display:flex;"><span>dfhc = pd.DataFrame(combined_pca_result_hclabels, columns=[<span style="color:#a50">&#39;Health Indicators PC1&#39;</span>, <span style="color:#a50">&#39;Socio-Economic Indicators PC1&#39;</span>, <span style="color:#a50">&#39;hccluster&#39;</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Plotting scatterplot</span>
+</span></span><span style="display:flex;"><span>plt.figure(figsize=(<span style="color:#099">10</span>,<span style="color:#099">8</span>))
+</span></span><span style="display:flex;"><span>plt.scatter(
+</span></span><span style="display:flex;"><span>    dfhc[<span style="color:#a50">&#39;Health Indicators PC1&#39;</span>], 
+</span></span><span style="display:flex;"><span>    dfhc[<span style="color:#a50">&#39;Socio-Economic Indicators PC1&#39;</span>], 
+</span></span><span style="display:flex;"><span>    c=dfhc[<span style="color:#a50">&#39;hccluster&#39;</span>], 
+</span></span><span style="display:flex;"><span>    cmap=<span style="color:#a50">&#39;viridis&#39;</span>,
+</span></span><span style="display:flex;"><span>    edgecolors=<span style="color:#a50">&#39;k&#39;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Labeling the axes</span>
+</span></span><span style="display:flex;"><span>plt.xlabel(<span style="color:#a50">&#39;Health Indicators PC1&#39;</span>)
+</span></span><span style="display:flex;"><span>plt.ylabel(<span style="color:#a50">&#39;Socio-Economic Indicators PC1&#39;</span>)
+</span></span><span style="display:flex;"><span>plt.title(<span style="color:#a50">&#39;Socio-Economic vs Health Indicators with HC Cluster Labels&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Add a colorbar to show the correspondence between colors and cluster numbers</span>
+</span></span><span style="display:flex;"><span>cbar = plt.colorbar()
+</span></span><span style="display:flex;"><span>cbar.set_label(<span style="color:#a50">&#39;HC Cluster Number&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Customize the colorbar ticks and tick labels</span>
+</span></span><span style="display:flex;"><span>cbar.set_ticks(np.arange(<span style="color:#099">4</span>))
+</span></span><span style="display:flex;"><span>cbar.set_ticklabels([<span style="color:#a50">&#39;Cluster 0&#39;</span>, <span style="color:#a50">&#39;Cluster 1&#39;</span>, <span style="color:#a50">&#39;Cluster 2&#39;</span>,<span style="color:#a50">&#39;Cluster 3&#39;</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Displaying the plot</span>
+</span></span><span style="display:flex;"><span>plt.show()
+</span></span></code></pre></div><p><img loading="lazy" src="clustering_countries_files/clustering_countries_58_0.png" alt="png"  />
+</p>
+<p>The plot titled &lsquo;Socio-Economic vs Health Indicators with Cluster Labels&rsquo; above utilises the same health and socio-economic indicators, as well as principal components. Therefore, we can apply the same principal component loading analysis.</p>
+<p>As we can see from the &lsquo;Socio-Economic vs Health Indicators with Cluster Labels&rsquo; plot. The country clusters are separated well by the first principal component of the Health Indicators and the first principal component of the Socio-economic Indicators.</p>
+<p>Cluster 2 exhibits the lowest mean scores on Health indicator PC1 and Socio-economic indicator PC1. This finding further supports the notion that this group of countries is more developed than the other clusters.</p>
+<p>On the other hand, Cluster 0 demonstrates the highest mean scores on Health indicator PC1 and Socio-economic indicator PC1, implying that this group of countries is the least developed among the clusters.</p>
+<p>Average inflation of cluster 1, 2 and 3 are similar. This leads me to believe that inflation is not that useful in comparing between clusters. Below is a boxplot of income, child_mort, LE, total_fer grouped by cluster.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>plt.figure(figsize=(<span style="color:#099">12</span>, <span style="color:#099">6</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Create the boxplot for income</span>
+</span></span><span style="display:flex;"><span>plt.subplot(<span style="color:#099">221</span>)
+</span></span><span style="display:flex;"><span>sns.boxplot(x=<span style="color:#a50">&#39;cluster_hc&#39;</span>, y=<span style="color:#a50">&#39;income&#39;</span>, data=data)
+</span></span><span style="display:flex;"><span>plt.title(<span style="color:#a50">&#39;Income by Cluster&#39;</span>)
+</span></span><span style="display:flex;"><span>plt.xlabel(<span style="color:#a50">&#39;Cluster&#39;</span>)
+</span></span><span style="display:flex;"><span>plt.ylabel(<span style="color:#a50">&#39;Income&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Create the boxplot for child_mort</span>
+</span></span><span style="display:flex;"><span>plt.subplot(<span style="color:#099">222</span>)
+</span></span><span style="display:flex;"><span>sns.boxplot(x=<span style="color:#a50">&#39;cluster_hc&#39;</span>, y=<span style="color:#a50">&#39;child_mort&#39;</span>, data=data)
+</span></span><span style="display:flex;"><span>plt.title(<span style="color:#a50">&#39;Child Mortality by Cluster&#39;</span>)
+</span></span><span style="display:flex;"><span>plt.xlabel(<span style="color:#a50">&#39;Cluster&#39;</span>)
+</span></span><span style="display:flex;"><span>plt.ylabel(<span style="color:#a50">&#39;Child Mortality&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Create the boxplot for LE</span>
+</span></span><span style="display:flex;"><span>plt.subplot(<span style="color:#099">223</span>)
+</span></span><span style="display:flex;"><span>sns.boxplot(x=<span style="color:#a50">&#39;cluster_hc&#39;</span>, y=<span style="color:#a50">&#39;LE&#39;</span>, data=data)
+</span></span><span style="display:flex;"><span>plt.title(<span style="color:#a50">&#39;Life Expectancy by Cluster&#39;</span>)
+</span></span><span style="display:flex;"><span>plt.xlabel(<span style="color:#a50">&#39;Cluster&#39;</span>)
+</span></span><span style="display:flex;"><span>plt.ylabel(<span style="color:#a50">&#39;Life Expectancy&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Create the boxplot for total_fer</span>
+</span></span><span style="display:flex;"><span>plt.subplot(<span style="color:#099">224</span>)
+</span></span><span style="display:flex;"><span>sns.boxplot(x=<span style="color:#a50">&#39;cluster_hc&#39;</span>, y=<span style="color:#a50">&#39;total_fer&#39;</span>, data=data)
+</span></span><span style="display:flex;"><span>plt.title(<span style="color:#a50">&#39;Total Fertility Rate by Cluster&#39;</span>)
+</span></span><span style="display:flex;"><span>plt.xlabel(<span style="color:#a50">&#39;Cluster&#39;</span>)
+</span></span><span style="display:flex;"><span>plt.ylabel(<span style="color:#a50">&#39;Total Fertility Rate&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Show the plot</span>
+</span></span><span style="display:flex;"><span>plt.tight_layout()
+</span></span><span style="display:flex;"><span>plt.show()
+</span></span></code></pre></div><p><img loading="lazy" src="clustering_countries_files/clustering_countries_61_0.png" alt="png"  />
+</p>
+<p>Cluster 0: This cluster is characterised by having the most negative values: high child mortality, lowest income, lowest life expectancy.</p>
+<ul>
+<li>income, lowest on average</li>
+<li>child mortality, significantly higher than other clusters</li>
+<li>life expectancy, lowest on average</li>
+<li>total_fer, highest on average</li>
+</ul>
+<p>Cluster 1: This cluster is characterised by showing slightly above average values for most features in comparison with other clusters</p>
+<ul>
+<li>income, slightly above average (2nd highest)</li>
+<li>child mortality, slightly below average (2nd lowest)</li>
+<li>life expectancy, above average, ~ 74 years</li>
+<li>total_fer, slightly below, ~ 2</li>
+</ul>
+<p>Cluster 2: This cluster is characterised by showing really strong or positive values such as highest income, high life expectancy, low child mortality.</p>
+<ul>
+<li>income, significantly higher than other clusters</li>
+<li>child mortality, lowest</li>
+<li>life expectancy, highest, ~ 80 years</li>
+<li>total_fer, lowest, ~ 2</li>
+</ul>
+<p>Cluster 3: This cluster is characterised by showing slightly below average values for most features in comparison with other clusters</p>
+<ul>
+<li>income, slightly below average (2nd lowest)</li>
+<li>child mortality, below average, significant difference compared to cluster 1 and 2.</li>
+<li>life expectancy, slightly below average, ~ 65 years</li>
+<li>total_fer, slightly above, ~ 3</li>
+</ul>
+<p><strong>Names for Clusters</strong></p>
+<ul>
+<li>Cluster 0: Underdeveloped Countries</li>
+<li>Cluster 1: Upper Developing Countries</li>
+<li>Cluster 2: Developed Countries</li>
+<li>Cluster 3: Lower Developing Countries</li>
+</ul>
+<p>Child Mortality:</p>
+<ul>
+<li>Developed Countries: Typically, developed countries have lower child mortality rates. Access to advanced healthcare, vaccination programs, and overall better living conditions contribute to healthier environments for children.</li>
+<li>Developing Countries: Higher child mortality rates are often associated with developing countries due to factors such as inadequate healthcare, poor sanitation, and limited access to clean water.</li>
+</ul>
+<p>Income:</p>
+<ul>
+<li>Developed Countries: Higher levels of income are generally found in developed countries. These nations often have well-established economies, higher GDP per capita, and a more evenly distributed wealth among the population.</li>
+<li>Developing Countries: Lower income levels are common in developing countries. Factors such as limited industrialization, lack of infrastructure, and lower educational attainment contribute to lower incomes for a significant portion of the population.</li>
+</ul>
+<p>Inflation:</p>
+<ul>
+<li>Developed Countries: Developed countries tend to have more stable economies and lower inflation rates. Effective economic policies, well-regulated financial systems, and mature markets contribute to economic stability.</li>
+<li>Developing Countries: Inflation rates may be higher in developing countries due to factors like economic volatility, political instability, and inadequate fiscal policies.</li>
+</ul>
+<p>Life Expectancy:</p>
+<ul>
+<li>Developed Countries: Higher life expectancy is a characteristic of developed countries. Access to quality healthcare, better nutrition, and overall improved living conditions contribute to longer life spans.</li>
+<li>Developing Countries: Lower life expectancy is often observed in developing countries, where healthcare services may be limited, and living conditions are not as favorable.</li>
+</ul>
+<p>Total Fertility Rate:</p>
+<ul>
+<li>Developed Countries: Generally, developed countries tend to have lower total fertility rates. Factors such as better education, access to family planning, and women&rsquo;s participation in the workforce contribute to smaller family sizes.</li>
+<li>Developing Countries: Higher total fertility rates are common in developing countries, where issues such as limited access to family planning, cultural norms, and economic dependence on larger families may influence birth rates.</li>
+</ul>
+<h2 id="c-3-k-means-clustering">C 3. K-means clustering<a hidden class="anchor" aria-hidden="true" href="#c-3-k-means-clustering">#</a></h2>
+<p>For the same dataset, perform k-means clustering. Choose an appropriate value
+for the number of clusters. How do your results differ from the results you
+obtained with hierarchical clustering?</p>
+<p>Finding optimal number of clusters</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#00a">from</span> <span style="color:#0aa;text-decoration:underline">sklearn.cluster</span> <span style="color:#00a">import</span> KMeans
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Elbow Method for K means</span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Import ElbowVisualizer</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a">from</span> <span style="color:#0aa;text-decoration:underline">yellowbrick.cluster</span> <span style="color:#00a">import</span> KElbowVisualizer
+</span></span><span style="display:flex;"><span>model = KMeans(n_init=<span style="color:#099">10</span>, random_state=<span style="color:#099">42</span>)
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># k is range of number of clusters.</span>
+</span></span><span style="display:flex;"><span>visualizer = KElbowVisualizer(model, k=(<span style="color:#099">2</span>,<span style="color:#099">10</span>), metric=<span style="color:#a50">&#39;distortion&#39;</span>, distance_metric=<span style="color:#a50">&#39;euclidean&#39;</span>, timings=<span style="color:#00a">False</span>, locate_elbow=<span style="color:#00a">True</span>)
+</span></span><span style="display:flex;"><span>visualizer.fit(scaled_data)     <span style="color:#aaa;font-style:italic"># Fit the data to the visualizer</span>
+</span></span><span style="display:flex;"><span>visualizer.show()               <span style="color:#aaa;font-style:italic"># Finalize and render the figure</span>
+</span></span></code></pre></div><p><img loading="lazy" src="clustering_countries_files/clustering_countries_67_0.png" alt="png"  />
+</p>
+<pre><code>&lt;Axes: title={'center': 'Distortion Score Elbow for KMeans Clustering'}, xlabel='k', ylabel='distortion score'&gt;
+</code></pre>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Silhouette Score for K means</span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Import ElbowVisualizer</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a">from</span> <span style="color:#0aa;text-decoration:underline">yellowbrick.cluster</span> <span style="color:#00a">import</span> KElbowVisualizer
+</span></span><span style="display:flex;"><span>model = KMeans(n_init=<span style="color:#099">10</span>, random_state=<span style="color:#099">42</span>)
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># k is range of number of clusters.</span>
+</span></span><span style="display:flex;"><span>visualizer = KElbowVisualizer(model, k=(<span style="color:#099">2</span>,<span style="color:#099">10</span>), metric=<span style="color:#a50">&#39;silhouette&#39;</span>, distance_metric=<span style="color:#a50">&#39;euclidean&#39;</span>, timings=<span style="color:#00a">False</span>, locate_elbow=<span style="color:#00a">True</span>)
+</span></span><span style="display:flex;"><span>visualizer.fit(scaled_data)     <span style="color:#aaa;font-style:italic"># Fit the data to the visualizer</span>
+</span></span><span style="display:flex;"><span>visualizer.show()               <span style="color:#aaa;font-style:italic"># Finalize and render the figure</span>
+</span></span></code></pre></div><p><img loading="lazy" src="clustering_countries_files/clustering_countries_68_0.png" alt="png"  />
+</p>
+<pre><code>&lt;Axes: title={'center': 'Silhouette Score Elbow for KMeans Clustering'}, xlabel='k', ylabel='silhouette score'&gt;
+</code></pre>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Calinski Harabasz Score for K means</span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Import ElbowVisualizer</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a">from</span> <span style="color:#0aa;text-decoration:underline">yellowbrick.cluster</span> <span style="color:#00a">import</span> KElbowVisualizer
+</span></span><span style="display:flex;"><span>model = KMeans(n_init=<span style="color:#099">10</span>, random_state=<span style="color:#099">42</span>)
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># k is range of number of clusters.</span>
+</span></span><span style="display:flex;"><span>visualizer = KElbowVisualizer(model, k=(<span style="color:#099">2</span>,<span style="color:#099">10</span>), metric=<span style="color:#a50">&#39;calinski_harabasz&#39;</span>, distance_metric=<span style="color:#a50">&#39;euclidean&#39;</span>, timings=<span style="color:#00a">False</span>, locate_elbow=<span style="color:#00a">True</span>)
+</span></span><span style="display:flex;"><span>visualizer.fit(scaled_data)     <span style="color:#aaa;font-style:italic"># Fit the data to the visualizer</span>
+</span></span><span style="display:flex;"><span>visualizer.show()               <span style="color:#aaa;font-style:italic"># Finalize and render the figure</span>
+</span></span></code></pre></div><p><img loading="lazy" src="clustering_countries_files/clustering_countries_69_0.png" alt="png"  />
+</p>
+<pre><code>&lt;Axes: title={'center': 'Calinski Harabasz Score Elbow for KMeans Clustering'}, xlabel='k', ylabel='calinski harabasz score'&gt;
+</code></pre>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Calculate Manhattan distance and get a condensed distance matrix</span>
+</span></span><span style="display:flex;"><span>euclidean_distance_matrix = pdist(scaled_data, metric=<span style="color:#a50">&#39;euclidean&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Perform hierarchical clustering using Manhattan distance</span>
+</span></span><span style="display:flex;"><span>linkage_matrix = linkage(euclidean_distance_matrix, method=<span style="color:#a50">&#39;complete&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Create a dendrogram</span>
+</span></span><span style="display:flex;"><span>plt.figure(figsize=(<span style="color:#099">12</span>, <span style="color:#099">8</span>))
+</span></span><span style="display:flex;"><span>dendrogram(linkage_matrix, labels=data[<span style="color:#a50">&#39;country&#39;</span>].tolist(), orientation=<span style="color:#a50">&#39;top&#39;</span>, distance_sort=<span style="color:#a50">&#39;descending&#39;</span>, show_leaf_counts=<span style="color:#00a">True</span>)
+</span></span><span style="display:flex;"><span>plt.title(<span style="color:#a50">&#39;Hierarchical Clustering Dendrogram (Euclidean Distance)&#39;</span>)
+</span></span><span style="display:flex;"><span>plt.xlabel(<span style="color:#a50">&#39;Countries&#39;</span>)
+</span></span><span style="display:flex;"><span>plt.ylabel(<span style="color:#a50">&#39;Euclidean Distance&#39;</span>)
+</span></span><span style="display:flex;"><span>plt.show()
+</span></span></code></pre></div><p><img loading="lazy" src="clustering_countries_files/clustering_countries_70_0.png" alt="png"  />
+</p>
+<p>From the above visualizations, two of the three suggest that I should fit a k-means clustering model with 3 clusters. This differs from what I had fitted earlier using Hierarchical Clustering, partially due to the change in the distance metric used. In the earlier Hierarchical Clustering, I employed the Manhattan distance, whereas for k-means, I used the Euclidean distance.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>num_clusters_km = <span style="color:#099">3</span>
+</span></span><span style="display:flex;"><span>kmeans_model = KMeans(n_clusters=num_clusters_km, n_init=<span style="color:#099">10</span>, random_state=<span style="color:#099">42</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>data[<span style="color:#a50">&#39;cluster_km&#39;</span>] = kmeans_model.fit_predict(scaled_data)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>cluster_counts_km = data[<span style="color:#a50">&#39;cluster_km&#39;</span>].value_counts()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Display the number of countries in each cluster</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a">for</span> cluster_km, count <span style="color:#00a">in</span> cluster_counts_km.items():
+</span></span><span style="display:flex;"><span>    <span style="color:#0aa">print</span>(<span style="color:#a50">f</span><span style="color:#a50">&#39;Cluster </span><span style="color:#a50">{</span>cluster_km<span style="color:#a50">}</span><span style="color:#a50">: </span><span style="color:#a50">{</span>count<span style="color:#a50">}</span><span style="color:#a50"> countries&#39;</span>)
+</span></span></code></pre></div><pre><code>Cluster 0: 16 countries
+Cluster 2: 12 countries
+Cluster 1: 8 countries
+</code></pre>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#0aa">print</span>(<span style="color:#a50">&#34;Cluster 0 of KMeans Clustering model&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#0aa">print</span>(data[data[<span style="color:#a50">&#39;cluster_km&#39;</span>] == <span style="color:#099">0</span>].country.unique())
+</span></span><span style="display:flex;"><span><span style="color:#0aa">print</span>(<span style="color:#a50">&#39;--------------------------------------------&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#0aa">print</span>(<span style="color:#a50">&#34;Cluster 1 of KMeans Clustering model&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#0aa">print</span>(data[data[<span style="color:#a50">&#39;cluster_km&#39;</span>] == <span style="color:#099">1</span>].country.unique())
+</span></span><span style="display:flex;"><span><span style="color:#0aa">print</span>(<span style="color:#a50">&#39;--------------------------------------------&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#0aa">print</span>(<span style="color:#a50">&#34;Cluster 2 of KMeans Clustering model&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#0aa">print</span>(data[data[<span style="color:#a50">&#39;cluster_km&#39;</span>] == <span style="color:#099">2</span>].country.unique())
+</span></span><span style="display:flex;"><span><span style="color:#0aa">print</span>(<span style="color:#a50">&#39;--------------------------------------------&#39;</span>)
+</span></span></code></pre></div><pre><code>Cluster 0 of KMeans Clustering model
+['Australia' 'Belgium' 'Canada' 'Finland' 'France' 'Germany' 'Israel'
+ 'Italy' 'Japan' 'Netherlands' 'New Zealand' 'Norway' 'South Korea'
+ 'Sweden' 'United Kingdom' 'United States']
+--------------------------------------------
+Cluster 1 of KMeans Clustering model
+['Afghanistan' 'Angola' 'Benin' 'Eritrea' 'Niger' 'Uganda' 'Yemen'
+ 'Zambia']
+--------------------------------------------
+Cluster 2 of KMeans Clustering model
+['Argentina' 'Bangladesh' 'Bhutan' 'Brazil' 'China' 'India' 'Indonesia'
+ 'Malaysia' 'Russia' 'South Africa' 'Thailand' 'Turkey']
+--------------------------------------------
+</code></pre>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>cluster_km_means = data.groupby(<span style="color:#a50">&#39;cluster_km&#39;</span>)[numerical_features].mean()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Print the mean values for each cluster</span>
+</span></span><span style="display:flex;"><span><span style="color:#0aa">print</span>(cluster_km_means)
+</span></span></code></pre></div><pre><code>            child_mort    income  inflation         LE  total_fer
+cluster_km                                                       
+0             4.475000  40056.25   1.607938  80.868750     1.8475
+1            89.850000   2608.00  11.884375  59.362500     5.7075
+2            28.316667  12677.50   9.380833  71.333333     2.1300
+</code></pre>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>sns.pairplot(data.drop(<span style="color:#a50">&#39;cluster_hc&#39;</span>, axis=<span style="color:#099">1</span>), hue=<span style="color:#a50">&#39;cluster_km&#39;</span>, palette=<span style="color:#a50">&#39;viridis&#39;</span>, diag_kind=<span style="color:#a50">&#39;kde&#39;</span>)
+</span></span><span style="display:flex;"><span>plt.suptitle(<span style="color:#a50">&#39;Pair Plot of Numerical Features Colored by K-Means Cluster&#39;</span>, y=<span style="color:#099">1.02</span>)
+</span></span><span style="display:flex;"><span>plt.show()
+</span></span></code></pre></div><p><img loading="lazy" src="clustering_countries_files/clustering_countries_76_0.png" alt="png"  />
+</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>plt.figure(figsize=(<span style="color:#099">12</span>, <span style="color:#099">6</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Create the boxplot for income</span>
+</span></span><span style="display:flex;"><span>plt.subplot(<span style="color:#099">221</span>)
+</span></span><span style="display:flex;"><span>sns.boxplot(x=<span style="color:#a50">&#39;cluster_km&#39;</span>, y=<span style="color:#a50">&#39;income&#39;</span>, data=data)
+</span></span><span style="display:flex;"><span>plt.title(<span style="color:#a50">&#39;Income by Cluster&#39;</span>)
+</span></span><span style="display:flex;"><span>plt.xlabel(<span style="color:#a50">&#39;Cluster&#39;</span>)
+</span></span><span style="display:flex;"><span>plt.ylabel(<span style="color:#a50">&#39;Income&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Create the boxplot for child_mort</span>
+</span></span><span style="display:flex;"><span>plt.subplot(<span style="color:#099">222</span>)
+</span></span><span style="display:flex;"><span>sns.boxplot(x=<span style="color:#a50">&#39;cluster_km&#39;</span>, y=<span style="color:#a50">&#39;child_mort&#39;</span>, data=data)
+</span></span><span style="display:flex;"><span>plt.title(<span style="color:#a50">&#39;Child Mortality by Cluster&#39;</span>)
+</span></span><span style="display:flex;"><span>plt.xlabel(<span style="color:#a50">&#39;Cluster&#39;</span>)
+</span></span><span style="display:flex;"><span>plt.ylabel(<span style="color:#a50">&#39;Child Mortality&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Create the boxplot for LE</span>
+</span></span><span style="display:flex;"><span>plt.subplot(<span style="color:#099">223</span>)
+</span></span><span style="display:flex;"><span>sns.boxplot(x=<span style="color:#a50">&#39;cluster_km&#39;</span>, y=<span style="color:#a50">&#39;LE&#39;</span>, data=data)
+</span></span><span style="display:flex;"><span>plt.title(<span style="color:#a50">&#39;Life Expectancy by Cluster&#39;</span>)
+</span></span><span style="display:flex;"><span>plt.xlabel(<span style="color:#a50">&#39;Cluster&#39;</span>)
+</span></span><span style="display:flex;"><span>plt.ylabel(<span style="color:#a50">&#39;Life Expectancy&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Create the boxplot for total_fer</span>
+</span></span><span style="display:flex;"><span>plt.subplot(<span style="color:#099">224</span>)
+</span></span><span style="display:flex;"><span>sns.boxplot(x=<span style="color:#a50">&#39;cluster_km&#39;</span>, y=<span style="color:#a50">&#39;total_fer&#39;</span>, data=data)
+</span></span><span style="display:flex;"><span>plt.title(<span style="color:#a50">&#39;Total Fertility Rate by Cluster&#39;</span>)
+</span></span><span style="display:flex;"><span>plt.xlabel(<span style="color:#a50">&#39;Cluster&#39;</span>)
+</span></span><span style="display:flex;"><span>plt.ylabel(<span style="color:#a50">&#39;Total Fertility Rate&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Show the plot</span>
+</span></span><span style="display:flex;"><span>plt.tight_layout()
+</span></span><span style="display:flex;"><span>plt.show()
+</span></span></code></pre></div><p><img loading="lazy" src="clustering_countries_files/clustering_countries_77_0.png" alt="png"  />
+</p>
+<p>Looking the variables &ldquo;Income&rdquo;, &ldquo;Life_Expec&rdquo;, &ldquo;Child_Mort&rdquo;, and &ldquo;Total_Fer&rdquo;, we can conclude which group of countries are more in need of help.</p>
+<ul>
+<li>
+<p>Cluster = 0:</p>
+<p>Developed Countries
+Countries with highest values in &ldquo;Income&rdquo; &amp; &ldquo;Life_Expec&rdquo; and lowest values in &ldquo;Child_Mort&rdquo; &amp; &ldquo;Total_Fer&rdquo;.</p>
+</li>
+<li>
+<p>Cluster = 1:</p>
+<p>Underdeveloped Countries
+Countries with the lowest values in &ldquo;Income&rdquo; &amp; &ldquo;Life_Expec&rdquo; and highest values in &ldquo;Child_Mort&rdquo; &amp; &ldquo;Total_Fer&rdquo;.</p>
+</li>
+<li>
+<p>Cluster = 2:</p>
+<p>Developing Countries
+Countries with middle values in &ldquo;Income&rdquo; &amp; &ldquo;Life_Expec&rdquo; and middle values in &ldquo;Child_Mort&rdquo; &amp; &ldquo;Total_Fer&rdquo;.</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#00a">import</span> <span style="color:#0aa;text-decoration:underline">matplotlib.cm</span> <span style="color:#00a">as</span> <span style="color:#0aa;text-decoration:underline">cm</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a">import</span> <span style="color:#0aa;text-decoration:underline">matplotlib.colors</span> <span style="color:#00a">as</span> <span style="color:#0aa;text-decoration:underline">colors</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># saving cluster_km labels</span>
+</span></span><span style="display:flex;"><span>cluster_km_labels = data[<span style="color:#a50">&#39;cluster_km&#39;</span>].tolist()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Add &#39;cluster_km&#39; column to combined_pca_result</span>
+</span></span><span style="display:flex;"><span>combined_pca_result_kmlabels = np.column_stack((combined_pca_result, cluster_km_labels))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Create pandas data frame</span>
+</span></span><span style="display:flex;"><span>dfkm = pd.DataFrame(combined_pca_result_kmlabels, columns=[<span style="color:#a50">&#39;Health Indicators PC1&#39;</span>, <span style="color:#a50">&#39;Socio-Economic Indicators PC1&#39;</span>, <span style="color:#a50">&#39;kmcluster&#39;</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Creating subplots</span>
+</span></span><span style="display:flex;"><span>fig, (ax1, ax2) = plt.subplots(<span style="color:#099">1</span>, <span style="color:#099">2</span>, figsize=(<span style="color:#099">16</span>,<span style="color:#099">8</span>), sharex=<span style="color:#00a">True</span>, sharey=<span style="color:#00a">True</span>, gridspec_kw={<span style="color:#a50">&#39;width_ratios&#39;</span>: [<span style="color:#099">1</span>, <span style="color:#099">1</span>], <span style="color:#a50">&#39;height_ratios&#39;</span>: [<span style="color:#099">1</span>]})
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Plotting scatterplot for kmcluster</span>
+</span></span><span style="display:flex;"><span>scatter1 = ax1.scatter(
+</span></span><span style="display:flex;"><span>    dfkm[<span style="color:#a50">&#39;Health Indicators PC1&#39;</span>], 
+</span></span><span style="display:flex;"><span>    dfkm[<span style="color:#a50">&#39;Socio-Economic Indicators PC1&#39;</span>], 
+</span></span><span style="display:flex;"><span>    c=dfkm[<span style="color:#a50">&#39;kmcluster&#39;</span>], 
+</span></span><span style="display:flex;"><span>    cmap=<span style="color:#a50">&#39;viridis&#39;</span>,
+</span></span><span style="display:flex;"><span>    edgecolors=<span style="color:#a50">&#39;k&#39;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Labeling the axes for kmcluster</span>
+</span></span><span style="display:flex;"><span>ax1.set_xlabel(<span style="color:#a50">&#39;Health Indicators PC1&#39;</span>)
+</span></span><span style="display:flex;"><span>ax1.set_ylabel(<span style="color:#a50">&#39;Socio-Economic Indicators PC1&#39;</span>)
+</span></span><span style="display:flex;"><span>ax1.set_title(<span style="color:#a50">&#39;Socio-Economic vs Health Indicators with k-mean Cluster Labels&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Add a colorbar to show the correspondence between colors and cluster numbers for kmcluster</span>
+</span></span><span style="display:flex;"><span>cbar1 = ax1.figure.colorbar(mappable=scatter1, ax=ax1, shrink=<span style="color:#099">0.7</span>, label=<span style="color:#a50">&#39;KM Cluster Number&#39;</span>)
+</span></span><span style="display:flex;"><span>cbar1.set_ticks(np.arange(<span style="color:#099">3</span>))
+</span></span><span style="display:flex;"><span>cbar1.set_ticklabels([<span style="color:#a50">&#39;Cluster 0&#39;</span>, <span style="color:#a50">&#39;Cluster 1&#39;</span>, <span style="color:#a50">&#39;Cluster 2&#39;</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Plotting scatterplot for hccluster</span>
+</span></span><span style="display:flex;"><span>scatter2 = ax2.scatter(
+</span></span><span style="display:flex;"><span>    dfhc[<span style="color:#a50">&#39;Health Indicators PC1&#39;</span>], 
+</span></span><span style="display:flex;"><span>    dfhc[<span style="color:#a50">&#39;Socio-Economic Indicators PC1&#39;</span>], 
+</span></span><span style="display:flex;"><span>    c=dfhc[<span style="color:#a50">&#39;hccluster&#39;</span>], 
+</span></span><span style="display:flex;"><span>    cmap=<span style="color:#a50">&#39;viridis&#39;</span>,
+</span></span><span style="display:flex;"><span>    edgecolors=<span style="color:#a50">&#39;k&#39;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Labeling the axes for hccluster</span>
+</span></span><span style="display:flex;"><span>ax2.set_xlabel(<span style="color:#a50">&#39;Health Indicators PC1&#39;</span>)
+</span></span><span style="display:flex;"><span>ax2.set_ylabel(<span style="color:#a50">&#39;Socio-Economic Indicators PC1&#39;</span>)
+</span></span><span style="display:flex;"><span>ax2.set_title(<span style="color:#a50">&#39;Socio-Economic vs Health Indicators with HC Cluster Labels&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Add a colorbar to show the correspondence between colors and cluster numbers for hccluster</span>
+</span></span><span style="display:flex;"><span>cbar2 = ax2.figure.colorbar(mappable=scatter2, ax=ax2, shrink=<span style="color:#099">0.7</span>, label=<span style="color:#a50">&#39;HC Cluster Number&#39;</span>)
+</span></span><span style="display:flex;"><span>cbar2.set_ticks(np.arange(<span style="color:#099">4</span>))
+</span></span><span style="display:flex;"><span>cbar2.set_ticklabels([<span style="color:#a50">&#39;Cluster 0&#39;</span>, <span style="color:#a50">&#39;Cluster 1&#39;</span>, <span style="color:#a50">&#39;Cluster 2&#39;</span>,<span style="color:#a50">&#39;Cluster 3&#39;</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Displaying the plot</span>
+</span></span><span style="display:flex;"><span>plt.show()
+</span></span></code></pre></div><p><img loading="lazy" src="clustering_countries_files/clustering_countries_79_0.png" alt="png"  />
+</p>
+<p>We can use the plots above to visualise and discuss the main difference in results between the Hierarchical clusters (4 clusters) and K-Means clusters (3 clusters).</p>
+<ul>
+<li>The lower left cluster (Hierarchical cluster2, K-Means cluster0) in each plot is common. These are the Developed Countries.</li>
+<li>K-means cluster1 in the upper right is the same as Hierarchical cluster0 (also upper right) with 2 countries from cluster3 added. These are the Underdeveloped Countries.</li>
+<li>All other countries in between these extremes are characterised as Developing Countries (K-Means cluster2; all of Hierarchical cluster1 plus 4 countries from Hierarchical cluster3)</li>
+</ul>
+<h2 id="c-4-allocating-new-observations-to-clusters">C 4. Allocating new observations to clusters<a hidden class="anchor" aria-hidden="true" href="#c-4-allocating-new-observations-to-clusters">#</a></h2>
+<p>The dataset new countries.csv contains information for 8 new countries.</p>
+<h3 id="c4i">C.4(i)<a hidden class="anchor" aria-hidden="true" href="#c4i">#</a></h3>
+<p>Assign each new country to the cluster (either from hierarchical clustering
+or k-means clustering) whose centroid is nearest to the new country’s
+variables values.</p>
+<p>I will assign the new countries to the k-means clustering.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Load new data</span>
+</span></span><span style="display:flex;"><span>new_data = pd.read_csv(data_dir + <span style="color:#a50">&#39;new_countries.csv&#39;</span>)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>scaled_new_data = scaler.transform(new_data[numerical_features])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Predict the clusters for the new countries based on their scaled features</span>
+</span></span><span style="display:flex;"><span>predicted_km_clusters = kmeans_model.predict(scaled_new_data)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>new_data[<span style="color:#a50">&#39;predicted_km_cluster&#39;</span>] = predicted_km_clusters
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#0aa">print</span>(new_data[[<span style="color:#a50">&#39;country&#39;</span>, <span style="color:#a50">&#39;predicted_km_cluster&#39;</span>]])
+</span></span></code></pre></div><pre><code>          country  predicted_km_cluster
+0         Armenia                     2
+1            Chad                     1
+2  Czech Republic                     0
+3         Namibia                     2
+4          Poland                     0
+5        Portugal                     0
+6           Spain                     0
+7     Switzerland                     0
+</code></pre>
+<h3 id="c4ii">C.4(ii)<a hidden class="anchor" aria-hidden="true" href="#c4ii">#</a></h3>
+<p>Based on your summaries and plots, does the cluster allocation of the new countries deviate from your expectations and practical knowledge?</p>
+<p>The cluster allocation of the new countries do not deviate from my expectations and practical knowledge.</p>
+<h2 id="c-5-putting-data-back-into-context">C 5. Putting data back into context<a hidden class="anchor" aria-hidden="true" href="#c-5-putting-data-back-into-context">#</a></h2>
+<p>You are a data analyst working for the United Nations (UN) that wants to
+enhance its funding strategy by identifying a group of countries that are in
+direct need of aid. Based on your analysis, suggest a group of countries and a
+selection of socio-economic and health indices that UN needs to focus on the
+most.</p>
+<p>Create a new data frame containing underdeveloped countries called help_data</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>full_data = pd.concat([data, new_data], ignore_index=<span style="color:#00a">True</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>help_data = full_data.loc[(full_data[<span style="color:#a50">&#39;cluster_hc&#39;</span>] ==  <span style="color:#099">0</span>) | (full_data[<span style="color:#a50">&#39;cluster_km&#39;</span>] == <span style="color:#099">1</span>) | (full_data[<span style="color:#a50">&#39;predicted_km_cluster&#39;</span>] == <span style="color:#099">1</span>)]
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>help_data[numerical_features].describe(percentiles= [<span style="color:#099">0.01</span>, <span style="color:#099">0.05</span>, <span style="color:#099">0.25</span>, <span style="color:#099">0.5</span>, <span style="color:#099">0.75</span>, <span style="color:#099">0.95</span>, <span style="color:#099">0.99</span>])
+</span></span></code></pre></div><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>child_mort</th>
+      <th>income</th>
+      <th>inflation</th>
+      <th>LE</th>
+      <th>total_fer</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>9.000000</td>
+      <td>9.000000</td>
+      <td>9.000000</td>
+      <td>9.000000</td>
+      <td>9.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>96.533333</td>
+      <td>2532.666667</td>
+      <td>11.273889</td>
+      <td>59.044444</td>
+      <td>5.805556</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>31.745511</td>
+      <td>1680.371685</td>
+      <td>7.865799</td>
+      <td>4.423548</td>
+      <td>0.920531</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>55.200000</td>
+      <td>814.000000</td>
+      <td>0.885000</td>
+      <td>52.000000</td>
+      <td>4.610000</td>
+    </tr>
+    <tr>
+      <th>1%</th>
+      <td>55.288000</td>
+      <td>862.480000</td>
+      <td>1.018200</td>
+      <td>52.336000</td>
+      <td>4.614800</td>
+    </tr>
+    <tr>
+      <th>5%</th>
+      <td>55.640000</td>
+      <td>1056.400000</td>
+      <td>1.551000</td>
+      <td>53.680000</td>
+      <td>4.634000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>81.000000</td>
+      <td>1540.000000</td>
+      <td>6.390000</td>
+      <td>56.500000</td>
+      <td>5.360000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>90.200000</td>
+      <td>1820.000000</td>
+      <td>10.600000</td>
+      <td>58.800000</td>
+      <td>5.820000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>119.000000</td>
+      <td>3280.000000</td>
+      <td>14.000000</td>
+      <td>61.700000</td>
+      <td>6.160000</td>
+    </tr>
+    <tr>
+      <th>95%</th>
+      <td>139.200000</td>
+      <td>5332.000000</td>
+      <td>23.120000</td>
+      <td>65.220000</td>
+      <td>7.130000</td>
+    </tr>
+    <tr>
+      <th>99%</th>
+      <td>147.840000</td>
+      <td>5786.400000</td>
+      <td>23.504000</td>
+      <td>67.044000</td>
+      <td>7.418000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>150.000000</td>
+      <td>5900.000000</td>
+      <td>23.600000</td>
+      <td>67.500000</td>
+      <td>7.490000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<p>In the following, I standardize the help_data frame containing underdeveloped countries and conduct Principal Component Analysis (PCA) on Health Indicators and separately on Socio-economic Indicators. The objective is to identify the first principal components for both Health Indicators and Socio-economic Indicators, capturing the maximum variance in each category to spread the countries as much as possible on these two axes. These principal components will be used to represent essential information for plotting countries based on their Health and Socio-economic profiles.</p>
+<p>Instead of utilizing all numerical features in the PCA, I have decided to focus on the following:</p>
+<p>Health indicators:</p>
+<ul>
+<li>&lsquo;child_mort&rsquo;: Child mortality rate is a health indicator, reflecting the number of children who die before reaching the age of one per 1,000 live births.</li>
+<li>&lsquo;LE&rsquo; (Life Expectancy): Life Expectancy is a health indicator, representing the average number of years a person can expect to live.</li>
+</ul>
+<p>Socio-economic indicators:</p>
+<ul>
+<li>&lsquo;income&rsquo;: Income is a key socio-economic indicator, reflecting the financial well-being of individuals or a nation.</li>
+</ul>
+<p>In this case, I have excluded &lsquo;inflation&rsquo; and &rsquo;total_fer&rsquo; from socio-economic indicators while retaining the same health indicators as used earlier. The reason for excluding &lsquo;inflation&rsquo; and &rsquo;total_fer&rsquo; is due to both these features having many complex issues impacting them and their interpretation.</p>
+<p>In the case of the total fertility rate, it is influenced by factors such as religion and belief, the availability of contraceptives, the cost of raising children, and some form of a happiness-security index that could measure how much a couple wants to have, or not have, children. Inflation, as previously discussed, lacks a universally perfect rate, making it a challenging numerical indicator to interpret.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#00a">from</span> <span style="color:#0aa;text-decoration:underline">sklearn.decomposition</span> <span style="color:#00a">import</span> PCA
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Selected columns for Health Indicators</span>
+</span></span><span style="display:flex;"><span>health_cols = [<span style="color:#a50">&#39;child_mort&#39;</span>, <span style="color:#a50">&#39;LE&#39;</span>]
+</span></span><span style="display:flex;"><span>health_helpdata = help_data[health_cols]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Selected columns for Socio-economic Indicators</span>
+</span></span><span style="display:flex;"><span>socio_economic_cols_adj = [<span style="color:#a50">&#39;income&#39;</span>]
+</span></span><span style="display:flex;"><span>socio_economic_helpdata = help_data[socio_economic_cols_adj]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Standardize the data before applying PCA</span>
+</span></span><span style="display:flex;"><span>scaler3 = StandardScaler()
+</span></span><span style="display:flex;"><span>health_helpdata_standardized = scaler3.fit_transform(health_helpdata)
+</span></span><span style="display:flex;"><span>socio_economic_helpdata_standardized = scaler3.fit_transform(socio_economic_helpdata)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Apply PCA for Health Indicators</span>
+</span></span><span style="display:flex;"><span>health_helppca = PCA(n_components=<span style="color:#099">1</span>, random_state=<span style="color:#099">42</span>)
+</span></span><span style="display:flex;"><span>health_pca_helpresult = health_helppca.fit_transform(health_helpdata_standardized)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Apply PCA for Socio-economic Indicators</span>
+</span></span><span style="display:flex;"><span>socio_economic_helppca = PCA(n_components=<span style="color:#099">1</span>, random_state=<span style="color:#099">42</span>)
+</span></span><span style="display:flex;"><span>socio_economic_helppca_result = socio_economic_helppca.fit_transform(socio_economic_helpdata_standardized)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Combine PCA results</span>
+</span></span><span style="display:flex;"><span>combined_pca_helpresult = np.concatenate((health_pca_helpresult, socio_economic_helppca_result), axis=<span style="color:#099">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Selecting countries for plot</span>
+</span></span><span style="display:flex;"><span>help_countries = help_data[<span style="color:#a50">&#39;country&#39;</span>].tolist()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Scatter plot of health against socio-economic PCA</span>
+</span></span><span style="display:flex;"><span>plt.figure(figsize=(<span style="color:#099">10</span>, <span style="color:#099">6</span>))
+</span></span><span style="display:flex;"><span>plt.scatter(combined_pca_helpresult[:, <span style="color:#099">0</span>], combined_pca_helpresult[:, <span style="color:#099">1</span>], c=<span style="color:#a50">&#39;blue&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Label each point with the corresponding country name</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a">for</span> i, help_country <span style="color:#00a">in</span> <span style="color:#0aa">enumerate</span>(help_countries):
+</span></span><span style="display:flex;"><span>    plt.annotate(help_country, (combined_pca_helpresult[i, <span style="color:#099">0</span>], combined_pca_helpresult[i, <span style="color:#099">1</span>]))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Set plot labels and title</span>
+</span></span><span style="display:flex;"><span>plt.xlabel(<span style="color:#a50">&#39;Health Indicators PC1&#39;</span>)
+</span></span><span style="display:flex;"><span>plt.ylabel(<span style="color:#a50">&#39;Socio-Economic Indicators PC1&#39;</span>)
+</span></span><span style="display:flex;"><span>plt.title(<span style="color:#a50">&#39;Help Countries Socio-Economic PC1 vs Health Indicators PC1&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Show the plot</span>
+</span></span><span style="display:flex;"><span>plt.show()
+</span></span></code></pre></div><p><img loading="lazy" src="clustering_countries_files/clustering_countries_93_0.png" alt="png"  />
+</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>health_loadings_helpdf = pd.DataFrame(
+</span></span><span style="display:flex;"><span>    health_helppca.components_, <span style="color:#aaa;font-style:italic"># This attribute holds the loadings of variables</span>
+</span></span><span style="display:flex;"><span>    columns=health_cols,
+</span></span><span style="display:flex;"><span>    index=[<span style="color:#a50">&#39;PC1&#39;</span>]
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>socio_economic_loadings_helpdf = pd.DataFrame(
+</span></span><span style="display:flex;"><span>    socio_economic_helppca.components_, <span style="color:#aaa;font-style:italic"># This attribute holds the loadings of variables</span>
+</span></span><span style="display:flex;"><span>    columns=socio_economic_cols_adj,
+</span></span><span style="display:flex;"><span>    index=[<span style="color:#a50">&#39;PC1&#39;</span>]
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#0aa">print</span>(health_loadings_helpdf)
+</span></span><span style="display:flex;"><span><span style="color:#0aa">print</span>(<span style="color:#a50">&#39;--------------&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#0aa">print</span>(socio_economic_loadings_helpdf)
+</span></span></code></pre></div><pre><code>     child_mort        LE
+PC1   -0.707107  0.707107
+--------------
+     income
+PC1     1.0
+</code></pre>
+<p>From the loaded data, it is evident that a lower value of health indicators corresponds to a more unfavorable condition for the country, as indicated by higher child mortality rates and lower life expectancy. Additionally, a lower value of socio-economic indicators is associated with lower income, thereby indicating a poorer economic situation for the country.</p>
+<p>Consequently, the countries facing the most challenges are positioned in the bottom-left quadrant of the &lsquo;Help Countries Socio-Economic PC1 vs Health Indicators PC1&rsquo; plot.</p>
+<p>To compile a prioritized list of countries for the UN&rsquo;s attention, we will aggregate the health indicators (PC1) and socio-economic indicators (PC1). Subsequently, we will arrange the countries in ascending order based on the corresponding values.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Sum Health Indicators PC1 and Socio-Economic Indicators PC1 </span>
+</span></span><span style="display:flex;"><span>sum_pca_helpresult = [[row[<span style="color:#099">0</span>] + row[<span style="color:#099">1</span>]] <span style="color:#00a">for</span> row <span style="color:#00a">in</span> combined_pca_helpresult]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Combine to complete_pca_helpresult along with help_countries preparing to create data frame</span>
+</span></span><span style="display:flex;"><span>complete_pca_helpresult = np.column_stack((help_countries, combined_pca_helpresult, sum_pca_helpresult))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Create data frame</span>
+</span></span><span style="display:flex;"><span>help_df = pd.DataFrame(complete_pca_helpresult, columns=[<span style="color:#a50">&#39;country&#39;</span>, <span style="color:#a50">&#39;Health Indicators PC1&#39;</span>, <span style="color:#a50">&#39;Socio-Economic Indicators PC1&#39;</span>, <span style="color:#a50">&#39;SumIndicators&#39;</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Change to numeric</span>
+</span></span><span style="display:flex;"><span>help_df[<span style="color:#a50">&#39;SumIndicators&#39;</span>] = pd.to_numeric(help_df[<span style="color:#a50">&#39;SumIndicators&#39;</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Order countries by Sum</span>
+</span></span><span style="display:flex;"><span>help_df[[<span style="color:#a50">&#39;country&#39;</span>, <span style="color:#a50">&#39;SumIndicators&#39;</span>]].sort_values(by=<span style="color:#a50">&#39;SumIndicators&#39;</span>, ascending=<span style="color:#00a">True</span>)
+</span></span></code></pre></div><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>country</th>
+      <th>SumIndicators</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>8</th>
+      <td>Chad</td>
+      <td>-2.074981</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Niger</td>
+      <td>-1.751562</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>Afghanistan</td>
+      <td>-0.915032</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Uganda</td>
+      <td>-0.640135</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Zambia</td>
+      <td>-0.405277</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Benin</td>
+      <td>-0.324423</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Eritrea</td>
+      <td>0.724436</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Angola</td>
+      <td>1.773663</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Yemen</td>
+      <td>3.613311</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<p>The top five countries on which the UN should prioritize its focus are as follows:</p>
+<ol>
+<li>Chad</li>
+<li>Niger</li>
+<li>Afghanistan</li>
+<li>Uganda</li>
+<li>Zambia</li>
+</ol>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://shaunyap01.github.io/tags/python/">`Python</a></li>
+      <li><a href="https://shaunyap01.github.io/tags/all-projects/">^^All Projects</a></li>
+      <li><a href="https://shaunyap01.github.io/tags/clustering/">Clustering</a></li>
+      <li><a href="https://shaunyap01.github.io/tags/hierarchical-clustering/">Hierarchical Clustering</a></li>
+      <li><a href="https://shaunyap01.github.io/tags/k-means-clustering/">K-Means Clustering</a></li>
+      <li><a href="https://shaunyap01.github.io/tags/unsupervised-learning/">Unsupervised Learning</a></li>
+      <li><a href="https://shaunyap01.github.io/tags/distance-metrics/">Distance Metrics</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+</html>

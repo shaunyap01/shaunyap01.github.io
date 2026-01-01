@@ -1,0 +1,78 @@
+/* Conference table with sticky header inside a scrollable body */
+.conf-table-wrapper {
+  border: 1px solid #d9d9d9;
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--entry, #ffffff);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.conf-table-wrapper table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  min-width: 680px;
+  margin: 0;
+}
+
+.conf-table thead th {
+  background: var(--code-bg, #f5f5f5);
+  font-weight: 700;
+  border-bottom: 1px solid #d9d9d9;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.conf-table-wrapper th,
+.conf-table-wrapper td {
+  padding: 0.75rem 0.65rem;
+  text-align: left;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  color: inherit;
+  border-bottom: 1px solid #ededed;
+  vertical-align: top;
+}
+
+.conf-table-wrapper th:not(:last-child),
+.conf-table-wrapper td:not(:last-child) {
+  border-right: 1px solid #ededed;
+}
+
+.conf-table tbody tr:nth-child(even) {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.conf-table-body-scroll {
+  max-height: 600px;
+  overflow-y: auto;
+  overflow-x: auto;
+  scrollbar-gutter: stable;
+}
+
+.conf-table-body-scroll::-webkit-scrollbar {
+  height: 10px;
+  width: 10px;
+}
+
+.conf-table-body-scroll::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+}
+
+.conf-table-body-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+@media (max-width: 768px) {
+  .conf-table-wrapper table {
+    min-width: 560px;
+  }
+
+  .conf-table-wrapper th,
+  .conf-table-wrapper td {
+    font-size: 0.9rem;
+    padding: 0.65rem 0.5rem;
+  }
+}

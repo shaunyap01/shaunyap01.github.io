@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Bayesian Inference | Shaun Yap</title>
+<meta name="keywords" content="`R, ^^All Projects, Bayesian Inference, Bayesian Statistics, Gibbs Sampling, Markov Chain Monte Carlo (MCMC)">
+<meta name="description" content="This project demonstrates advanced skills in Bayesian hierarchical modelling, data visualisation, and statistical inference using R and JAGS. It showcases the ability to preprocess real-world epidemiological data, implement and diagnose MCMC simulations using Gibbs sampling, and interpret convergence diagnostics (e.g., traceplots, Gelman-Rubin statistics, and autocorrelation). The work highlights proficiency in quantifying uncertainty, leveraging shrinkage effects, and adapting models for updated demographic data. It also reflects strong analytical thinking in comparing posterior estimates across population strata, critically evaluating prior influence, and effectively communicating results through both code and narrative-skills essential for rigorous, reproducible, and insightful statistical analysis.">
+<meta name="author" content="Shaun Yap">
+<link rel="canonical" href="https://shaunyap01.github.io/projects/bayesian-inference/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.3fc93563987a6232a5b8b3e0a25a366c767e125a9f29a8d5ff271f363f5ca833.css" integrity="sha256-P8k1Y5h6YjKluLPgolo2bHZ&#43;ElqfKajV/ycfNj9cqDM=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://shaunyap01.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://shaunyap01.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://shaunyap01.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://shaunyap01.github.io/apple-touch-icon.png">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://shaunyap01.github.io/projects/bayesian-inference/">
+<meta property="og:title" content="Bayesian Inference" />
+<meta property="og:description" content="This project demonstrates advanced skills in Bayesian hierarchical modelling, data visualisation, and statistical inference using R and JAGS. It showcases the ability to preprocess real-world epidemiological data, implement and diagnose MCMC simulations using Gibbs sampling, and interpret convergence diagnostics (e.g., traceplots, Gelman-Rubin statistics, and autocorrelation). The work highlights proficiency in quantifying uncertainty, leveraging shrinkage effects, and adapting models for updated demographic data. It also reflects strong analytical thinking in comparing posterior estimates across population strata, critically evaluating prior influence, and effectively communicating results through both code and narrative-skills essential for rigorous, reproducible, and insightful statistical analysis." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://shaunyap01.github.io/projects/bayesian-inference/" /><meta property="article:section" content="projects" />
+<meta property="article:published_time" content="2024-02-05T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-02-05T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Bayesian Inference"/>
+<meta name="twitter:description" content="This project demonstrates advanced skills in Bayesian hierarchical modelling, data visualisation, and statistical inference using R and JAGS. It showcases the ability to preprocess real-world epidemiological data, implement and diagnose MCMC simulations using Gibbs sampling, and interpret convergence diagnostics (e.g., traceplots, Gelman-Rubin statistics, and autocorrelation). The work highlights proficiency in quantifying uncertainty, leveraging shrinkage effects, and adapting models for updated demographic data. It also reflects strong analytical thinking in comparing posterior estimates across population strata, critically evaluating prior influence, and effectively communicating results through both code and narrative-skills essential for rigorous, reproducible, and insightful statistical analysis."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Projects",
+      "item": "https://shaunyap01.github.io/projects/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Bayesian Inference",
+      "item": "https://shaunyap01.github.io/projects/bayesian-inference/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Bayesian Inference",
+  "name": "Bayesian Inference",
+  "description": "This project demonstrates advanced skills in Bayesian hierarchical modelling, data visualisation, and statistical inference using R and JAGS. It showcases the ability to preprocess real-world epidemiological data, implement and diagnose MCMC simulations using Gibbs sampling, and interpret convergence diagnostics (e.g., traceplots, Gelman-Rubin statistics, and autocorrelation). The work highlights proficiency in quantifying uncertainty, leveraging shrinkage effects, and adapting models for updated demographic data. It also reflects strong analytical thinking in comparing posterior estimates across population strata, critically evaluating prior influence, and effectively communicating results through both code and narrative-skills essential for rigorous, reproducible, and insightful statistical analysis.",
+  "keywords": [
+    "`R", "^^All Projects", "Bayesian Inference", "Bayesian Statistics", "Gibbs Sampling", "Markov Chain Monte Carlo (MCMC)"
+  ],
+  "articleBody": "Description This project demonstrates advanced skills in Bayesian hierarchical modelling, data visualisation, and statistical inference using R and JAGS (‘Just Another Gibb Sampler’). It showcases the ability to preprocess real-world epidemiological data, implement and diagnose MCMC simulations using Gibbs sampling, and interpret convergence diagnostics (e.g., traceplots, Gelman-Rubin statistics, and autocorrelation). The work highlights proficiency in quantifying uncertainty, leveraging shrinkage effects, and adapting models for updated demographic data. It also reflects strong analytical thinking in comparing posterior estimates across population strata, critically evaluating prior influence, and effectively communicating results through both code and narrative-skills essential for rigorous, reproducible, and insightful statistical analysis.\nSection A. Bayesian Inference A.1) US_cancer \u003c- read.csv(\"~/University of Exeter/MTHM017 - Advanced Topics in Statistics/Assignment/US_cancer.csv\") load('USMap.RData') US Cancer - dc [kidney cancer death counts from 1980 to 1984] - pop [average population for counties from 1980 to 1984]\nUS_cancer$cmr \u003c- (US_cancer$dc) / (US_cancer$pop*5) * 10000 summary(US_cancer$cmr) ## Min. 1st Qu. Median Mean 3rd Qu. Max. ## 0.00000 0.09134 0.18676 0.22737 0.30620 2.62467\rMaximum Crude Mortality rate value is 2.62467\nUSMap(US_cancer$cmr, ncol=12, figmain=\"US Cancer Crude Mortality Rates\", lower=0, upper=3.0) A.2) testq \u003c- quantile(US_cancer$cmr, probs = c(0.10,0.90)) US_cancer$low \u003c- ifelse(US_cancer$cmr \u003c= testq[1], 1, 0) US_cancer$high \u003c- ifelse(US_cancer$cmr \u003e= testq[2], 1, 0) USMap(US_cancer$low, ncol=2, figmain=\"US Counties with lowest 10% raw crude mortality rates of kidney cancer\", lower=0, upper=1) USMap(US_cancer$high, ncol=2, figmain=\"US Counties with highest 10% raw crude mortality rates of kidney cancer\", lower=0, upper=1) Upon examination, there’s a notable pattern where many of the counties with the lowest and highest mortality rates seem to be sparsely populated. These tend to be rural areas, which is evident from the fact that many of the counties are located in the central part of the country, which is known for large areas of farmland and lower population density. This can lead to what’s known as the “small number effect”.\nThe small number effect refers to statistical phenomena that occur when dealing with small populations. In such populations, the variance is higher, and thus rates can appear extremely high or low due to random fluctuation rather than an actual significant difference in the underlying risk of the population. For instance, if a county has a very small population, the death of one individual due to kidney cancer could drastically change the crude mortality rate, making it appear either significantly higher or lower than the national average. In contrast, in more populous counties, a single death would have a much smaller impact on the crude mortality rate, leading to more stable estimates that are likely closer to the true underlying risk.\nTherefore, the maps might be demonstrating the statistical artifact rather than a true epidemiological pattern. To better understand the patterns of kidney cancer mortality, it would be necessary to adjust for population size and possibly other factors like access to healthcare, socioeconomic status, environmental exposures, and genetic predispositions.\nA.3) set.seed(123) # Model definition mod.cancer \u003c- function() { for (i in 1:N) { # y[i] represents the kidney cancer deaths in county i # The Poisson likelihood y[i] ~ dpois(mu[i]) # The expected count is the population times the rate times the period (5 years in this case) mu[i] \u003c- pop[i] * theta[i] * 5 # Theta follows a Gamma distribution as the prior theta[i] ~ dgamma(alpha, beta) } # Hyperparameters for the Gamma distribution alpha \u003c- 20 beta \u003c- 430000 # Calculating the crude mortality rate (cmr) for each county for (i in 1:N) { cmr_est[i] \u003c- theta[i] * 10000 } } # Data preparation cancer.data \u003c- list( y = US_cancer$dc, pop = US_cancer$pop, N = nrow(US_cancer) ) # Generate starting values. The chains have widely differing starting points generate_initial_values \u003c- function(chain_id) { if(chain_id == 1) { start_value \u003c- 2 # Starting value for the first chain } else if(chain_id == 2) { start_value \u003c- 20 # Starting value for the second chain, more distinct } else { start_value \u003c- 200 # Starting value for the third chain, even more distinct } list(theta = rgamma(nrow(US_cancer), start_value, 430000)) } # Generating initial values for three chains with the function initial_values \u003c- lapply(1:3, function(chain_id) generate_initial_values(chain_id)) # Parameters to monitor jags.param \u003c- c(\"cmr_est\", \"theta\", \"mu\") # Fitting the model using JAGS jags.fit.cancer \u003c- jags(data = cancer.data, inits = initial_values, parameters.to.save = jags.param, n.chains = 3, n.iter = 10000, n.burnin = 5000, model.file = mod.cancer) ## module glm loaded\r## Compiling model graph\r## Resolving undeclared variables\r## Allocating nodes\r## Graph information:\r## Observed stochastic nodes: 3085\r## Unobserved stochastic nodes: 3085\r## Total graph size: 15430\r## ## Initializing model\r## ## | | | 0% | |** | 4% | |**** | 8% | |****** | 12% | |******** | 16% | |********** | 20% | |************ | 24% | |************** | 28% | |**************** | 32% | |****************** | 36% | |******************** | 40% | |********************** | 44% | |************************ | 48% | |************************** | 52% | |**************************** | 56% | |****************************** | 60% | |******************************** | 64% | |********************************** | 68% | |************************************ | 72% | |************************************** | 76% | |**************************************** | 80% | |****************************************** | 84% | |******************************************** | 88% | |********************************************** | 92% | |************************************************ | 96% | |**************************************************| 100%\r## | | | 0% | |** | 4% | |**** | 8% | |****** | 12% | |******** | 16% | |********** | 20% | |************ | 24% | |************** | 28% | |**************** | 32% | |****************** | 36% | |******************** | 40% | |********************** | 44% | |************************ | 48% | |************************** | 52% | |**************************** | 56% | |****************************** | 60% | |******************************** | 64% | |********************************** | 68% | |************************************ | 72% | |************************************** | 76% | |**************************************** | 80% | |****************************************** | 84% | |******************************************** | 88% | |********************************************** | 92% | |************************************************ | 96% | |**************************************************| 100%\rA.4) In the context of Bayesian analysis using Markov Chain Monte Carlo (MCMC) methods, convergence diagnostics are crucial to ensure that the posterior distributions of the parameters are well-estimated. The R-hat statistic, also known as the potential scale reduction factor, is one such diagnostic tool. It compares the variance within each chain to the variance between the chains; values close to 1 indicate that the chains are mixing well and sampling from the posterior distribution effectively. When R-hat is significantly greater than 1, it suggests that the chains have not yet converged to a common distribution, indicating that either more iterations are needed, or there might be some issues with the model or the initial values.\nGiven the hierarchical structure of the Poisson model, the parameters cmr_est, theta, and mu are inherently related, with cmr_est[i] being the product of theta[i] and a scaling factor (10000), and mu[i] being the product of pop[i], theta[i], and the duration of the study period (5 years). This relationship implies that if one of these parameters shows lack of convergence (as indicated by an R-hat value significantly above 1), it’s likely that the others may also exhibit similar issues since their values are derived from each other.\nPrioritising the examination of parameters with the highest cmr_rhat values is an efficient strategy, especially in models with a large number of parameters, like in our case with 3085 counties. This approach allows us to focus our diagnostic efforts on the areas where the model seems to have the most difficulty converging, which can often lead to valuable insights about the model’s behavior or potential issues in the data or model specification. By focusing on the five counties with the highest R-hat values, we aim to identify and scrutinise the specific instances where the model may be experiencing the most significant convergence issues.\ncancer.mcmc \u003c- as.mcmc(jags.fit.cancer) mean \u003c- jags.fit.cancer$BUGSoutput$summary[,1] rhat \u003c- jags.fit.cancer$BUGSoutput$summary[,8] cmr_est \u003c- mean[1:3085] cmr_rhat \u003c- rhat[1:3085] mu_est \u003c- mean[3087:6171] mu_rhat \u003c- rhat[3087:6171] theta_est \u003c- mean[6172:9256] theta_rhat \u003c- rhat[6172:9256] sample_size \u003c- 5 cmr_est_rhat_indices \u003c- order(cmr_rhat, decreasing = TRUE)[1:sample_size] cmr_est_rhat_indices ## [1] 1281 636 1573 311 1946\rUnfortunately when converted to mcmc object the ordering is changed. New indices to reflect same 5 counties with highest R-hat values.\n# New indices to reflect same 5 counties with highest R-hat values cmr_est_rhat_indices \u003c- c(578,1753, 1019, 2434, 1788) mu_rhat_indices \u003c- cmr_est_rhat_indices + 3086 theta_rhat_indices \u003c- cmr_est_rhat_indices + 3086 + 3085 # Subset the mcmc.samples to include these parameters cmr_est_rhat_samples \u003c- cancer.mcmc[, cmr_est_rhat_indices] mu_rhat_samples \u003c- cancer.mcmc[, mu_rhat_indices] theta_rhat_samples \u003c- cancer.mcmc[, theta_rhat_indices] Traceplots\nMCMCtrace(cmr_est_rhat_samples,type = 'trace',ind = TRUE, pdf = FALSE) MCMCtrace(mu_rhat_samples,type = 'trace',ind = TRUE, pdf = FALSE) MCMCtrace(theta_rhat_samples,type = 'trace',ind = TRUE, pdf = FALSE) The traceplots presented here for the five counties with the highest R-hat values offer an initial qualitative assessment of convergence in a Bayesian hierarchical model. Visually, we observe good mixing of the chains, as indicated by the dense and entangled nature of the traces, which suggests that the chains are exploring the posterior distribution effectively. The chains do not display obvious trends or departures from stationarity; instead, they fluctuate around a central value, which is consistent with the expected ‘hairy caterpillar’ appearance for well-mixed chains.\nIt’s important to note, however, that while these traceplots are encouraging, they are only part of the convergence diagnostics toolkit. To rigorously assess convergence, we should complement these plots with quantitative measures such as the Gelman-Rubin diagnostic. The Gelman-Rubin statistic (R-hat) quantitatively compares the variance within each chain to the variance between chains, with values close to 1.00 indicating good mixing and convergence. It is this diagnostic, in conjunction with others such as effective sample size and autocorrelation, that will provide a more definitive analysis of convergence.\ngelman.diag(cmr_est_rhat_samples) ## Potential scale reduction factors:\r## ## Point est. Upper C.I.\r## cmr_est[1518] 1 1.00\r## cmr_est[2576] 1 1.01\r## cmr_est[1915] 1 1.00\r## cmr_est[411] 1 1.00\r## cmr_est[2607] 1 1.00\r## ## Multivariate psrf\r## ## 1\rgelman.diag(mu_rhat_samples) ## Potential scale reduction factors:\r## ## Point est. Upper C.I.\r## mu[1518] 1 1.00\r## mu[2576] 1 1.01\r## mu[1915] 1 1.00\r## mu[411] 1 1.00\r## mu[2607] 1 1.00\r## ## Multivariate psrf\r## ## 1\rgelman.diag(theta_rhat_samples) ## Potential scale reduction factors:\r## ## Point est. Upper C.I.\r## theta[1518] 1 1.00\r## theta[2576] 1 1.01\r## theta[1915] 1 1.00\r## theta[411] 1 1.00\r## theta[2607] 1 1.00\r## ## Multivariate psrf\r## ## 1\rThe Gelman-Rubin diagnostic output provided indicates that convergence has been achieved for the chains corresponding to each county’s estimated crude mortality rate (cmr_est). The point estimates and upper confidence intervals (C.I.) for all parameters are at or very close to 1, with none exceeding the common threshold of 1.1 that might suggest lack of convergence. This threshold is typically used in practice as a conservative indicator; values of the scale reduction factor greater than 1.1 imply that extending the simulation could potentially alter the results significantly, which is not the case here.\nMoreover, the multivariate potential scale reduction factor (psrf) is also equal to 1.02, which suggests that the model has converged well not just in individual parameters but also when considering the joint distribution of all the parameters. This is particularly important in hierarchical models where parameters may be correlated.\ngelman.plot(cmr_est_rhat_samples) gelman.plot(mu_rhat_samples) gelman.plot(theta_rhat_samples) The Gelman-Rubin plots for the five counties with the highest R-hat values illustrate the convergence diagnostic over the last five thousand iterations of the MCMC process. Each plot shows two lines: the solid line represents the median of the shrinkage factors, and the dashed line represents the 97.5% quantile.\nThe shrinkage factor is expected to approach 1 as the chains converge. For all five counties, we observe that after initial fluctuations, both the median and the upper quantile lines stabilise and hover around 1, particularly towards the latter iterations. This stabilisation suggests that the chains are converging towards the same distribution, and by the end of the iterations, they exhibit little to no change, which is a strong indication of convergence.\nMoreover, despite some early spikes in the shrinkage factors, likely due to the initial ‘burn-in’ period where the chains are finding their way to the high-probability regions of the posterior distribution, the final iterations show that the chains remain consistently close to 1. This consistent behavior in the tail of the plots is what we hope to see when determining convergence.\nautocorr.plot(cmr_est_rhat_samples) autocorr.plot(mu_rhat_samples) autocorr.plot(theta_rhat_samples) The autocorrelation plots for the five counties with the highest R-hat values indicate excellent characteristics of the MCMC chains. For each county, the autocorrelation at lag zero starts at 1, as expected, since a series is always perfectly correlated with itself. As the lag increases, the autocorrelation drops off quickly towards zero, which is ideal for MCMC samples because it implies that the samples are nearly independent of each other.\nIn all plots, the autocorrelations are close to zero by the time the lag reaches around 10, and they remain negligible for higher lags. This rapid decline and stabilisation suggest that the chains have good mixing properties, and there is minimal carry-over of information from one sample to the next as the chain progresses. Consequently, the chains are effectively exploring the posterior distribution, and the samples can be considered nearly independent after a small number of lags.\nNone of the autocorrelation plots show worrying patterns such as long-range dependencies or a slow return to zero, which would be indicative of poor mixing and the need for longer chains or improved sampling strategies. Instead, these plots reinforce the earlier diagnostics, confirming that the MCMC simulation is producing reliable samples from all the parameters of the counties in question.\nUS_cancer$cmr_est \u003c- cmr_est US_cancer$cmr_rhat \u003c- cmr_rhat US_cancer$mu_est \u003c- mu_est US_cancer$mu_rhat \u003c- mu_rhat US_cancer$theta_est \u003c- theta_est US_cancer$theta_rhat \u003c- theta_rhat Final check that none of the R-hat values were somehow missed.\nsummary(US_cancer$cmr_rhat) ## Min. 1st Qu. Median Mean 3rd Qu. Max. ## 1.000 1.001 1.001 1.001 1.001 1.005\rsummary(US_cancer$mu_rhat) ## Min. 1st Qu. Median Mean 3rd Qu. Max. ## 1.000 1.001 1.001 1.001 1.001 1.005\rsummary(US_cancer$mu_rhat) ## Min. 1st Qu. Median Mean 3rd Qu. Max. ## 1.000 1.001 1.001 1.001 1.001 1.005\rThe summary of the R-hat values provides a succinct statistical representation of the convergence diagnostics across all counties. The range of R-hat values extends from the minimum of 1.000 to the maximum of 1.006, with the interquartile range (from the first quartile to the third quartile) being tightly clustered around 1.001. This close grouping around the value of 1 demonstrates that there is a uniformity in convergence across the various chains for the model parameters.\nThe median R-hat value stands at 1.001, reinforcing the observation that the central tendency of the distribution of R-hat values is also very close to 1. The mean R-hat value is 1.001, indicating that there are no significant outliers skewing the average away from the ideal value. This uniformity in convergence is further underscored by the maximum R-hat value of 1.006, which remains well within acceptable limits for convergence (below the standard threshold of 1.1).\nIn conclusion, the R-hat values indicate that the chains have satisfactorily converged for all counties, providing a robust foundation for the subsequent statistical analysis and interpretation of the model’s findings. This level of convergence suggests that the posterior distributions for the estimated parameters are reliable and can be used with confidence for inference and decision-making.\nSummaries of the Parameters\ncmr_est\nhist(US_cancer$cmr_est, breaks = 30) summary(US_cancer$cmr_est) ## Min. 1st Qu. Median Mean 3rd Qu. Max. ## 0.0971 0.3555 0.4128 0.3927 0.4459 0.8914\rThe histogram of the estimated crude mortality rates (cmr_est) for the US_cancer dataset displays the distribution of the rates across all counties. The histogram shows a bell-shaped distribution, suggesting that the rates are approximately normally distributed, with the bulk of the values clustering around the center of the distribution.\nThe summary statistics provide further detail on the distribution:\nThe minimum estimated crude mortality rate (cmr_est) is approximately 0.09717, suggesting that the lowest rate in the dataset is about 0.972 deaths per 100,000 population per year. The first quartile (25th percentile) is at 0.35578, indicating that about 25% of the counties have a rate of approximately 35.58 or lower. The median value is 0.41249, showing that the central tendency (50th percentile) of the rates is approximately 41.25, meaning half of the counties have higher rates and half have lower rates. The mean (average) of the rates is slightly lower than the median at 0.39267, which is approximately 39.27, indicating that while the distribution is fairly symmetrical, there’s a slight left skew with more counties having lower rates. The third quartile (75th percentile) is at 0.44575, so about 75% of the counties have a rate of approximately 44.58 or lower. The maximum value is quite high at 0.89610, indicating that the highest rate is about 89.61, which is significantly larger than the mean or median, suggesting the presence of outliers or extreme values at the higher end of the distribution. The histogram’s shape, coupled with the summary statistics, suggests a distribution that is centered around 0.4 with a slight skew towards the lower end. The fact that the mean is lower than the median supports this observation. Moreover, the wide range from the minimum to the maximum values indicates variability in the crude mortality rates among the counties, with some counties experiencing much higher rates, which could warrant further investigation.\nmu_est\nhist(US_cancer$mu_est, breaks = 50) summary(US_cancer$mu_est) ## Min. 1st Qu. Median Mean 3rd Qu. Max. ## 0.0119 2.2782 4.6043 10.7214 9.8019 660.2362\rThe histogram of the estimated expected counts of kidney cancer deaths (mu_est) for the US_cancer dataset shows a highly skewed distribution with a long right tail. The majority of the counties have a low number of expected deaths, with the frequency dramatically decreasing as the expected count increases.\nThe summary statistics of mu_est further describe the distribution:\nThe minimum value is 0.012, indicating that the county with the lowest expected count of kidney cancer deaths has a value close to zero. The first quartile is at 2.278, which suggests that 25% of the counties have an expected count of 2.278 deaths or fewer. The median value is 4.611, meaning that half of the counties have an expected count lower than 4.611 deaths, which points to a modest number of expected deaths for most counties. The mean (average) expected count is 10.722, significantly higher than the median, reflecting the effect of the long right tail with very high expected counts in a few counties. This is a classic indication of right-skewed data. The third quartile is at 9.804, indicating that 75% of the counties have an expected count of fewer than 9.804 deaths. The maximum expected count is 659.924, which is an extreme outlier when compared to the rest of the data, suggesting that one or a few counties have a much higher expected count of deaths than typical. The histogram, combined with the summary statistics, shows that while most counties have a relatively low expected count of kidney cancer deaths, there are a few counties with very high expected counts. This skewness is a common characteristic in data related to rare events or counts in large populations and could imply that the model or the data might need to be further investigated to understand the factors contributing to these high expected counts in certain counties.\ntheta_est\nhist(US_cancer$theta_est, breaks = 30) summary(US_cancer$theta_est) ## Min. 1st Qu. Median Mean 3rd Qu. Max. ## 9.710e-06 3.555e-05 4.128e-05 3.927e-05 4.459e-05 8.914e-05\rThe histogram of the estimated underlying true rates of kidney cancer deaths (theta_est) for the US_cancer dataset suggests a left-skewed distribution. This means that while most of the counties have true rates that cluster around the lower end of the scale, there are a few counties with notably higher rates.\nThe summary statistics of theta_est provide more detail:\nThe minimum value of theta_est is approximately $9.717 \\times 10^{-6}$, which indicates that the county with the lowest estimated true rate has a very small rate of kidney cancer deaths. The first quartile ($3.558 \\times 10^{-5}$) shows that about 25% of the counties have an underlying true rate at or below this relatively low value, reflecting the skew towards the lower end of the distribution. The median value ($4.125 \\times 10^{-5}$) is slightly higher than the first quartile, which is expected in a left-skewed distribution, and signifies that half of the counties have a true rate below this point. The mean value ($3.927 \\times 10^{-5}$) being less than the median value suggests the presence of a skew in the distribution. In a perfectly symmetrical distribution, the mean and median would be equal, but here the mean is pulled to the left by the lower rates. The third quartile ($4.457 \\times 10^{-5}$) indicates that 75% of the counties have a true rate below this value, which continues to reflect the concentration of counties at the lower end of the rate spectrum. The maximum value ($8.961 \\times 10^{-5}$) is significantly higher than the third quartile and mean, highlighting the existence of outliers on the higher end. These outliers exert a pull on the mean, making it lower than the median and contributing to the left-skewed nature of the distribution. In summary, while the bulk of the counties have a lower estimated underlying true rate of kidney cancer deaths, the distribution’s long tail to the right indicates that there are several counties with much higher than average rates. These outliers could be of particular interest for further exploration to determine if they are due to specific risk factors, data anomalies, or other reasons that warrant public health attention.\nA.5) A.5i) Smallest 1% average population\ntest \u003c- quantile(US_cancer$pop, probs = c(0.01)) US_cancer$pop_small \u003c- ifelse(US_cancer$pop \u003c= test, 1, 0) Mean of the posterior crude mortality rate\nmean(subset(US_cancer, pop_small == 1)$cmr_est) ## [1] 0.4617567\rThe mean posterior crude mortality rate estimate for the counties with the smallest 1% average population is 0.4624102\nCompare these posterior estimates to the raw crude rates and also to the mean of the prior crude rate.\nmean(subset(US_cancer, pop_small == 1)$cmr) ## [1] 0.08466684\rThe mean of the prior crude rate for the counties with the smallest 1% average population is 0.08466684\nCalculated prior crude rate is: mean[Gamma(20, 430000)]*10000\n20/430000 * 10000 ## [1] 0.4651163\rThe mean of the prior crude rate is 0.4651163\nhist(subset(US_cancer, pop_small == 1)$cmr_est) hist(subset(US_cancer, pop_small == 1)$cmr) Conclusions The mean posterior estimate is much higher than the mean of the raw crude rates for these same counties, which is 0.0847. The raw crude rates are directly calculated from the data without any modeling or smoothing, and this discrepancy could suggest that the raw rates might be underestimating the CMR, possibly due to small population sizes in these counties leading to high variability in the rates.\nAdditionally, we compare the mean posterior CMR estimate to the mean of the prior CMR, which is derived from the prior belief about the distribution of CMR across all counties as represented by a Gamma distribution with parameters 20 (shape) and 430000 (rate). This mean prior crude rate is calculated to be 0.4651, which is remarkably close to the mean posterior estimate (0.4624) for the smallest counties.\nThe similarity between the mean posterior estimate and the mean prior suggests that the posterior estimates for the smallest counties are influenced significantly by the prior. This is expected in a Bayesian framework, especially when dealing with small sample sizes (or small populations in this context) where the data alone are not sufficient to provide reliable estimates, and thus, the prior plays a more substantial role in shaping the posterior distribution.\nIn conclusion, the Bayesian hierarchical model’s posterior estimates for the crude mortality rates in the smallest counties appear to align closely with the prior expectations rather than the raw rates. This could indicate that the raw crude rates for these counties are more susceptible to random fluctuations due to the small number of events (deaths) and the small population sizes, resulting in less reliable estimates. The Bayesian approach helps to stabilise these estimates by borrowing strength from the prior, which seems to provide a more consistent measure of the CMR across these small counties. However, it’s important to recognise that if the prior is not well-chosen, it could also lead to biased results. Therefore, the choice of prior should be given careful consideration in such analyses.\nA.5ii) largest 1% average population\ntest \u003c- quantile(US_cancer$pop, probs = c(0.99)) US_cancer$pop_large \u003c- ifelse(US_cancer$pop \u003e= test, 1, 0) Mean of the posterior crude mortality rate\nmean(subset(US_cancer, pop_large == 1)$cmr_est) ## [1] 0.1976608\rThe mean posterior crude mortality rate estimate for the counties with the largest 1% average population is 0.1976486\nCompare these posterior estimates to the raw crude rates and also to the mean of the prior crude rate.\nmean(subset(US_cancer, pop_large == 1)$cmr) ## [1] 0.1829885\rThe mean of the prior crude rate for the counties with the largest 1% average population is 0.1829885\nCalculated prior crude rate is: mean[Gamma(20, 430000)]*10000\n20/430000 * 10000 ## [1] 0.4651163\rThe mean of the prior crude rate is 0.4651163\nhist(subset(US_cancer, pop_large == 1)$cmr_est) hist(subset(US_cancer, pop_large == 1)$cmr) Conclusions\nThe mean posterior estimate is slightly higher than the mean of the raw crude rates for these same counties, which is 0.1829885. The smaller discrepancy between the raw and posterior rates in the most populous counties, compared to that in the smallest counties, may be indicative of the larger population sizes providing more stable and reliable raw rates.\nThe mean prior crude rate, calculated from the Gamma(20, 430000) distribution, remains the same across all counties at 0.4651. This rate is significantly higher than both the mean posterior estimate and the raw rates for the largest counties.\nThe fact that the mean posterior estimate for the largest counties is closer to the raw rate than to the mean prior rate suggests that the data (i.e., the observed counts of kidney cancer deaths and population sizes) are more informative in determining the posterior estimate in these counties. This contrasts with the smaller counties, where the posterior estimates were closer to the prior mean, indicating a stronger influence of the prior in those estimates due to less informative data (likely due to smaller populations and fewer deaths).\nIn conclusion, the Bayesian hierarchical model provides a posterior CMR estimate for the largest counties that is informed more by the data than by the prior, as evidenced by its closeness to the raw rates. This illustrates the model’s ability to adjust the influence of the prior based on the amount of information available from the data, with the prior having a greater impact when data are sparse (as in the smallest counties) and less impact when data are more abundant (as in the largest counties). The analysis further highlights the robustness of the Bayesian approach in yielding reliable estimates across counties with varying population sizes, while also showcasing the model’s flexibility in balancing prior information with observed data.\nA.5iii) Comparison of the two cases\nWhen comparing the posterior CMR estimates for counties with the smallest 1% average population to those with the largest 1% average population, several key differences and similarities emerge, along with reasons that may explain these observations:\nDifferences:\nInfluence of the Prior: For the smallest counties, the posterior CMR estimate (0.4624102) was very close to the prior mean (0.4651163), indicating a strong influence of the prior. This is likely because the smaller amount of data from these counties does not provide a strong enough signal to shift the posterior away from the prior. In contrast, for the largest counties, the posterior CMR estimate (0.1976486) was closer to the raw CMR (0.1829885) and notably different from the prior mean. This implies that the data from these populous counties are informative enough to dominate the influence of the prior. Magnitude of CMR Estimates: The smallest counties had a higher mean posterior CMR estimate compared to the largest counties. This may be due to increased variability in mortality rates in smaller populations, where a small number of events (deaths) can lead to a high CMR. Additionally, the Bayesian model’s shrinkage effect pulls estimates toward the prior more strongly when data are sparse, which could increase the posterior CMR in these counties. Similarities:\nPrior Mean Consistency: The calculated mean of the prior crude rate (0.4651163) was consistent across both groups of counties. This is by design, as the prior is set at the beginning of the analysis and is not influenced by the data. Reasons Behind Observations:\nSample Size Variability: The amount and variability of data available from the counties directly influence the posterior estimates. Large counties provide more stable and precise CMR estimates because they have more data (larger population sizes), reducing the relative impact of the prior and increasing the weight of the observed data in the model. Small counties, with less data, are more influenced by the prior because each event (death) has a larger impact on the rate estimate, and the prior helps to stabilise these estimates through the process known as “shrinkage,” where extreme values are pulled towards the mean of the prior. Shrinkage Effect: In a Bayesian hierarchical model, the shrinkage effect is more pronounced when there’s less data available (as in the case with the smallest counties). This can lead to posterior estimates that are more similar to each other and to the prior than the raw rates would suggest. Conversely, with more data (as in the largest counties), the model can afford to rely more on the observed data, resulting in posterior estimates that can differ more from the prior and reflect the raw rates more closely. In summary, the Bayesian hierarchical model demonstrates its flexibility in incorporating varying degrees of information from the data across different population sizes. For smaller counties, the posterior estimates are more influenced by the prior, while for larger counties, the estimates are driven more by the data. This demonstrates the model’s capacity to adapt to the amount of information available and its robustness in providing sensible CMR estimates across a range of scenarios.\nA.6) Choice of counties: Small county - 2383 south dakota potter Large county - 831 iowa polk Reasonably sized county - 2304 south carolina fairfield\nUS_cancer$pop[2383] ## [1] 3190\rUS_cancer$pop[831] ## [1] 327140\rUS_cancer$pop[2304] ## [1] 22295\rGoogle 2021 Populations for counties: South Dakota Potter 2,475 (2021) Iowa Polk 496,844 (2021) South Carolina Fairfield 20,690 (2021)\nset.seed(123) # Model definition mod.cancer.updated \u003c- function() { for (i in 1:N) { # y[i] represents the kidney cancer deaths in county i # The Poisson likelihood y[i] ~ dpois(mu[i]) # The expected count is the updated population times the rate times the period (5 years in this case) mu[i] \u003c- updated_pop[i] * theta[i] * 5 # Theta follows a Gamma distribution as the prior theta[i] ~ dgamma(alpha, beta) } # Hyperparameters for the Gamma distribution alpha \u003c- 20 beta \u003c- 430000 # Calculating the crude mortality rate (cmr) for each county for (i in 1:N) { cmr_est[i] \u003c- theta[i] * 10000 } } # Updated population counts for the selected counties updated_population \u003c- US_cancer$pop updated_population[c(2383, 831, 2304)] \u003c- c(2475, 496844, 20690) # Data preparation with updated population cancer.data.updated \u003c- list( y = US_cancer$dc, updated_pop = updated_population, N = nrow(US_cancer) ) # Generate starting values generate_initial_values \u003c- function(chain_id) { list(theta = rgamma(nrow(US_cancer), 20, 430000)) } # Generating initial values for three chains with the function initial_values \u003c- lapply(1:3, generate_initial_values) # Parameters to monitor jags.param \u003c- c(\"cmr_est\", \"theta\", \"mu\") # Fitting the model using JAGS with the updated model and data jags.fit.cancer.updated \u003c- jags(data = cancer.data.updated, inits = initial_values, parameters.to.save = jags.param, n.chains = 3, n.iter = 10000, n.burnin = 5000, model.file = mod.cancer.updated) ## Compiling model graph\r## Resolving undeclared variables\r## Allocating nodes\r## Graph information:\r## Observed stochastic nodes: 3085\r## Unobserved stochastic nodes: 3085\r## Total graph size: 15430\r## ## Initializing model\r## ## | | | 0% | |** | 4% | |**** | 8% | |****** | 12% | |******** | 16% | |********** | 20% | |************ | 24% | |************** | 28% | |**************** | 32% | |****************** | 36% | |******************** | 40% | |********************** | 44% | |************************ | 48% | |************************** | 52% | |**************************** | 56% | |****************************** | 60% | |******************************** | 64% | |********************************** | 68% | |************************************ | 72% | |************************************** | 76% | |**************************************** | 80% | |****************************************** | 84% | |******************************************** | 88% | |********************************************** | 92% | |************************************************ | 96% | |**************************************************| 100%\r## | | | 0% | |** | 4% | |**** | 8% | |****** | 12% | |******** | 16% | |********** | 20% | |************ | 24% | |************** | 28% | |**************** | 32% | |****************** | 36% | |******************** | 40% | |********************** | 44% | |************************ | 48% | |************************** | 52% | |**************************** | 56% | |****************************** | 60% | |******************************** | 64% | |********************************** | 68% | |************************************ | 72% | |************************************** | 76% | |**************************************** | 80% | |****************************************** | 84% | |******************************************** | 88% | |********************************************** | 92% | |************************************************ | 96% | |**************************************************| 100%\r# Extract posterior samples for the predicted deaths in the three counties mu_samples \u003c- as.mcmc(jags.fit.cancer.updated) # Subset the samples for the selected counties mu_potter \u003c- mu_samples[[1]][, \"mu[2383]\"] mu_polk \u003c- mu_samples[[1]][, \"mu[831]\"] mu_fairfield \u003c- mu_samples[[1]][, \"mu[2304]\"] # Plot histograms and provide numerical summaries par(mfrow = c(3, 1)) # Arrange plots in 3 rows, 1 column # South Dakota Potter County hist(mu_potter, main = \"Predictive distribution for South Dakota Potter County\", xlab = \"Predicted number of deaths\", col = \"skyblue\", border = \"blue\") abline(v = mean(mu_potter), col = \"red\", lwd = 2) legend(\"topright\", legend = paste(\"Mean =\", round(mean(mu_potter), 2)), col = \"red\", lwd = 2) # Iowa Polk County hist(mu_polk, main = \"Predictive distribution for Iowa Polk County\", xlab = \"Predicted number of deaths\", col = \"lightgreen\", border = \"green\") abline(v = mean(mu_polk), col = \"red\", lwd = 2) legend(\"topright\", legend = paste(\"Mean =\", round(mean(mu_polk), 2)), col = \"red\", lwd = 2) # South Carolina Fairfield County hist(mu_fairfield, main = \"Predictive distribution for South Carolina Fairfield County\", xlab = \"Predicted number of deaths\", col = \"lightcoral\", border = \"red\") abline(v = mean(mu_fairfield), col = \"red\", lwd = 2) legend(\"topright\", legend = paste(\"Mean =\", round(mean(mu_fairfield), 2)), col = \"red\", lwd = 2) # Display numerical summaries summary_potter \u003c- summary(mu_potter) summary_polk \u003c- summary(mu_polk) summary_fairfield \u003c- summary(mu_fairfield) cat(\"South Dakota Potter County:\\n\") ## South Dakota Potter County:\rprint(summary_potter) ## ## Iterations = 5005:10000\r## Thinning interval = 5 ## Number of chains = 1 ## Sample size per chain = 1000 ## ## 1. Empirical mean and standard deviation for each variable,\r## plus standard error of the mean:\r## ## Mean SD Naive SE Time-series SE ## 0.607845 0.131573 0.004161 0.004161 ## ## 2. Quantiles for each variable:\r## ## 2.5% 25% 50% 75% 97.5% ## 0.3899 0.5144 0.5935 0.6860 0.8954\rcat(\"\\nIowa Polk County:\\n\") ## ## Iowa Polk County:\rprint(summary_polk) ## ## Iterations = 5005:10000\r## Thinning interval = 5 ## Number of chains = 1 ## Sample size per chain = 1000 ## ## 1. Empirical mean and standard deviation for each variable,\r## plus standard error of the mean:\r## ## Mean SD Naive SE Time-series SE ## 55.1291 6.7297 0.2128 0.2128 ## ## 2. Quantiles for each variable:\r## ## 2.5% 25% 50% 75% 97.5% ## 43.48 50.46 54.72 59.43 69.43\rcat(\"\\nSouth Carolina Fairfield County:\\n\") ## ## South Carolina Fairfield County:\rprint(summary_fairfield) ## ## Iterations = 5005:10000\r## Thinning interval = 5 ## Number of chains = 1 ## Sample size per chain = 1000 ## ## 1. Empirical mean and standard deviation for each variable,\r## plus standard error of the mean:\r## ## Mean SD Naive SE Time-series SE ## 4.10753 0.90506 0.02862 0.02996 ## ## 2. Quantiles for each variable:\r## ## 2.5% 25% 50% 75% 97.5% ## 2.641 3.481 4.000 4.619 6.078\rBased on the hierarchical Poisson regression model fit using R2Jags and updated with recent population data, we have estimated the predicted number of kidney cancer deaths for three counties with varying population sizes. The predictive distributions provide us with a probabilistic assessment of the expected deaths, incorporating the uncertainty inherent in such predictions.\nFor academic reporting, one might present the findings as follows:\nThis study updates a hierarchical Poisson regression model with current population data to predict kidney cancer mortality rates in three U.S. counties. The original data from the 1980s show significant demographic changes, warranting a reassessment using recent population figures. The counties—Potter County, SD; Polk County, IA; and Fairfield County, SC—were chosen to represent small, large, and medium-sized populations respectively. The predictions provide insight into the expected number of deaths due to kidney cancer in these areas.\nIntroduction Disparities in health outcomes can be influenced by demographic shifts over time. With changes in populations, the crude mortality rates for diseases such as kidney cancer need to be re-evaluated to ensure accurate public health assessments. This utilises a hierarchical Poisson regression model to estimate the expected kidney cancer deaths in three different counties, accounting for updated population sizes.\nMethods Using the US_Cancer dataset and recent population data for the years 2021, we fit a hierarchical Poisson model. The model assumes kidney cancer deaths, $y_i$, follow a Poisson distribution with an expected value $\\mu_i$, which is the product of the county population, $n_i$, the rate $\\theta_i$, and the time period of 5 years. A Gamma(20, 430000) distribution is used as the prior for each $\\theta_i$.\nResults The model predicts the following mean number of kidney cancer deaths for the year 2021:\nPotter County, SD (Small Population): With an updated population of 2,475, the model predicts a mean of 0.61 deaths. The 95% credible interval ranges from approximately 0.39 to 0.90, reflecting the uncertainty due to the small population size.\nPolk County, IA (Large Population): For a population of 496,844, the predicted mean number of deaths is 55.48. The 95% credible interval is from about 43.09 to 69.26, indicating a higher precision in the estimate due to the larger population size.\nFairfield County, SC (Medium Population): With a population of 20,690, the model predicts a mean of 4.07 deaths. The 95% credible interval ranges from approximately 2.47 to 5.96, illustrating moderate uncertainty in the prediction.\nCounties with smaller populations, such as Potter County, show greater relative uncertainty in their estimates, which is reflected in the wider credible intervals. Conversely, larger counties like Polk provide more precise estimates. These results highlight the importance of using model-based approaches to estimate health outcomes, as they accommodate varying population sizes and associated uncertainties.\nA.7) # Actual number of deaths from 1980-1984 for each county deaths_potter_80s \u003c- US_cancer$dc[2383] deaths_polk_80s \u003c- US_cancer$dc[831] deaths_fairfield_80s \u003c- US_cancer$dc[2304] # Calculate the probabilities prob_potter_exceeds \u003c- sum(mu_potter \u003e deaths_potter_80s) / length(mu_potter) prob_polk_exceeds \u003c- sum(mu_polk \u003e deaths_polk_80s) / length(mu_polk) prob_fairfield_exceeds \u003c- sum(mu_fairfield \u003e deaths_fairfield_80s) / length(mu_fairfield) # Print the probabilities cat(\"Probability that predicted deaths in Potter County exceed 1980-1984:\", prob_potter_exceeds, \"\\n\") ## Probability that predicted deaths in Potter County exceed 1980-1984: 0\rcat(\"Probability that predicted deaths in Polk County exceed 1980-1984:\", prob_polk_exceeds, \"\\n\") ## Probability that predicted deaths in Polk County exceed 1980-1984: 0.944\rcat(\"Probability that predicted deaths in Fairfield County exceed 1980-1984:\", prob_fairfield_exceeds, \"\\n\") ## Probability that predicted deaths in Fairfield County exceed 1980-1984: 1\rA hierarchical Poisson regression model was updated with 2021 population data for the selected counties. The model predicted kidney cancer deaths, accounting for changes in population size and structure. Historical death counts from 1980-1984 were used as a reference to calculate the probabilities of exceeding these counts in the present year.\nThe probability values obtained suggest that for Potter County, the model predicts a 0% chance that the number of deaths will exceed the number from 1980-1984; for Polk County, there’s a 94% chance; and for Fairfield County, there’s a 100% (or certain) chance. To interpret these probabilities, let’s consider the provided population and death count information alongside possible factors:\nPotter County, SD:\n1980-1984 Population: 3,190 2021 Population: 2,475 1980-1984 Deaths: 2 Predicted Probability: 0% The probability that the predicted deaths in 2021 exceed those from 1980-1984 is 0. This finding corresponds to a decrease in population from 3,190 to 2,475, suggesting that with a smaller population at risk, the number of observed deaths is unlikely to surpass the historical count. Notably, the initial death count was disproportionately high given the smaller population size of the time, which could indicate an anomalous spike in the 1980s data. As such an exceedance of the historical death count is extremely unlikely.\nPolk County, IA:\n1980-1984 Population: 327,140 2021 Population: 496,844 1980-1984 Deaths: 45 Predicted Probability: 94% The probability is 0.94, which is substantial. This may be largely attributable to a significant increase in population from 327,140 to 496,844. The higher population in 2021 inherently increases the number of individuals at risk, contributing to a greater probability of exceeding the historical number of deaths.\nFairfield County, SC:\n1980-1984 Population: 22,295 2021 Population: 20,690 1980-1984 Deaths: 1 - Predicted Probability: 100% Fairfield county experienced a slight decrease in population from 22,295 to 20,690, yet the model predicts with 100% probability that the number of deaths will exceed the single death recorded historically. This forecast can be primarily attributed to the exceptionally low historical death count, which presents a minimal benchmark for modern data to surpass.\n",
+  "wordCount" : "6834",
+  "inLanguage": "en",
+  "datePublished": "2024-02-05T00:00:00Z",
+  "dateModified": "2024-02-05T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Shaun Yap"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://shaunyap01.github.io/projects/bayesian-inference/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Shaun Yap",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://shaunyap01.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" integrity="sha384-wcIxkf4k558AjM3Yz3BBFQUbk/zgIYC2R0QpeeYb+TwlBVMrlgLqwRjRtGZiK7ww" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" integrity="sha384-hIoBPJpTUs74ddyc4bFZSM1TVlQDA60VBbJS0oA934VSz82sBx1X7kSx2ATBDIyd" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+            {left: "\\begin{equation}", right: "\\end{equation}", display: true},
+            {left: "\\begin{equation*}", right: "\\end{equation*}", display: true},
+            {left: "\\begin{align}", right: "\\end{align}", display: true},
+            {left: "\\begin{align*}", right: "\\end{align*}", display: true},
+            {left: "\\begin{alignat}", right: "\\end{alignat}", display: true},
+            {left: "\\begin{gather}", right: "\\end{gather}", display: true},
+            {left: "\\begin{CD}", right: "\\end{CD}", display: true},
+          ],
+          throwOnError : false
+        });
+    });
+</script>
+ 
+
+
+</head>
+
+<body class="" id="top">
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://shaunyap01.github.io/" accesskey="h">
+                <img src="https://shaunyap01.github.io/favicon.ico" alt="logo" aria-label="logo"
+                    height="18"
+                    width="18">Shaun Yap</a>
+            <div class="logo-switches">
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://shaunyap01.github.io/research/">
+                    <span>Research</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://shaunyap01.github.io/articles/">
+                    <span>Articles</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://shaunyap01.github.io/projects/">
+                    <span>Projects</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://shaunyap01.github.io/tags/">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://shaunyap01.github.io/archive/">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://shaunyap01.github.io/contact/">
+                    <span>Contact</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://shaunyap01.github.io/cv.pdf">
+                    <span>Curriculum Vitae (CV)</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+    <main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Bayesian Inference
+    </h1>
+    <div class="post-meta"><span title='2024-02-05 00:00:00 +0000 UTC'>05 February 2024</span>&nbsp;&middot;&nbsp;Shaun Yap
+
+</div>
+  </header> <div class="toc">
+    <details  open>
+        <summary accesskey="c">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#description">Description</a></li>
+          </ul>
+        </li>
+        <li><a href="#section-a-bayesian-inference">Section A. Bayesian Inference</a>
+          <ul>
+            <li><a href="#a1">A.1)</a></li>
+            <li><a href="#a2">A.2)</a></li>
+            <li><a href="#a3">A.3)</a></li>
+            <li><a href="#a4">A.4)</a></li>
+            <li><a href="#a5">A.5)</a>
+              <ul>
+                <li><a href="#a5i">A.5i)</a></li>
+                <li><a href="#a5ii">A.5ii)</a></li>
+                <li><a href="#a5iii">A.5iii)</a></li>
+              </ul>
+            </li>
+            <li><a href="#a6">A.6)</a>
+              <ul>
+                <li><a href="#introduction">Introduction</a></li>
+                <li><a href="#methods">Methods</a></li>
+                <li><a href="#results">Results</a></li>
+              </ul>
+            </li>
+            <li><a href="#a7">A.7)</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h3 id="description">Description<a hidden class="anchor" aria-hidden="true" href="#description">#</a></h3>
+<p>This project demonstrates advanced skills in Bayesian hierarchical modelling, data visualisation, and statistical inference using R and <code>JAGS</code> (&lsquo;Just Another Gibb Sampler&rsquo;). It showcases the ability to preprocess real-world epidemiological data, implement and diagnose MCMC simulations using Gibbs sampling, and interpret convergence diagnostics (e.g., traceplots, Gelman-Rubin statistics, and autocorrelation). The work highlights proficiency in quantifying uncertainty, leveraging shrinkage effects, and adapting models for updated demographic data. It also reflects strong analytical thinking in comparing posterior estimates across population strata, critically evaluating prior influence, and effectively communicating results through both code and narrative-skills essential for rigorous, reproducible, and insightful statistical analysis.</p>
+<hr>
+<h2 id="section-a-bayesian-inference">Section A. Bayesian Inference<a hidden class="anchor" aria-hidden="true" href="#section-a-bayesian-inference">#</a></h2>
+<h3 id="a1">A.1)<a hidden class="anchor" aria-hidden="true" href="#a1">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>US_cancer &lt;- <span style="color:#0a0">read.csv</span>(<span style="color:#a50">&#34;~/University of Exeter/MTHM017 - Advanced Topics in Statistics/Assignment/US_cancer.csv&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#0a0">load</span>(<span style="color:#a50">&#39;USMap.RData&#39;</span>)
+</span></span></code></pre></div><p>US Cancer - dc [kidney cancer death counts from 1980 to 1984] - pop
+[average population for counties from 1980 to 1984]</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>US_cancer$cmr &lt;- (US_cancer$dc) / (US_cancer$pop*<span style="color:#099">5</span>) * <span style="color:#099">10000</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#0a0">summary</span>(US_cancer$cmr)
+</span></span></code></pre></div><pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+## 0.00000 0.09134 0.18676 0.22737 0.30620 2.62467
+</code></pre>
+<p>Maximum Crude Mortality rate value is 2.62467</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#0a0">USMap</span>(US_cancer$cmr, ncol=<span style="color:#099">12</span>, figmain=<span style="color:#a50">&#34;US Cancer Crude Mortality Rates&#34;</span>, lower=<span style="color:#099">0</span>, upper=<span style="color:#099">3.0</span>)
+</span></span></code></pre></div><p><img loading="lazy" src="bayesian_inference_files/unnamed-chunk-6-1.png" alt="png"  />
+<!-- --></p>
+<h3 id="a2">A.2)<a hidden class="anchor" aria-hidden="true" href="#a2">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>testq &lt;- <span style="color:#0a0">quantile</span>(US_cancer$cmr, probs = <span style="color:#0a0">c</span>(<span style="color:#099">0.10</span>,<span style="color:#099">0.90</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>US_cancer$low &lt;- <span style="color:#0a0">ifelse</span>(US_cancer$cmr &lt;= testq[1], <span style="color:#099">1</span>, <span style="color:#099">0</span>)
+</span></span><span style="display:flex;"><span>US_cancer$high &lt;- <span style="color:#0a0">ifelse</span>(US_cancer$cmr &gt;= testq[2], <span style="color:#099">1</span>, <span style="color:#099">0</span>)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#0a0">USMap</span>(US_cancer$low, ncol=<span style="color:#099">2</span>, figmain=<span style="color:#a50">&#34;US Counties with lowest 10% raw crude mortality rates of kidney cancer&#34;</span>, lower=<span style="color:#099">0</span>, upper=<span style="color:#099">1</span>)
+</span></span></code></pre></div><p><img loading="lazy" src="bayesian_inference_files/unnamed-chunk-8-1.png" alt="png"  />
+<!-- --></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#0a0">USMap</span>(US_cancer$high, ncol=<span style="color:#099">2</span>, figmain=<span style="color:#a50">&#34;US Counties with highest 10% raw crude mortality rates of kidney cancer&#34;</span>, lower=<span style="color:#099">0</span>, upper=<span style="color:#099">1</span>)
+</span></span></code></pre></div><p><img loading="lazy" src="bayesian_inference_files/unnamed-chunk-9-1.png" alt="png"  />
+<!-- --></p>
+<p>Upon examination, there’s a notable pattern where many of the counties
+with the lowest and highest mortality rates seem to be sparsely
+populated. These tend to be rural areas, which is evident from the fact
+that many of the counties are located in the central part of the
+country, which is known for large areas of farmland and lower population
+density. This can lead to what’s known as the “small number effect”.</p>
+<p>The small number effect refers to statistical phenomena that occur when
+dealing with small populations. In such populations, the variance is
+higher, and thus rates can appear extremely high or low due to random
+fluctuation rather than an actual significant difference in the
+underlying risk of the population. For instance, if a county has a very
+small population, the death of one individual due to kidney cancer could
+drastically change the crude mortality rate, making it appear either
+significantly higher or lower than the national average. In contrast, in
+more populous counties, a single death would have a much smaller impact
+on the crude mortality rate, leading to more stable estimates that are
+likely closer to the true underlying risk.</p>
+<p>Therefore, the maps might be demonstrating the statistical artifact
+rather than a true epidemiological pattern. To better understand the
+patterns of kidney cancer mortality, it would be necessary to adjust for
+population size and possibly other factors like access to healthcare,
+socioeconomic status, environmental exposures, and genetic
+predispositions.</p>
+<h3 id="a3">A.3)<a hidden class="anchor" aria-hidden="true" href="#a3">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#0a0">set.seed</span>(<span style="color:#099">123</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Model definition</span>
+</span></span><span style="display:flex;"><span>mod.cancer &lt;- <span style="color:#00a">function</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#00a">for</span> (i <span style="color:#00a">in</span> <span style="color:#099">1</span>:N) {
+</span></span><span style="display:flex;"><span>        <span style="color:#aaa;font-style:italic"># y[i] represents the kidney cancer deaths in county i</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#aaa;font-style:italic"># The Poisson likelihood</span>
+</span></span><span style="display:flex;"><span>        y[i] ~ <span style="color:#0a0">dpois</span>(mu[i])
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#aaa;font-style:italic"># The expected count is the population times the rate times the period (5 years in this case)</span>
+</span></span><span style="display:flex;"><span>        mu[i] &lt;- pop[i] * theta[i] * <span style="color:#099">5</span>
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#aaa;font-style:italic"># Theta follows a Gamma distribution as the prior</span>
+</span></span><span style="display:flex;"><span>        theta[i] ~ <span style="color:#0a0">dgamma</span>(alpha, beta)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#aaa;font-style:italic"># Hyperparameters for the Gamma distribution</span>
+</span></span><span style="display:flex;"><span>    alpha &lt;- <span style="color:#099">20</span>
+</span></span><span style="display:flex;"><span>    beta &lt;- <span style="color:#099">430000</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#aaa;font-style:italic"># Calculating the crude mortality rate (cmr) for each county</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a">for</span> (i <span style="color:#00a">in</span> <span style="color:#099">1</span>:N) {
+</span></span><span style="display:flex;"><span>        cmr_est[i] &lt;- theta[i] * <span style="color:#099">10000</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Data preparation</span>
+</span></span><span style="display:flex;"><span>cancer.data &lt;- <span style="color:#0a0">list</span>(
+</span></span><span style="display:flex;"><span>  y = US_cancer$dc,
+</span></span><span style="display:flex;"><span>  pop = US_cancer$pop,
+</span></span><span style="display:flex;"><span>  N = <span style="color:#0a0">nrow</span>(US_cancer)
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Generate starting values. The chains have widely differing starting points</span>
+</span></span><span style="display:flex;"><span>generate_initial_values &lt;- <span style="color:#00a">function</span>(chain_id) {
+</span></span><span style="display:flex;"><span>  <span style="color:#00a">if</span>(chain_id == <span style="color:#099">1</span>) {
+</span></span><span style="display:flex;"><span>    start_value &lt;- <span style="color:#099">2</span>  <span style="color:#aaa;font-style:italic"># Starting value for the first chain</span>
+</span></span><span style="display:flex;"><span>  } <span style="color:#00a">else</span> <span style="color:#00a">if</span>(chain_id == <span style="color:#099">2</span>) {
+</span></span><span style="display:flex;"><span>    start_value &lt;- <span style="color:#099">20</span>  <span style="color:#aaa;font-style:italic"># Starting value for the second chain, more distinct</span>
+</span></span><span style="display:flex;"><span>  } <span style="color:#00a">else</span> {
+</span></span><span style="display:flex;"><span>    start_value &lt;- <span style="color:#099">200</span>  <span style="color:#aaa;font-style:italic"># Starting value for the third chain, even more distinct</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#0a0">list</span>(theta = <span style="color:#0a0">rgamma</span>(<span style="color:#0a0">nrow</span>(US_cancer), start_value, <span style="color:#099">430000</span>))
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Generating initial values for three chains with the function</span>
+</span></span><span style="display:flex;"><span>initial_values &lt;- <span style="color:#0a0">lapply</span>(<span style="color:#099">1</span>:<span style="color:#099">3</span>, <span style="color:#00a">function</span>(chain_id) <span style="color:#0a0">generate_initial_values</span>(chain_id))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Parameters to monitor</span>
+</span></span><span style="display:flex;"><span>jags.param &lt;- <span style="color:#0a0">c</span>(<span style="color:#a50">&#34;cmr_est&#34;</span>, <span style="color:#a50">&#34;theta&#34;</span>, <span style="color:#a50">&#34;mu&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Fitting the model using JAGS</span>
+</span></span><span style="display:flex;"><span>jags.fit.cancer &lt;- <span style="color:#0a0">jags</span>(data = cancer.data, 
+</span></span><span style="display:flex;"><span>                            inits = initial_values,
+</span></span><span style="display:flex;"><span>                            parameters.to.save = jags.param, 
+</span></span><span style="display:flex;"><span>                            n.chains = <span style="color:#099">3</span>,
+</span></span><span style="display:flex;"><span>                            n.iter = <span style="color:#099">10000</span>,
+</span></span><span style="display:flex;"><span>                            n.burnin = <span style="color:#099">5000</span>,
+</span></span><span style="display:flex;"><span>                            model.file = mod.cancer)
+</span></span></code></pre></div><pre><code>## module glm loaded
+
+## Compiling model graph
+##    Resolving undeclared variables
+##    Allocating nodes
+## Graph information:
+##    Observed stochastic nodes: 3085
+##    Unobserved stochastic nodes: 3085
+##    Total graph size: 15430
+## 
+## Initializing model
+## 
+##   |                                                          |                                                  |   0%  |                                                          |**                                                |   4%  |                                                          |****                                              |   8%  |                                                          |******                                            |  12%  |                                                          |********                                          |  16%  |                                                          |**********                                        |  20%  |                                                          |************                                      |  24%  |                                                          |**************                                    |  28%  |                                                          |****************                                  |  32%  |                                                          |******************                                |  36%  |                                                          |********************                              |  40%  |                                                          |**********************                            |  44%  |                                                          |************************                          |  48%  |                                                          |**************************                        |  52%  |                                                          |****************************                      |  56%  |                                                          |******************************                    |  60%  |                                                          |********************************                  |  64%  |                                                          |**********************************                |  68%  |                                                          |************************************              |  72%  |                                                          |**************************************            |  76%  |                                                          |****************************************          |  80%  |                                                          |******************************************        |  84%  |                                                          |********************************************      |  88%  |                                                          |**********************************************    |  92%  |                                                          |************************************************  |  96%  |                                                          |**************************************************| 100%
+##   |                                                          |                                                  |   0%  |                                                          |**                                                |   4%  |                                                          |****                                              |   8%  |                                                          |******                                            |  12%  |                                                          |********                                          |  16%  |                                                          |**********                                        |  20%  |                                                          |************                                      |  24%  |                                                          |**************                                    |  28%  |                                                          |****************                                  |  32%  |                                                          |******************                                |  36%  |                                                          |********************                              |  40%  |                                                          |**********************                            |  44%  |                                                          |************************                          |  48%  |                                                          |**************************                        |  52%  |                                                          |****************************                      |  56%  |                                                          |******************************                    |  60%  |                                                          |********************************                  |  64%  |                                                          |**********************************                |  68%  |                                                          |************************************              |  72%  |                                                          |**************************************            |  76%  |                                                          |****************************************          |  80%  |                                                          |******************************************        |  84%  |                                                          |********************************************      |  88%  |                                                          |**********************************************    |  92%  |                                                          |************************************************  |  96%  |                                                          |**************************************************| 100%
+</code></pre>
+<h3 id="a4">A.4)<a hidden class="anchor" aria-hidden="true" href="#a4">#</a></h3>
+<p>In the context of Bayesian analysis using Markov Chain Monte Carlo
+(MCMC) methods, convergence diagnostics are crucial to ensure that the
+posterior distributions of the parameters are well-estimated. The R-hat
+statistic, also known as the potential scale reduction factor, is one
+such diagnostic tool. It compares the variance within each chain to the
+variance between the chains; values close to 1 indicate that the chains
+are mixing well and sampling from the posterior distribution
+effectively. When R-hat is significantly greater than 1, it suggests
+that the chains have not yet converged to a common distribution,
+indicating that either more iterations are needed, or there might be
+some issues with the model or the initial values.</p>
+<p>Given the hierarchical structure of the Poisson model, the parameters
+<code>cmr_est</code>, <code>theta</code>, and <code>mu</code> are inherently related, with <code>cmr_est[i]</code>
+being the product of <code>theta[i]</code> and a scaling factor (10000), and
+<code>mu[i]</code> being the product of <code>pop[i]</code>, <code>theta[i]</code>, and the duration of
+the study period (5 years). This relationship implies that if one of
+these parameters shows lack of convergence (as indicated by an R-hat
+value significantly above 1), it’s likely that the others may also
+exhibit similar issues since their values are derived from each other.</p>
+<p>Prioritising the examination of parameters with the highest <code>cmr_rhat</code>
+values is an efficient strategy, especially in models with a large
+number of parameters, like in our case with 3085 counties. This approach
+allows us to focus our diagnostic efforts on the areas where the model
+seems to have the most difficulty converging, which can often lead to
+valuable insights about the model’s behavior or potential issues in the
+data or model specification. By focusing on the five counties with the
+highest R-hat values, we aim to identify and scrutinise the specific
+instances where the model may be experiencing the most significant
+convergence issues.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>cancer.mcmc &lt;- <span style="color:#0a0">as.mcmc</span>(jags.fit.cancer)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>mean &lt;- jags.fit.cancer$BUGSoutput$summary[,<span style="color:#099">1</span>]
+</span></span><span style="display:flex;"><span>rhat &lt;- jags.fit.cancer$BUGSoutput$summary[,<span style="color:#099">8</span>]
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>cmr_est &lt;- mean[1:<span style="color:#099">3085</span>]
+</span></span><span style="display:flex;"><span>cmr_rhat &lt;- rhat[1:<span style="color:#099">3085</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>mu_est &lt;- mean[3087:<span style="color:#099">6171</span>]
+</span></span><span style="display:flex;"><span>mu_rhat &lt;- rhat[3087:<span style="color:#099">6171</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>theta_est &lt;- mean[6172:<span style="color:#099">9256</span>]
+</span></span><span style="display:flex;"><span>theta_rhat &lt;- rhat[6172:<span style="color:#099">9256</span>]
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>sample_size &lt;- <span style="color:#099">5</span>
+</span></span><span style="display:flex;"><span>cmr_est_rhat_indices &lt;- <span style="color:#0a0">order</span>(cmr_rhat, decreasing = <span style="color:#00a">TRUE</span>)[1:sample_size]
+</span></span><span style="display:flex;"><span>cmr_est_rhat_indices
+</span></span></code></pre></div><pre><code>## [1] 1281  636 1573  311 1946
+</code></pre>
+<p>Unfortunately when converted to mcmc object the ordering is changed. New
+indices to reflect same 5 counties with highest R-hat values.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># New indices to reflect same 5 counties with highest R-hat values</span>
+</span></span><span style="display:flex;"><span>cmr_est_rhat_indices &lt;- <span style="color:#0a0">c</span>(<span style="color:#099">578</span>,<span style="color:#099">1753</span>, <span style="color:#099">1019</span>, <span style="color:#099">2434</span>, <span style="color:#099">1788</span>)
+</span></span><span style="display:flex;"><span>mu_rhat_indices &lt;- cmr_est_rhat_indices + <span style="color:#099">3086</span>
+</span></span><span style="display:flex;"><span>theta_rhat_indices &lt;- cmr_est_rhat_indices + <span style="color:#099">3086</span> + <span style="color:#099">3085</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Subset the mcmc.samples to include these parameters</span>
+</span></span><span style="display:flex;"><span>cmr_est_rhat_samples &lt;- cancer.mcmc[, cmr_est_rhat_indices]
+</span></span><span style="display:flex;"><span>mu_rhat_samples &lt;- cancer.mcmc[, mu_rhat_indices]
+</span></span><span style="display:flex;"><span>theta_rhat_samples &lt;- cancer.mcmc[, theta_rhat_indices]
+</span></span></code></pre></div><p>Traceplots</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#0a0">MCMCtrace</span>(cmr_est_rhat_samples,type = <span style="color:#a50">&#39;trace&#39;</span>,ind = <span style="color:#00a">TRUE</span>, pdf = <span style="color:#00a">FALSE</span>)
+</span></span></code></pre></div><p><img loading="lazy" src="bayesian_inference_files/unnamed-chunk-16-1.png" alt="png"  />
+<!-- --></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#0a0">MCMCtrace</span>(mu_rhat_samples,type = <span style="color:#a50">&#39;trace&#39;</span>,ind = <span style="color:#00a">TRUE</span>, pdf = <span style="color:#00a">FALSE</span>)
+</span></span></code></pre></div><p><img loading="lazy" src="bayesian_inference_files/unnamed-chunk-16-2.png" alt="png"  />
+<!-- --></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#0a0">MCMCtrace</span>(theta_rhat_samples,type = <span style="color:#a50">&#39;trace&#39;</span>,ind = <span style="color:#00a">TRUE</span>, pdf = <span style="color:#00a">FALSE</span>)
+</span></span></code></pre></div><p><img loading="lazy" src="bayesian_inference_files/unnamed-chunk-16-3.png" alt="png"  />
+<!-- --></p>
+<p>The traceplots presented here for the five counties with the highest
+R-hat values offer an initial qualitative assessment of convergence in a
+Bayesian hierarchical model. Visually, we observe good mixing of the
+chains, as indicated by the dense and entangled nature of the traces,
+which suggests that the chains are exploring the posterior distribution
+effectively. The chains do not display obvious trends or departures from
+stationarity; instead, they fluctuate around a central value, which is
+consistent with the expected ‘hairy caterpillar’ appearance for
+well-mixed chains.</p>
+<p>It’s important to note, however, that while these traceplots are
+encouraging, they are only part of the convergence diagnostics toolkit.
+To rigorously assess convergence, we should complement these plots with
+quantitative measures such as the Gelman-Rubin diagnostic. The
+Gelman-Rubin statistic (R-hat) quantitatively compares the variance
+within each chain to the variance between chains, with values close to
+1.00 indicating good mixing and convergence. It is this diagnostic, in
+conjunction with others such as effective sample size and
+autocorrelation, that will provide a more definitive analysis of
+convergence.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#0a0">gelman.diag</span>(cmr_est_rhat_samples)
+</span></span></code></pre></div><pre><code>## Potential scale reduction factors:
+## 
+##               Point est. Upper C.I.
+## cmr_est[1518]          1       1.00
+## cmr_est[2576]          1       1.01
+## cmr_est[1915]          1       1.00
+## cmr_est[411]           1       1.00
+## cmr_est[2607]          1       1.00
+## 
+## Multivariate psrf
+## 
+## 1
+</code></pre>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#0a0">gelman.diag</span>(mu_rhat_samples)
+</span></span></code></pre></div><pre><code>## Potential scale reduction factors:
+## 
+##          Point est. Upper C.I.
+## mu[1518]          1       1.00
+## mu[2576]          1       1.01
+## mu[1915]          1       1.00
+## mu[411]           1       1.00
+## mu[2607]          1       1.00
+## 
+## Multivariate psrf
+## 
+## 1
+</code></pre>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#0a0">gelman.diag</span>(theta_rhat_samples)
+</span></span></code></pre></div><pre><code>## Potential scale reduction factors:
+## 
+##             Point est. Upper C.I.
+## theta[1518]          1       1.00
+## theta[2576]          1       1.01
+## theta[1915]          1       1.00
+## theta[411]           1       1.00
+## theta[2607]          1       1.00
+## 
+## Multivariate psrf
+## 
+## 1
+</code></pre>
+<p>The Gelman-Rubin diagnostic output provided indicates that convergence
+has been achieved for the chains corresponding to each county’s
+estimated crude mortality rate (cmr_est). The point estimates and upper
+confidence intervals (C.I.) for all parameters are at or very close to
+1, with none exceeding the common threshold of 1.1 that might suggest
+lack of convergence. This threshold is typically used in practice as a
+conservative indicator; values of the scale reduction factor greater
+than 1.1 imply that extending the simulation could potentially alter the
+results significantly, which is not the case here.</p>
+<p>Moreover, the multivariate potential scale reduction factor (psrf) is
+also equal to 1.02, which suggests that the model has converged well not
+just in individual parameters but also when considering the joint
+distribution of all the parameters. This is particularly important in
+hierarchical models where parameters may be correlated.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#0a0">gelman.plot</span>(cmr_est_rhat_samples)
+</span></span></code></pre></div><p><img loading="lazy" src="bayesian_inference_files/unnamed-chunk-18-1.png" alt="png"  />
+<!-- --></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#0a0">gelman.plot</span>(mu_rhat_samples)
+</span></span></code></pre></div><p><img loading="lazy" src="bayesian_inference_files/unnamed-chunk-18-2.png" alt="png"  />
+<!-- --></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#0a0">gelman.plot</span>(theta_rhat_samples)
+</span></span></code></pre></div><p><img loading="lazy" src="bayesian_inference_files/unnamed-chunk-18-3.png" alt="png"  />
+<!-- -->
+The Gelman-Rubin plots for the five counties with the highest R-hat
+values illustrate the convergence diagnostic over the last five thousand
+iterations of the MCMC process. Each plot shows two lines: the solid
+line represents the median of the shrinkage factors, and the dashed line
+represents the 97.5% quantile.</p>
+<p>The shrinkage factor is expected to approach 1 as the chains converge.
+For all five counties, we observe that after initial fluctuations, both
+the median and the upper quantile lines stabilise and hover around 1,
+particularly towards the latter iterations. This stabilisation suggests
+that the chains are converging towards the same distribution, and by the
+end of the iterations, they exhibit little to no change, which is a
+strong indication of convergence.</p>
+<p>Moreover, despite some early spikes in the shrinkage factors, likely due
+to the initial ‘burn-in’ period where the chains are finding their way
+to the high-probability regions of the posterior distribution, the final
+iterations show that the chains remain consistently close to 1. This
+consistent behavior in the tail of the plots is what we hope to see when
+determining convergence.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#0a0">autocorr.plot</span>(cmr_est_rhat_samples)
+</span></span></code></pre></div><p><img loading="lazy" src="bayesian_inference_files/unnamed-chunk-19-1.png" alt="png"  />
+<!-- --><img loading="lazy" src="bayesian_inference_files/unnamed-chunk-19-2.png" alt="png"  />
+<!-- --><img loading="lazy" src="bayesian_inference_files/unnamed-chunk-19-3.png" alt="png"  />
+<!-- --></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#0a0">autocorr.plot</span>(mu_rhat_samples)
+</span></span></code></pre></div><p><img loading="lazy" src="bayesian_inference_files/unnamed-chunk-19-4.png" alt="png"  />
+<!-- --><img loading="lazy" src="bayesian_inference_files/unnamed-chunk-19-5.png" alt="png"  />
+<!-- --><img loading="lazy" src="bayesian_inference_files/unnamed-chunk-19-6.png" alt="png"  />
+<!-- --></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#0a0">autocorr.plot</span>(theta_rhat_samples)
+</span></span></code></pre></div><p><img loading="lazy" src="bayesian_inference_files/unnamed-chunk-19-7.png" alt="png"  />
+<!-- --><img loading="lazy" src="bayesian_inference_files/unnamed-chunk-19-8.png" alt="png"  />
+<!-- --><img loading="lazy" src="bayesian_inference_files/unnamed-chunk-19-9.png" alt="png"  />
+<!-- --></p>
+<p>The autocorrelation plots for the five counties with the highest R-hat
+values indicate excellent characteristics of the MCMC chains. For each
+county, the autocorrelation at lag zero starts at 1, as expected, since
+a series is always perfectly correlated with itself. As the lag
+increases, the autocorrelation drops off quickly towards zero, which is
+ideal for MCMC samples because it implies that the samples are nearly
+independent of each other.</p>
+<p>In all plots, the autocorrelations are close to zero by the time the lag
+reaches around 10, and they remain negligible for higher lags. This
+rapid decline and stabilisation suggest that the chains have good mixing
+properties, and there is minimal carry-over of information from one
+sample to the next as the chain progresses. Consequently, the chains are
+effectively exploring the posterior distribution, and the samples can be
+considered nearly independent after a small number of lags.</p>
+<p>None of the autocorrelation plots show worrying patterns such as
+long-range dependencies or a slow return to zero, which would be
+indicative of poor mixing and the need for longer chains or improved
+sampling strategies. Instead, these plots reinforce the earlier
+diagnostics, confirming that the MCMC simulation is producing reliable
+samples from all the parameters of the counties in question.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>US_cancer$cmr_est &lt;- cmr_est
+</span></span><span style="display:flex;"><span>US_cancer$cmr_rhat &lt;- cmr_rhat
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>US_cancer$mu_est &lt;- mu_est
+</span></span><span style="display:flex;"><span>US_cancer$mu_rhat &lt;- mu_rhat
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>US_cancer$theta_est &lt;- theta_est
+</span></span><span style="display:flex;"><span>US_cancer$theta_rhat &lt;- theta_rhat
+</span></span></code></pre></div><p>Final check that none of the R-hat values were somehow missed.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#0a0">summary</span>(US_cancer$cmr_rhat)
+</span></span></code></pre></div><pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   1.000   1.001   1.001   1.001   1.001   1.005
+</code></pre>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#0a0">summary</span>(US_cancer$mu_rhat)
+</span></span></code></pre></div><pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   1.000   1.001   1.001   1.001   1.001   1.005
+</code></pre>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#0a0">summary</span>(US_cancer$mu_rhat)
+</span></span></code></pre></div><pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   1.000   1.001   1.001   1.001   1.001   1.005
+</code></pre>
+<p>The summary of the R-hat values provides a succinct statistical
+representation of the convergence diagnostics across all counties. The
+range of R-hat values extends from the minimum of 1.000 to the maximum
+of 1.006, with the interquartile range (from the first quartile to the
+third quartile) being tightly clustered around 1.001. This close
+grouping around the value of 1 demonstrates that there is a uniformity
+in convergence across the various chains for the model parameters.</p>
+<p>The median R-hat value stands at 1.001, reinforcing the observation that
+the central tendency of the distribution of R-hat values is also very
+close to 1. The mean R-hat value is 1.001, indicating that there are no
+significant outliers skewing the average away from the ideal value. This
+uniformity in convergence is further underscored by the maximum R-hat
+value of 1.006, which remains well within acceptable limits for
+convergence (below the standard threshold of 1.1).</p>
+<p>In conclusion, the R-hat values indicate that the chains have
+satisfactorily converged for all counties, providing a robust foundation
+for the subsequent statistical analysis and interpretation of the
+model’s findings. This level of convergence suggests that the posterior
+distributions for the estimated parameters are reliable and can be used
+with confidence for inference and decision-making.</p>
+<p><strong>Summaries of the Parameters</strong></p>
+<p><strong><code>cmr_est</code></strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#0a0">hist</span>(US_cancer$cmr_est, breaks = <span style="color:#099">30</span>)
+</span></span></code></pre></div><p><img loading="lazy" src="bayesian_inference_files/unnamed-chunk-22-1.png" alt="png"  />
+<!-- --></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#0a0">summary</span>(US_cancer$cmr_est)
+</span></span></code></pre></div><pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##  0.0971  0.3555  0.4128  0.3927  0.4459  0.8914
+</code></pre>
+<p>The histogram of the estimated crude mortality rates (<code>cmr_est</code>) for the
+US_cancer dataset displays the distribution of the rates across all
+counties. The histogram shows a bell-shaped distribution, suggesting
+that the rates are approximately normally distributed, with the bulk of
+the values clustering around the center of the distribution.</p>
+<p>The summary statistics provide further detail on the distribution:</p>
+<ul>
+<li>The minimum estimated crude mortality rate (<code>cmr_est</code>) is
+approximately 0.09717, suggesting that the lowest rate in the dataset
+is about 0.972 deaths per 100,000 population per year.</li>
+<li>The first quartile (25th percentile) is at 0.35578, indicating that
+about 25% of the counties have a rate of approximately 35.58 or lower.</li>
+<li>The median value is 0.41249, showing that the central tendency (50th
+percentile) of the rates is approximately 41.25, meaning half of the
+counties have higher rates and half have lower rates.</li>
+<li>The mean (average) of the rates is slightly lower than the median at
+0.39267, which is approximately 39.27, indicating that while the
+distribution is fairly symmetrical, there’s a slight left skew with
+more counties having lower rates.</li>
+<li>The third quartile (75th percentile) is at 0.44575, so about 75% of
+the counties have a rate of approximately 44.58 or lower.</li>
+<li>The maximum value is quite high at 0.89610, indicating that the
+highest rate is about 89.61, which is significantly larger than the
+mean or median, suggesting the presence of outliers or extreme values
+at the higher end of the distribution.</li>
+</ul>
+<p>The histogram’s shape, coupled with the summary statistics, suggests a
+distribution that is centered around 0.4 with a slight skew towards the
+lower end. The fact that the mean is lower than the median supports this
+observation. Moreover, the wide range from the minimum to the maximum
+values indicates variability in the crude mortality rates among the
+counties, with some counties experiencing much higher rates, which could
+warrant further investigation.</p>
+<p><strong><code>mu_est</code></strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#0a0">hist</span>(US_cancer$mu_est, breaks = <span style="color:#099">50</span>)
+</span></span></code></pre></div><p><img loading="lazy" src="bayesian_inference_files/unnamed-chunk-23-1.png" alt="png"  />
+<!-- --></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#0a0">summary</span>(US_cancer$mu_est)
+</span></span></code></pre></div><pre><code>##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+##   0.0119   2.2782   4.6043  10.7214   9.8019 660.2362
+</code></pre>
+<p>The histogram of the estimated expected counts of kidney cancer deaths
+(<code>mu_est</code>) for the US_cancer dataset shows a highly skewed distribution
+with a long right tail. The majority of the counties have a low number
+of expected deaths, with the frequency dramatically decreasing as the
+expected count increases.</p>
+<p>The summary statistics of <code>mu_est</code> further describe the distribution:</p>
+<ul>
+<li>The minimum value is 0.012, indicating that the county with the lowest
+expected count of kidney cancer deaths has a value close to zero.</li>
+<li>The first quartile is at 2.278, which suggests that 25% of the
+counties have an expected count of 2.278 deaths or fewer.</li>
+<li>The median value is 4.611, meaning that half of the counties have an
+expected count lower than 4.611 deaths, which points to a modest
+number of expected deaths for most counties.</li>
+<li>The mean (average) expected count is 10.722, significantly higher than
+the median, reflecting the effect of the long right tail with very
+high expected counts in a few counties. This is a classic indication
+of right-skewed data.</li>
+<li>The third quartile is at 9.804, indicating that 75% of the counties
+have an expected count of fewer than 9.804 deaths.</li>
+<li>The maximum expected count is 659.924, which is an extreme outlier
+when compared to the rest of the data, suggesting that one or a few
+counties have a much higher expected count of deaths than typical.</li>
+</ul>
+<p>The histogram, combined with the summary statistics, shows that while
+most counties have a relatively low expected count of kidney cancer
+deaths, there are a few counties with very high expected counts. This
+skewness is a common characteristic in data related to rare events or
+counts in large populations and could imply that the model or the data
+might need to be further investigated to understand the factors
+contributing to these high expected counts in certain counties.</p>
+<p><strong><code>theta_est</code></strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#0a0">hist</span>(US_cancer$theta_est, breaks = <span style="color:#099">30</span>)
+</span></span></code></pre></div><p><img loading="lazy" src="bayesian_inference_files/unnamed-chunk-24-1.png" alt="png"  />
+<!-- --></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#0a0">summary</span>(US_cancer$theta_est)
+</span></span></code></pre></div><pre><code>##      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+## 9.710e-06 3.555e-05 4.128e-05 3.927e-05 4.459e-05 8.914e-05
+</code></pre>
+<p>The histogram of the estimated underlying true rates of kidney cancer
+deaths (<code>theta_est</code>) for the US_cancer dataset suggests a left-skewed
+distribution. This means that while most of the counties have true rates
+that cluster around the lower end of the scale, there are a few counties
+with notably higher rates.</p>
+<p>The summary statistics of <code>theta_est</code> provide more detail:</p>
+<ul>
+<li>The minimum value of <code>theta_est</code> is approximately
+$9.717 \times 10^{-6}$, which indicates that the county with the
+lowest estimated true rate has a very small rate of kidney cancer
+deaths.</li>
+<li>The first quartile ($3.558 \times 10^{-5}$) shows that about 25% of
+the counties have an underlying true rate at or below this relatively
+low value, reflecting the skew towards the lower end of the
+distribution.</li>
+<li>The median value ($4.125 \times 10^{-5}$) is slightly higher than the
+first quartile, which is expected in a left-skewed distribution, and
+signifies that half of the counties have a true rate below this point.</li>
+<li>The mean value ($3.927 \times 10^{-5}$) being less than the median
+value suggests the presence of a skew in the distribution. In a
+perfectly symmetrical distribution, the mean and median would be
+equal, but here the mean is pulled to the left by the lower rates.</li>
+<li>The third quartile ($4.457 \times 10^{-5}$) indicates that 75% of the
+counties have a true rate below this value, which continues to reflect
+the concentration of counties at the lower end of the rate spectrum.</li>
+<li>The maximum value ($8.961 \times 10^{-5}$) is significantly higher
+than the third quartile and mean, highlighting the existence of
+outliers on the higher end. These outliers exert a pull on the mean,
+making it lower than the median and contributing to the left-skewed
+nature of the distribution.</li>
+</ul>
+<p>In summary, while the bulk of the counties have a lower estimated
+underlying true rate of kidney cancer deaths, the distribution’s long
+tail to the right indicates that there are several counties with much
+higher than average rates. These outliers could be of particular
+interest for further exploration to determine if they are due to
+specific risk factors, data anomalies, or other reasons that warrant
+public health attention.</p>
+<h3 id="a5">A.5)<a hidden class="anchor" aria-hidden="true" href="#a5">#</a></h3>
+<h4 id="a5i">A.5i)<a hidden class="anchor" aria-hidden="true" href="#a5i">#</a></h4>
+<p>Smallest 1% average population</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>test &lt;- <span style="color:#0a0">quantile</span>(US_cancer$pop, probs = <span style="color:#0a0">c</span>(<span style="color:#099">0.01</span>))
+</span></span><span style="display:flex;"><span>US_cancer$pop_small &lt;- <span style="color:#0a0">ifelse</span>(US_cancer$pop &lt;= test, <span style="color:#099">1</span>, <span style="color:#099">0</span>)
+</span></span></code></pre></div><p>Mean of the posterior crude mortality rate</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#0a0">mean</span>(<span style="color:#0a0">subset</span>(US_cancer, pop_small == <span style="color:#099">1</span>)$cmr_est)
+</span></span></code></pre></div><pre><code>## [1] 0.4617567
+</code></pre>
+<p>The mean posterior crude mortality rate estimate for the counties with
+the smallest 1% average population is 0.4624102</p>
+<p>Compare these posterior estimates to the raw crude rates and also to the
+mean of the prior crude rate.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#0a0">mean</span>(<span style="color:#0a0">subset</span>(US_cancer, pop_small == <span style="color:#099">1</span>)$cmr)
+</span></span></code></pre></div><pre><code>## [1] 0.08466684
+</code></pre>
+<p>The mean of the prior crude rate for the counties with the smallest 1%
+average population is 0.08466684</p>
+<p>Calculated prior crude rate is: mean[Gamma(20, 430000)]*10000</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#099">20</span>/<span style="color:#099">430000</span> * <span style="color:#099">10000</span>
+</span></span></code></pre></div><pre><code>## [1] 0.4651163
+</code></pre>
+<p>The mean of the prior crude rate is 0.4651163</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#0a0">hist</span>(<span style="color:#0a0">subset</span>(US_cancer, pop_small == <span style="color:#099">1</span>)$cmr_est)
+</span></span></code></pre></div><p><img loading="lazy" src="bayesian_inference_files/unnamed-chunk-29-1.png" alt="png"  />
+<!-- --></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#0a0">hist</span>(<span style="color:#0a0">subset</span>(US_cancer, pop_small == <span style="color:#099">1</span>)$cmr)
+</span></span></code></pre></div><p><img loading="lazy" src="bayesian_inference_files/unnamed-chunk-30-1.png" alt="png"  />
+<!-- --></p>
+<p><strong>Conclusions</strong> The mean posterior estimate is much higher than the mean
+of the raw crude rates for these same counties, which is 0.0847. The raw
+crude rates are directly calculated from the data without any modeling
+or smoothing, and this discrepancy could suggest that the raw rates
+might be underestimating the CMR, possibly due to small population sizes
+in these counties leading to high variability in the rates.</p>
+<p>Additionally, we compare the mean posterior CMR estimate to the mean of
+the prior CMR, which is derived from the prior belief about the
+distribution of CMR across all counties as represented by a Gamma
+distribution with parameters 20 (shape) and 430000 (rate). This mean
+prior crude rate is calculated to be 0.4651, which is remarkably close
+to the mean posterior estimate (0.4624) for the smallest counties.</p>
+<p>The similarity between the mean posterior estimate and the mean prior
+suggests that the posterior estimates for the smallest counties are
+influenced significantly by the prior. This is expected in a Bayesian
+framework, especially when dealing with small sample sizes (or small
+populations in this context) where the data alone are not sufficient to
+provide reliable estimates, and thus, the prior plays a more substantial
+role in shaping the posterior distribution.</p>
+<p>In conclusion, the Bayesian hierarchical model’s posterior estimates for
+the crude mortality rates in the smallest counties appear to align
+closely with the prior expectations rather than the raw rates. This
+could indicate that the raw crude rates for these counties are more
+susceptible to random fluctuations due to the small number of events
+(deaths) and the small population sizes, resulting in less reliable
+estimates. The Bayesian approach helps to stabilise these estimates by
+borrowing strength from the prior, which seems to provide a more
+consistent measure of the CMR across these small counties. However, it’s
+important to recognise that if the prior is not well-chosen, it could
+also lead to biased results. Therefore, the choice of prior should be
+given careful consideration in such analyses.</p>
+<h4 id="a5ii">A.5ii)<a hidden class="anchor" aria-hidden="true" href="#a5ii">#</a></h4>
+<p>largest 1% average population</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>test &lt;- <span style="color:#0a0">quantile</span>(US_cancer$pop, probs = <span style="color:#0a0">c</span>(<span style="color:#099">0.99</span>))
+</span></span><span style="display:flex;"><span>US_cancer$pop_large &lt;- <span style="color:#0a0">ifelse</span>(US_cancer$pop &gt;= test, <span style="color:#099">1</span>, <span style="color:#099">0</span>)
+</span></span></code></pre></div><p>Mean of the posterior crude mortality rate</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#0a0">mean</span>(<span style="color:#0a0">subset</span>(US_cancer, pop_large == <span style="color:#099">1</span>)$cmr_est)
+</span></span></code></pre></div><pre><code>## [1] 0.1976608
+</code></pre>
+<p>The mean posterior crude mortality rate estimate for the counties with
+the largest 1% average population is 0.1976486</p>
+<p>Compare these posterior estimates to the raw crude rates and also to the
+mean of the prior crude rate.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#0a0">mean</span>(<span style="color:#0a0">subset</span>(US_cancer, pop_large == <span style="color:#099">1</span>)$cmr)
+</span></span></code></pre></div><pre><code>## [1] 0.1829885
+</code></pre>
+<p>The mean of the prior crude rate for the counties with the largest 1%
+average population is 0.1829885</p>
+<p>Calculated prior crude rate is: mean[Gamma(20, 430000)]*10000</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#099">20</span>/<span style="color:#099">430000</span> * <span style="color:#099">10000</span>
+</span></span></code></pre></div><pre><code>## [1] 0.4651163
+</code></pre>
+<p>The mean of the prior crude rate is 0.4651163</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#0a0">hist</span>(<span style="color:#0a0">subset</span>(US_cancer, pop_large == <span style="color:#099">1</span>)$cmr_est)
+</span></span></code></pre></div><p><img loading="lazy" src="bayesian_inference_files/unnamed-chunk-35-1.png" alt="png"  />
+<!-- --></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#0a0">hist</span>(<span style="color:#0a0">subset</span>(US_cancer, pop_large == <span style="color:#099">1</span>)$cmr)
+</span></span></code></pre></div><p><img loading="lazy" src="bayesian_inference_files/unnamed-chunk-36-1.png" alt="png"  />
+<!-- --></p>
+<p><strong>Conclusions</strong></p>
+<p>The mean posterior estimate is slightly higher than the mean of the raw
+crude rates for these same counties, which is 0.1829885. The smaller
+discrepancy between the raw and posterior rates in the most populous
+counties, compared to that in the smallest counties, may be indicative
+of the larger population sizes providing more stable and reliable raw
+rates.</p>
+<p>The mean prior crude rate, calculated from the Gamma(20, 430000)
+distribution, remains the same across all counties at 0.4651. This rate
+is significantly higher than both the mean posterior estimate and the
+raw rates for the largest counties.</p>
+<p>The fact that the mean posterior estimate for the largest counties is
+closer to the raw rate than to the mean prior rate suggests that the
+data (i.e., the observed counts of kidney cancer deaths and population
+sizes) are more informative in determining the posterior estimate in
+these counties. This contrasts with the smaller counties, where the
+posterior estimates were closer to the prior mean, indicating a stronger
+influence of the prior in those estimates due to less informative data
+(likely due to smaller populations and fewer deaths).</p>
+<p>In conclusion, the Bayesian hierarchical model provides a posterior CMR
+estimate for the largest counties that is informed more by the data than
+by the prior, as evidenced by its closeness to the raw rates. This
+illustrates the model’s ability to adjust the influence of the prior
+based on the amount of information available from the data, with the
+prior having a greater impact when data are sparse (as in the smallest
+counties) and less impact when data are more abundant (as in the largest
+counties). The analysis further highlights the robustness of the
+Bayesian approach in yielding reliable estimates across counties with
+varying population sizes, while also showcasing the model’s flexibility
+in balancing prior information with observed data.</p>
+<h4 id="a5iii">A.5iii)<a hidden class="anchor" aria-hidden="true" href="#a5iii">#</a></h4>
+<p><strong>Comparison of the two cases</strong></p>
+<p>When comparing the posterior CMR estimates for counties with the
+smallest 1% average population to those with the largest 1% average
+population, several key differences and similarities emerge, along with
+reasons that may explain these observations:</p>
+<p><strong>Differences:</strong></p>
+<ol>
+<li><strong>Influence of the Prior</strong>:
+<ul>
+<li>For the smallest counties, the posterior CMR estimate (0.4624102)
+was very close to the prior mean (0.4651163), indicating a strong
+influence of the prior. This is likely because the smaller amount
+of data from these counties does not provide a strong enough
+signal to shift the posterior away from the prior.</li>
+<li>In contrast, for the largest counties, the posterior CMR estimate
+(0.1976486) was closer to the raw CMR (0.1829885) and notably
+different from the prior mean. This implies that the data from
+these populous counties are informative enough to dominate the
+influence of the prior.</li>
+</ul>
+</li>
+<li><strong>Magnitude of CMR Estimates</strong>:
+<ul>
+<li>The smallest counties had a higher mean posterior CMR estimate
+compared to the largest counties. This may be due to increased
+variability in mortality rates in smaller populations, where a
+small number of events (deaths) can lead to a high CMR.
+Additionally, the Bayesian model’s shrinkage effect pulls
+estimates toward the prior more strongly when data are sparse,
+which could increase the posterior CMR in these counties.</li>
+</ul>
+</li>
+</ol>
+<p><strong>Similarities:</strong></p>
+<ol>
+<li><strong>Prior Mean Consistency</strong>:
+<ul>
+<li>The calculated mean of the prior crude rate (0.4651163) was
+consistent across both groups of counties. This is by design, as
+the prior is set at the beginning of the analysis and is not
+influenced by the data.</li>
+</ul>
+</li>
+</ol>
+<p><strong>Reasons Behind Observations:</strong></p>
+<ul>
+<li><strong>Sample Size Variability</strong>:
+<ul>
+<li>The amount and variability of data available from the counties
+directly influence the posterior estimates. Large counties provide
+more stable and precise CMR estimates because they have more data
+(larger population sizes), reducing the relative impact of the prior
+and increasing the weight of the observed data in the model.</li>
+<li>Small counties, with less data, are more influenced by the prior
+because each event (death) has a larger impact on the rate estimate,
+and the prior helps to stabilise these estimates through the process
+known as “shrinkage,” where extreme values are pulled towards the
+mean of the prior.</li>
+</ul>
+</li>
+<li><strong>Shrinkage Effect</strong>:
+<ul>
+<li>In a Bayesian hierarchical model, the shrinkage effect is more
+pronounced when there’s less data available (as in the case with the
+smallest counties). This can lead to posterior estimates that are
+more similar to each other and to the prior than the raw rates would
+suggest. Conversely, with more data (as in the largest counties),
+the model can afford to rely more on the observed data, resulting in
+posterior estimates that can differ more from the prior and reflect
+the raw rates more closely.</li>
+</ul>
+</li>
+</ul>
+<p>In summary, the Bayesian hierarchical model demonstrates its flexibility
+in incorporating varying degrees of information from the data across
+different population sizes. For smaller counties, the posterior
+estimates are more influenced by the prior, while for larger counties,
+the estimates are driven more by the data. This demonstrates the model’s
+capacity to adapt to the amount of information available and its
+robustness in providing sensible CMR estimates across a range of
+scenarios.</p>
+<h3 id="a6">A.6)<a hidden class="anchor" aria-hidden="true" href="#a6">#</a></h3>
+<p>Choice of counties: Small county - 2383 south dakota potter Large
+county - 831 iowa polk Reasonably sized county - 2304 south carolina
+fairfield</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>US_cancer$pop[2383]
+</span></span></code></pre></div><pre><code>## [1] 3190
+</code></pre>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>US_cancer$pop[831]
+</span></span></code></pre></div><pre><code>## [1] 327140
+</code></pre>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>US_cancer$pop[2304]
+</span></span></code></pre></div><pre><code>## [1] 22295
+</code></pre>
+<p>Google 2021 Populations for counties: South Dakota Potter 2,475 (2021)
+Iowa Polk 496,844 (2021) South Carolina Fairfield 20,690 (2021)</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#0a0">set.seed</span>(<span style="color:#099">123</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Model definition</span>
+</span></span><span style="display:flex;"><span>mod.cancer.updated &lt;- <span style="color:#00a">function</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#00a">for</span> (i <span style="color:#00a">in</span> <span style="color:#099">1</span>:N) {
+</span></span><span style="display:flex;"><span>        <span style="color:#aaa;font-style:italic"># y[i] represents the kidney cancer deaths in county i</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#aaa;font-style:italic"># The Poisson likelihood</span>
+</span></span><span style="display:flex;"><span>        y[i] ~ <span style="color:#0a0">dpois</span>(mu[i])
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#aaa;font-style:italic"># The expected count is the updated population times the rate times the period (5 years in this case)</span>
+</span></span><span style="display:flex;"><span>        mu[i] &lt;- updated_pop[i] * theta[i] * <span style="color:#099">5</span>
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#aaa;font-style:italic"># Theta follows a Gamma distribution as the prior</span>
+</span></span><span style="display:flex;"><span>        theta[i] ~ <span style="color:#0a0">dgamma</span>(alpha, beta)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#aaa;font-style:italic"># Hyperparameters for the Gamma distribution</span>
+</span></span><span style="display:flex;"><span>    alpha &lt;- <span style="color:#099">20</span>
+</span></span><span style="display:flex;"><span>    beta &lt;- <span style="color:#099">430000</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#aaa;font-style:italic"># Calculating the crude mortality rate (cmr) for each county</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a">for</span> (i <span style="color:#00a">in</span> <span style="color:#099">1</span>:N) {
+</span></span><span style="display:flex;"><span>        cmr_est[i] &lt;- theta[i] * <span style="color:#099">10000</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Updated population counts for the selected counties</span>
+</span></span><span style="display:flex;"><span>updated_population &lt;- US_cancer$pop
+</span></span><span style="display:flex;"><span>updated_population<span style="color:#0a0">[c</span>(<span style="color:#099">2383</span>, <span style="color:#099">831</span>, <span style="color:#099">2304</span>)] &lt;- <span style="color:#0a0">c</span>(<span style="color:#099">2475</span>, <span style="color:#099">496844</span>, <span style="color:#099">20690</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Data preparation with updated population</span>
+</span></span><span style="display:flex;"><span>cancer.data.updated &lt;- <span style="color:#0a0">list</span>(
+</span></span><span style="display:flex;"><span>  y = US_cancer$dc,
+</span></span><span style="display:flex;"><span>  updated_pop = updated_population,
+</span></span><span style="display:flex;"><span>  N = <span style="color:#0a0">nrow</span>(US_cancer)
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Generate starting values</span>
+</span></span><span style="display:flex;"><span>generate_initial_values &lt;- <span style="color:#00a">function</span>(chain_id) {
+</span></span><span style="display:flex;"><span>  <span style="color:#0a0">list</span>(theta = <span style="color:#0a0">rgamma</span>(<span style="color:#0a0">nrow</span>(US_cancer), <span style="color:#099">20</span>, <span style="color:#099">430000</span>))
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Generating initial values for three chains with the function</span>
+</span></span><span style="display:flex;"><span>initial_values &lt;- <span style="color:#0a0">lapply</span>(<span style="color:#099">1</span>:<span style="color:#099">3</span>, generate_initial_values)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Parameters to monitor</span>
+</span></span><span style="display:flex;"><span>jags.param &lt;- <span style="color:#0a0">c</span>(<span style="color:#a50">&#34;cmr_est&#34;</span>, <span style="color:#a50">&#34;theta&#34;</span>, <span style="color:#a50">&#34;mu&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Fitting the model using JAGS with the updated model and data</span>
+</span></span><span style="display:flex;"><span>jags.fit.cancer.updated &lt;- <span style="color:#0a0">jags</span>(data = cancer.data.updated, 
+</span></span><span style="display:flex;"><span>                                inits = initial_values,
+</span></span><span style="display:flex;"><span>                                parameters.to.save = jags.param, 
+</span></span><span style="display:flex;"><span>                                n.chains = <span style="color:#099">3</span>,
+</span></span><span style="display:flex;"><span>                                n.iter = <span style="color:#099">10000</span>,
+</span></span><span style="display:flex;"><span>                                n.burnin = <span style="color:#099">5000</span>,
+</span></span><span style="display:flex;"><span>                                model.file = mod.cancer.updated)
+</span></span></code></pre></div><pre><code>## Compiling model graph
+##    Resolving undeclared variables
+##    Allocating nodes
+## Graph information:
+##    Observed stochastic nodes: 3085
+##    Unobserved stochastic nodes: 3085
+##    Total graph size: 15430
+## 
+## Initializing model
+## 
+##   |                                                          |                                                  |   0%  |                                                          |**                                                |   4%  |                                                          |****                                              |   8%  |                                                          |******                                            |  12%  |                                                          |********                                          |  16%  |                                                          |**********                                        |  20%  |                                                          |************                                      |  24%  |                                                          |**************                                    |  28%  |                                                          |****************                                  |  32%  |                                                          |******************                                |  36%  |                                                          |********************                              |  40%  |                                                          |**********************                            |  44%  |                                                          |************************                          |  48%  |                                                          |**************************                        |  52%  |                                                          |****************************                      |  56%  |                                                          |******************************                    |  60%  |                                                          |********************************                  |  64%  |                                                          |**********************************                |  68%  |                                                          |************************************              |  72%  |                                                          |**************************************            |  76%  |                                                          |****************************************          |  80%  |                                                          |******************************************        |  84%  |                                                          |********************************************      |  88%  |                                                          |**********************************************    |  92%  |                                                          |************************************************  |  96%  |                                                          |**************************************************| 100%
+##   |                                                          |                                                  |   0%  |                                                          |**                                                |   4%  |                                                          |****                                              |   8%  |                                                          |******                                            |  12%  |                                                          |********                                          |  16%  |                                                          |**********                                        |  20%  |                                                          |************                                      |  24%  |                                                          |**************                                    |  28%  |                                                          |****************                                  |  32%  |                                                          |******************                                |  36%  |                                                          |********************                              |  40%  |                                                          |**********************                            |  44%  |                                                          |************************                          |  48%  |                                                          |**************************                        |  52%  |                                                          |****************************                      |  56%  |                                                          |******************************                    |  60%  |                                                          |********************************                  |  64%  |                                                          |**********************************                |  68%  |                                                          |************************************              |  72%  |                                                          |**************************************            |  76%  |                                                          |****************************************          |  80%  |                                                          |******************************************        |  84%  |                                                          |********************************************      |  88%  |                                                          |**********************************************    |  92%  |                                                          |************************************************  |  96%  |                                                          |**************************************************| 100%
+</code></pre>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Extract posterior samples for the predicted deaths in the three counties</span>
+</span></span><span style="display:flex;"><span>mu_samples &lt;- <span style="color:#0a0">as.mcmc</span>(jags.fit.cancer.updated)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Subset the samples for the selected counties</span>
+</span></span><span style="display:flex;"><span>mu_potter &lt;- mu_samples[[1]][, <span style="color:#a50">&#34;mu[2383]&#34;</span>]
+</span></span><span style="display:flex;"><span>mu_polk &lt;- mu_samples[[1]][, <span style="color:#a50">&#34;mu[831]&#34;</span>]
+</span></span><span style="display:flex;"><span>mu_fairfield &lt;- mu_samples[[1]][, <span style="color:#a50">&#34;mu[2304]&#34;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Plot histograms and provide numerical summaries</span>
+</span></span><span style="display:flex;"><span><span style="color:#0a0">par</span>(mfrow = <span style="color:#0a0">c</span>(<span style="color:#099">3</span>, <span style="color:#099">1</span>))  <span style="color:#aaa;font-style:italic"># Arrange plots in 3 rows, 1 column</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># South Dakota Potter County</span>
+</span></span><span style="display:flex;"><span><span style="color:#0a0">hist</span>(mu_potter, main = <span style="color:#a50">&#34;Predictive distribution for South Dakota Potter County&#34;</span>,
+</span></span><span style="display:flex;"><span>     xlab = <span style="color:#a50">&#34;Predicted number of deaths&#34;</span>, col = <span style="color:#a50">&#34;skyblue&#34;</span>, border = <span style="color:#a50">&#34;blue&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#0a0">abline</span>(v = <span style="color:#0a0">mean</span>(mu_potter), col = <span style="color:#a50">&#34;red&#34;</span>, lwd = <span style="color:#099">2</span>)
+</span></span><span style="display:flex;"><span><span style="color:#0a0">legend</span>(<span style="color:#a50">&#34;topright&#34;</span>, legend = <span style="color:#0a0">paste</span>(<span style="color:#a50">&#34;Mean =&#34;</span>, <span style="color:#0a0">round</span>(<span style="color:#0a0">mean</span>(mu_potter), <span style="color:#099">2</span>)), col = <span style="color:#a50">&#34;red&#34;</span>, lwd = <span style="color:#099">2</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Iowa Polk County</span>
+</span></span><span style="display:flex;"><span><span style="color:#0a0">hist</span>(mu_polk, main = <span style="color:#a50">&#34;Predictive distribution for Iowa Polk County&#34;</span>,
+</span></span><span style="display:flex;"><span>     xlab = <span style="color:#a50">&#34;Predicted number of deaths&#34;</span>, col = <span style="color:#a50">&#34;lightgreen&#34;</span>, border = <span style="color:#a50">&#34;green&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#0a0">abline</span>(v = <span style="color:#0a0">mean</span>(mu_polk), col = <span style="color:#a50">&#34;red&#34;</span>, lwd = <span style="color:#099">2</span>)
+</span></span><span style="display:flex;"><span><span style="color:#0a0">legend</span>(<span style="color:#a50">&#34;topright&#34;</span>, legend = <span style="color:#0a0">paste</span>(<span style="color:#a50">&#34;Mean =&#34;</span>, <span style="color:#0a0">round</span>(<span style="color:#0a0">mean</span>(mu_polk), <span style="color:#099">2</span>)), col = <span style="color:#a50">&#34;red&#34;</span>, lwd = <span style="color:#099">2</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># South Carolina Fairfield County</span>
+</span></span><span style="display:flex;"><span><span style="color:#0a0">hist</span>(mu_fairfield, main = <span style="color:#a50">&#34;Predictive distribution for South Carolina Fairfield County&#34;</span>,
+</span></span><span style="display:flex;"><span>     xlab = <span style="color:#a50">&#34;Predicted number of deaths&#34;</span>, col = <span style="color:#a50">&#34;lightcoral&#34;</span>, border = <span style="color:#a50">&#34;red&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#0a0">abline</span>(v = <span style="color:#0a0">mean</span>(mu_fairfield), col = <span style="color:#a50">&#34;red&#34;</span>, lwd = <span style="color:#099">2</span>)
+</span></span><span style="display:flex;"><span><span style="color:#0a0">legend</span>(<span style="color:#a50">&#34;topright&#34;</span>, legend = <span style="color:#0a0">paste</span>(<span style="color:#a50">&#34;Mean =&#34;</span>, <span style="color:#0a0">round</span>(<span style="color:#0a0">mean</span>(mu_fairfield), <span style="color:#099">2</span>)), col = <span style="color:#a50">&#34;red&#34;</span>, lwd = <span style="color:#099">2</span>)
+</span></span></code></pre></div><p><img loading="lazy" src="bayesian_inference_files/unnamed-chunk-39-1.png" alt="png"  />
+<!-- --></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Display numerical summaries</span>
+</span></span><span style="display:flex;"><span>summary_potter &lt;- <span style="color:#0a0">summary</span>(mu_potter)
+</span></span><span style="display:flex;"><span>summary_polk &lt;- <span style="color:#0a0">summary</span>(mu_polk)
+</span></span><span style="display:flex;"><span>summary_fairfield &lt;- <span style="color:#0a0">summary</span>(mu_fairfield)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#0a0">cat</span>(<span style="color:#a50">&#34;South Dakota Potter County:\n&#34;</span>)
+</span></span></code></pre></div><pre><code>## South Dakota Potter County:
+</code></pre>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#0a0">print</span>(summary_potter)
+</span></span></code></pre></div><pre><code>## 
+## Iterations = 5005:10000
+## Thinning interval = 5 
+## Number of chains = 1 
+## Sample size per chain = 1000 
+## 
+## 1. Empirical mean and standard deviation for each variable,
+##    plus standard error of the mean:
+## 
+##           Mean             SD       Naive SE Time-series SE 
+##       0.607845       0.131573       0.004161       0.004161 
+## 
+## 2. Quantiles for each variable:
+## 
+##   2.5%    25%    50%    75%  97.5% 
+## 0.3899 0.5144 0.5935 0.6860 0.8954
+</code></pre>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#0a0">cat</span>(<span style="color:#a50">&#34;\nIowa Polk County:\n&#34;</span>)
+</span></span></code></pre></div><pre><code>## 
+## Iowa Polk County:
+</code></pre>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#0a0">print</span>(summary_polk)
+</span></span></code></pre></div><pre><code>## 
+## Iterations = 5005:10000
+## Thinning interval = 5 
+## Number of chains = 1 
+## Sample size per chain = 1000 
+## 
+## 1. Empirical mean and standard deviation for each variable,
+##    plus standard error of the mean:
+## 
+##           Mean             SD       Naive SE Time-series SE 
+##        55.1291         6.7297         0.2128         0.2128 
+## 
+## 2. Quantiles for each variable:
+## 
+##  2.5%   25%   50%   75% 97.5% 
+## 43.48 50.46 54.72 59.43 69.43
+</code></pre>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#0a0">cat</span>(<span style="color:#a50">&#34;\nSouth Carolina Fairfield County:\n&#34;</span>)
+</span></span></code></pre></div><pre><code>## 
+## South Carolina Fairfield County:
+</code></pre>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#0a0">print</span>(summary_fairfield)
+</span></span></code></pre></div><pre><code>## 
+## Iterations = 5005:10000
+## Thinning interval = 5 
+## Number of chains = 1 
+## Sample size per chain = 1000 
+## 
+## 1. Empirical mean and standard deviation for each variable,
+##    plus standard error of the mean:
+## 
+##           Mean             SD       Naive SE Time-series SE 
+##        4.10753        0.90506        0.02862        0.02996 
+## 
+## 2. Quantiles for each variable:
+## 
+##  2.5%   25%   50%   75% 97.5% 
+## 2.641 3.481 4.000 4.619 6.078
+</code></pre>
+<p>Based on the hierarchical Poisson regression model fit using R2Jags and
+updated with recent population data, we have estimated the predicted
+number of kidney cancer deaths for three counties with varying
+population sizes. The predictive distributions provide us with a
+probabilistic assessment of the expected deaths, incorporating the
+uncertainty inherent in such predictions.</p>
+<p>For academic reporting, one might present the findings as follows:</p>
+<hr>
+<p>This study updates a hierarchical Poisson regression model with current
+population data to predict kidney cancer mortality rates in three U.S.
+counties. The original data from the 1980s show significant demographic
+changes, warranting a reassessment using recent population figures. The
+counties—Potter County, SD; Polk County, IA; and Fairfield County,
+SC—were chosen to represent small, large, and medium-sized populations
+respectively. The predictions provide insight into the expected number
+of deaths due to kidney cancer in these areas.</p>
+<h4 id="introduction">Introduction<a hidden class="anchor" aria-hidden="true" href="#introduction">#</a></h4>
+<p>Disparities in health outcomes can be influenced by demographic shifts
+over time. With changes in populations, the crude mortality rates for
+diseases such as kidney cancer need to be re-evaluated to ensure
+accurate public health assessments. This utilises a hierarchical Poisson
+regression model to estimate the expected kidney cancer deaths in three
+different counties, accounting for updated population sizes.</p>
+<h4 id="methods">Methods<a hidden class="anchor" aria-hidden="true" href="#methods">#</a></h4>
+<p>Using the US_Cancer dataset and recent population data for the years
+2021, we fit a hierarchical Poisson model. The model assumes kidney
+cancer deaths, $y_i$, follow a Poisson distribution with an expected
+value $\mu_i$, which is the product of the county population, $n_i$, the
+rate $\theta_i$, and the time period of 5 years. A Gamma(20, 430000)
+distribution is used as the prior for each $\theta_i$.</p>
+<h4 id="results">Results<a hidden class="anchor" aria-hidden="true" href="#results">#</a></h4>
+<p>The model predicts the following mean number of kidney cancer deaths for
+the year 2021:</p>
+<ul>
+<li>
+<p><strong>Potter County, SD (Small Population)</strong>: With an updated population
+of 2,475, the model predicts a mean of 0.61 deaths. The 95% credible
+interval ranges from approximately 0.39 to 0.90, reflecting the
+uncertainty due to the small population size.</p>
+</li>
+<li>
+<p><strong>Polk County, IA (Large Population)</strong>: For a population of 496,844,
+the predicted mean number of deaths is 55.48. The 95% credible
+interval is from about 43.09 to 69.26, indicating a higher precision
+in the estimate due to the larger population size.</p>
+</li>
+<li>
+<p><strong>Fairfield County, SC (Medium Population)</strong>: With a population of
+20,690, the model predicts a mean of 4.07 deaths. The 95% credible
+interval ranges from approximately 2.47 to 5.96, illustrating moderate
+uncertainty in the prediction.</p>
+</li>
+</ul>
+<p>Counties with smaller populations, such as Potter County, show greater
+relative uncertainty in their estimates, which is reflected in the wider
+credible intervals. Conversely, larger counties like Polk provide more
+precise estimates. These results highlight the importance of using
+model-based approaches to estimate health outcomes, as they accommodate
+varying population sizes and associated uncertainties.</p>
+<h3 id="a7">A.7)<a hidden class="anchor" aria-hidden="true" href="#a7">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Actual number of deaths from 1980-1984 for each county</span>
+</span></span><span style="display:flex;"><span>deaths_potter_80s &lt;- US_cancer$dc[2383]
+</span></span><span style="display:flex;"><span>deaths_polk_80s &lt;- US_cancer$dc[831]
+</span></span><span style="display:flex;"><span>deaths_fairfield_80s &lt;- US_cancer$dc[2304]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Calculate the probabilities</span>
+</span></span><span style="display:flex;"><span>prob_potter_exceeds &lt;- <span style="color:#0a0">sum</span>(mu_potter &gt; deaths_potter_80s) / <span style="color:#0a0">length</span>(mu_potter)
+</span></span><span style="display:flex;"><span>prob_polk_exceeds &lt;- <span style="color:#0a0">sum</span>(mu_polk &gt; deaths_polk_80s) / <span style="color:#0a0">length</span>(mu_polk)
+</span></span><span style="display:flex;"><span>prob_fairfield_exceeds &lt;- <span style="color:#0a0">sum</span>(mu_fairfield &gt; deaths_fairfield_80s) / <span style="color:#0a0">length</span>(mu_fairfield)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Print the probabilities</span>
+</span></span><span style="display:flex;"><span><span style="color:#0a0">cat</span>(<span style="color:#a50">&#34;Probability that predicted deaths in Potter County exceed 1980-1984:&#34;</span>, prob_potter_exceeds, <span style="color:#a50">&#34;\n&#34;</span>)
+</span></span></code></pre></div><pre><code>## Probability that predicted deaths in Potter County exceed 1980-1984: 0
+</code></pre>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#0a0">cat</span>(<span style="color:#a50">&#34;Probability that predicted deaths in Polk County exceed 1980-1984:&#34;</span>, prob_polk_exceeds, <span style="color:#a50">&#34;\n&#34;</span>)
+</span></span></code></pre></div><pre><code>## Probability that predicted deaths in Polk County exceed 1980-1984: 0.944
+</code></pre>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#0a0">cat</span>(<span style="color:#a50">&#34;Probability that predicted deaths in Fairfield County exceed 1980-1984:&#34;</span>, prob_fairfield_exceeds, <span style="color:#a50">&#34;\n&#34;</span>)
+</span></span></code></pre></div><pre><code>## Probability that predicted deaths in Fairfield County exceed 1980-1984: 1
+</code></pre>
+<p>A hierarchical Poisson regression model was updated with 2021 population
+data for the selected counties. The model predicted kidney cancer
+deaths, accounting for changes in population size and structure.
+Historical death counts from 1980-1984 were used as a reference to
+calculate the probabilities of exceeding these counts in the present
+year.</p>
+<p>The probability values obtained suggest that for Potter County, the
+model predicts a 0% chance that the number of deaths will exceed the
+number from 1980-1984; for Polk County, there’s a 94% chance; and for
+Fairfield County, there’s a 100% (or certain) chance. To interpret these
+probabilities, let’s consider the provided population and death count
+information alongside possible factors:</p>
+<p><strong>Potter County, SD:</strong></p>
+<ul>
+<li><strong>1980-1984 Population:</strong> 3,190</li>
+<li><strong>2021 Population:</strong> 2,475</li>
+<li><strong>1980-1984 Deaths:</strong> 2</li>
+<li><strong>Predicted Probability:</strong> 0%</li>
+</ul>
+<p>The probability that the predicted deaths in 2021 exceed those from
+1980-1984 is 0. This finding corresponds to a decrease in population
+from 3,190 to 2,475, suggesting that with a smaller population at risk,
+the number of observed deaths is unlikely to surpass the historical
+count. Notably, the initial death count was disproportionately high
+given the smaller population size of the time, which could indicate an
+anomalous spike in the 1980s data. As such an exceedance of the
+historical death count is extremely unlikely.</p>
+<p><strong>Polk County, IA:</strong></p>
+<ul>
+<li><strong>1980-1984 Population:</strong> 327,140</li>
+<li><strong>2021 Population:</strong> 496,844</li>
+<li><strong>1980-1984 Deaths:</strong> 45</li>
+<li><strong>Predicted Probability:</strong> 94%</li>
+</ul>
+<p>The probability is 0.94, which is substantial. This may be largely
+attributable to a significant increase in population from 327,140 to
+496,844. The higher population in 2021 inherently increases the number
+of individuals at risk, contributing to a greater probability of
+exceeding the historical number of deaths.</p>
+<p><strong>Fairfield County, SC:</strong></p>
+<ul>
+<li><strong>1980-1984 Population:</strong> 22,295</li>
+<li><strong>2021 Population:</strong> 20,690</li>
+<li><strong>1980-1984 Deaths:</strong> 1 - <strong>Predicted Probability:</strong> 100%</li>
+</ul>
+<p>Fairfield county experienced a slight decrease in population from 22,295
+to 20,690, yet the model predicts with 100% probability that the number
+of deaths will exceed the single death recorded historically. This
+forecast can be primarily attributed to the exceptionally low historical
+death count, which presents a minimal benchmark for modern data to
+surpass.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://shaunyap01.github.io/tags/r/">`R</a></li>
+      <li><a href="https://shaunyap01.github.io/tags/all-projects/">^^All Projects</a></li>
+      <li><a href="https://shaunyap01.github.io/tags/bayesian-inference/">Bayesian Inference</a></li>
+      <li><a href="https://shaunyap01.github.io/tags/bayesian-statistics/">Bayesian Statistics</a></li>
+      <li><a href="https://shaunyap01.github.io/tags/gibbs-sampling/">Gibbs Sampling</a></li>
+      <li><a href="https://shaunyap01.github.io/tags/markov-chain-monte-carlo-mcmc/">Markov Chain Monte Carlo (MCMC)</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+</html>
